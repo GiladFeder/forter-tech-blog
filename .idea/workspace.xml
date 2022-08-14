@@ -5,13 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7ab4e46f-88f6-421b-a9f9-542c3ac6cf79" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/apache-beam-from-zero-to-hero-pt-1-batch-pipelines.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/images/authors/ilan.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/images/post-img/apache.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apache-beam-from-zero-to-hero-pt-2-streaming-pipelines.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_config.yml" beforeDir="false" afterPath="$PROJECT_DIR$/_config.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/apache-beam-from-zero-to-hero-pt-1-batch-pipelines.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/apache-beam-from-zero-to-hero-pt-1-batch-pipelines.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/_site/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/_site/search.json" beforeDir="false" afterPath="$PROJECT_DIR$/_site/search.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apache-beam-from-zero-to-hero-pt-1-batch-pipelines.html" beforeDir="false" afterPath="$PROJECT_DIR$/apache-beam-from-zero-to-hero-pt-1-batch-pipelines.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/search.json" beforeDir="false" afterPath="$PROJECT_DIR$/search.json" afterDir="false" />
     </list>
@@ -72,7 +71,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1660407902256</updated>
-      <workItem from="1660407904808" duration="19033000" />
+      <workItem from="1660407904808" duration="19421000" />
     </task>
     <servers />
   </component>
