@@ -6,25 +6,25 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Forter Tech Blog</title>
+    <title>Comparing Message Queue Architecture on AWS</title>
     <meta name='description'
           content="Forter's technical blog, writing on security, performance, engineering culture, and more.">
 
-    <link rel="canonical" href="http://localhost:4000/">
-    <link rel="alternate" type="application/rss+xml" title="Forter Tech Blog" href="/feed.xml">
+    <link rel="canonical" href="http://localhost:4000/comparing-message-queue-architectures-on-aws">
+    <link rel="alternate" type="application/rss+xml" title="TECH.FORTER.COM" href="/feed.xml">
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Forter Tech Blog">
+    <meta name="twitter:title" content="Comparing Message Queue Architecture on AWS – TECH.FORTER.COM">
     <meta name="twitter:description"
-          content="Forter's technical blog, writing on security, performance, engineering culture, and more.">
-    <meta name="twitter:image:src" content="http://localhost:4000/images/forter.png">
+          content="In Forter, we crunch multiple data streams each with its own different requirements. In order to choose the right tool for the job we mapped different event dispatching architectures that suit our needs.">
+    <meta name="twitter:image:src" content="http://localhost:4000/images/post-img/queue.png">
 
     <!-- Facebook OpenGraph -->
-    <meta property="og:title" content="Forter Tech Blog">
+    <meta property="og:title" content="Comparing Message Queue Architecture on AWS – TECH.FORTER.COM">
     <meta property="og:description"
-          content="Forter's technical blog, writing on security, performance, engineering culture, and more.">
-    <meta property="og:image" content="http://localhost:4000/images/forter.png">
+          content="In Forter, we crunch multiple data streams each with its own different requirements. In order to choose the right tool for the job we mapped different event dispatching architectures that suit our needs.">
+    <meta property="og:image" content="http://localhost:4000/images/post-img/queue.png">
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -4240,6 +4240,7 @@
                                 <a href="/" class="nav__link">Home</a>
                             </li>
 
+
                             <li class="nav__item nav__item-icon">
                                 <div class="toggle-theme">
                                     <div class="toggle-moon" title="Enable dark mode"><i class="ion ion-ios-moon"></i>
@@ -4292,378 +4293,407 @@
 
 <!-- begin content -->
 <main class="content" aria-label="Content">
-
-
-    <div class="tags__inner">
-
+    <div class="post-head">
         <div class="container">
             <div class="row">
-                <div class="col col-12">
-                    <div class="tag__info">
-                        <div class="tag__info-box">
-                            <div class="tag__counter">
-                                <span>2</span>
-                                <small>Posts</small>
-                            </div>
-                            <h2 class="tag__name" id="talks">Talks</h2>
-                        </div>
-                        <a class="top__link" href="#top">Return to top</a>
+
+                <div class="col col-6 col-d-12">
+                    <div class="post-image">
+                        <img class="lazy" data-src="/images/post-img/queue.png"
+                             alt="Comparing Message Queue Architecture on AWS">
                     </div>
                 </div>
-            </div>
-        </div>
 
-        <div class="container">
-            <div class="row">
-                <div class="col col-12">
-                    <div class="row">
+                <div class="col col-6 col-d-12">
+                    <div class="post__info ">
 
 
-                        <div class="article col col-4 col-d-6 col-t-12">
-                            <div class="article__inner">
+                        <div class="post__tags">
 
-                                <div class="article__head">
-                                    <time class="article__date" datetime="1970-01-01T00:00:00+00:00">01 Jan 1970</time>
+                            <a href="/tags#data streams" class="post__tag">data streams</a>
+                            <a href="/tags#event dispatching architecture" class="post__tag">event dispatching
+                                architecture</a>
+                            <a href="/tags#event stream processing" class="post__tag">event stream processing</a>
+                            <a href="/tags#latency" class="post__tag">latency</a>
+                            <a href="/tags#software architecture" class="post__tag">software architecture</a>
 
-                                    <div class="video-icon">
-                                        <div class="circle pulse"></div>
-                                        <div class="circle">
-                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
-                                                <polygon points="40,30 65,50 40,70"></polygon>
-                                            </svg>
-                                        </div>
-                                    </div>
-
-                                    <a class="article__image" href="/comparing-message-queue-architectures-on-aws">
-                                        <img class="lazy" data-src="/images/post-img/queue.png"
-                                             alt="Comparing Message Queue Architecture on AWS">
-                                    </a>
-
-
-                                </div>
-
-                                <div class="article__content">
-
-                                    <h2 class="article__title">
-                                        <a href="/comparing-message-queue-architectures-on-aws">Comparing Message Queue
-                                            Architecture on AWS</a>
-                                    </h2>
-
-
-                                </div>
-                            </div>
                         </div>
 
 
-                        <div class="article col col-4 col-d-6 col-t-12">
-                            <div class="article__inner">
+                        <h1 class="post__title">Comparing Message Queue Architecture on AWS</h1>
 
-                                <div class="article__head">
-                                    <time class="article__date" datetime="1970-01-01T00:00:00+00:00">01 Jan 1970</time>
+                        <div class="post__meta">
+                            <a href="/about/" class="post__author-image">
+                                <img class="lazy" data-src="/images/authors/itai.jpg" alt="Itay Frenkel">
+                            </a>
 
-                                    <div class="video-icon">
-                                        <div class="circle pulse"></div>
-                                        <div class="circle">
-                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
-                                                <polygon points="40,30 65,50 40,70"></polygon>
-                                            </svg>
-                                        </div>
-                                    </div>
-
-                                    <a class="article__image" href="/comparing-message-queue-architectures-on-aws">
-                                        <img class="lazy" data-src="/images/post-img/queue.png"
-                                             alt="Comparing Message Queue Architecture on AWS">
-                                    </a>
-
-
-                                </div>
-
-                                <div class="article__content">
-
-                                    <h2 class="article__title">
-                                        <a href="/comparing-message-queue-architectures-on-aws">Comparing Message Queue
-                                            Architecture on AWS</a>
-                                    </h2>
-
-
-                                </div>
+                            <div class="post__meta-bottom">
+                                <span class="post__author">Itay Frenkel</span>
+                                <time class="post__date" datetime="2015-01-04T00:00:00+00:00">4 Jan 2015</time>
                             </div>
                         </div>
-
 
                     </div>
                 </div>
             </div>
         </div>
-
-    </div>
-    <div class="tags__inner">
-
-        <div class="container">
-            <div class="row">
-                <div class="col col-12">
-                    <div class="tag__info">
-                        <div class="tag__info-box">
-                            <div class="tag__counter">
-                                <span>2</span>
-                                <small>Posts</small>
-                            </div>
-                            <h2 class="tag__name" id="security">Security</h2>
-                        </div>
-                        <a class="top__link" href="#top">Return to top</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="container">
-            <div class="row">
-                <div class="col col-12">
-                    <div class="row">
-
-
-                        <div class="article col col-4 col-d-6 col-t-12">
-                            <div class="article__inner">
-
-                                <div class="article__head">
-                                    <time class="article__date" datetime="1970-01-01T00:00:00+00:00">01 Jan 1970</time>
-
-
-                                    <a class="article__image" href="/comparing-message-queue-architectures-on-aws">
-                                        <img class="lazy" data-src="/images/post-img/queue.png"
-                                             alt="Comparing Message Queue Architecture on AWS">
-                                    </a>
-
-
-                                </div>
-
-                                <div class="article__content">
-
-                                    <h2 class="article__title">
-                                        <a href="/comparing-message-queue-architectures-on-aws">Comparing Message Queue
-                                            Architecture on AWS</a>
-                                    </h2>
-
-
-                                </div>
-                            </div>
-                        </div>
-
-
-                        <div class="article col col-4 col-d-6 col-t-12">
-                            <div class="article__inner">
-
-                                <div class="article__head">
-                                    <time class="article__date" datetime="1970-01-01T00:00:00+00:00">01 Jan 1970</time>
-
-
-                                    <a class="article__image" href="/comparing-message-queue-architectures-on-aws">
-                                        <img class="lazy" data-src="/images/post-img/queue.png"
-                                             alt="Comparing Message Queue Architecture on AWS">
-                                    </a>
-
-
-                                </div>
-
-                                <div class="article__content">
-
-                                    <h2 class="article__title">
-                                        <a href="/comparing-message-queue-architectures-on-aws">Comparing Message Queue
-                                            Architecture on AWS</a>
-                                    </h2>
-
-
-                                </div>
-                            </div>
-                        </div>
-
-
-                    </div>
-                </div>
-            </div>
-        </div>
-
-    </div>
-    <div class="tags__inner">
-
-        <div class="container">
-            <div class="row">
-                <div class="col col-12">
-                    <div class="tag__info">
-                        <div class="tag__info-box">
-                            <div class="tag__counter">
-                                <span>2</span>
-                                <small>Posts</small>
-                            </div>
-                            <h2 class="tag__name" id="culture">Engineering Culture</h2>
-                        </div>
-                        <a class="top__link" href="#top">Return to top</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="container">
-            <div class="row">
-                <div class="col col-12">
-                    <div class="row">
-
-
-                        <div class="article col col-4 col-d-6 col-t-12">
-                            <div class="article__inner">
-
-                                <div class="article__head">
-                                    <time class="article__date" datetime="1970-01-01T00:00:00+00:00">01 Jan 1970</time>
-
-
-                                    <a class="article__image" href="/comparing-message-queue-architectures-on-aws">
-                                        <img class="lazy" data-src="/images/post-img/queue.png"
-                                             alt="Comparing Message Queue Architecture on AWS">
-                                    </a>
-
-
-                                </div>
-
-                                <div class="article__content">
-
-                                    <h2 class="article__title">
-                                        <a href="/comparing-message-queue-architectures-on-aws">Comparing Message Queue
-                                            Architecture on AWS</a>
-                                    </h2>
-
-
-                                </div>
-                            </div>
-                        </div>
-
-
-                        <div class="article col col-4 col-d-6 col-t-12">
-                            <div class="article__inner">
-
-                                <div class="article__head">
-                                    <time class="article__date" datetime="1970-01-01T00:00:00+00:00">01 Jan 1970</time>
-
-
-                                    <a class="article__image" href="/comparing-message-queue-architectures-on-aws">
-                                        <img class="lazy" data-src="/images/post-img/queue.png"
-                                             alt="Comparing Message Queue Architecture on AWS">
-                                    </a>
-
-
-                                </div>
-
-                                <div class="article__content">
-
-                                    <h2 class="article__title">
-                                        <a href="/comparing-message-queue-architectures-on-aws">Comparing Message Queue
-                                            Architecture on AWS</a>
-                                    </h2>
-
-
-                                </div>
-                            </div>
-                        </div>
-
-
-                    </div>
-                </div>
-            </div>
-        </div>
-
-    </div>
-    <div class="tags__inner">
-
-        <div class="container">
-            <div class="row">
-                <div class="col col-12">
-                    <div class="tag__info">
-                        <div class="tag__info-box">
-                            <div class="tag__counter">
-                                <span>2</span>
-                                <small>Posts</small>
-                            </div>
-                            <h2 class="tag__name" id="production">Production</h2>
-                        </div>
-                        <a class="top__link" href="#top">Return to top</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="container">
-            <div class="row">
-                <div class="col col-12">
-                    <div class="row">
-
-
-                        <div class="article col col-4 col-d-6 col-t-12">
-                            <div class="article__inner">
-
-                                <div class="article__head">
-                                    <time class="article__date" datetime="1970-01-01T00:00:00+00:00">01 Jan 1970</time>
-
-
-                                    <a class="article__image" href="/comparing-message-queue-architectures-on-aws">
-                                        <img class="lazy" data-src="/images/post-img/queue.png"
-                                             alt="Comparing Message Queue Architecture on AWS">
-                                    </a>
-
-
-                                </div>
-
-                                <div class="article__content">
-
-                                    <h2 class="article__title">
-                                        <a href="/comparing-message-queue-architectures-on-aws">Comparing Message Queue
-                                            Architecture on AWS</a>
-                                    </h2>
-
-
-                                </div>
-                            </div>
-                        </div>
-
-
-                        <div class="article col col-4 col-d-6 col-t-12">
-                            <div class="article__inner">
-
-                                <div class="article__head">
-                                    <time class="article__date" datetime="1970-01-01T00:00:00+00:00">01 Jan 1970</time>
-
-
-                                    <a class="article__image" href="/comparing-message-queue-architectures-on-aws">
-                                        <img class="lazy" data-src="/images/post-img/queue.png"
-                                             alt="Comparing Message Queue Architecture on AWS">
-                                    </a>
-
-
-                                </div>
-
-                                <div class="article__content">
-
-                                    <h2 class="article__title">
-                                        <a href="/comparing-message-queue-architectures-on-aws">Comparing Message Queue
-                                            Architecture on AWS</a>
-                                    </h2>
-
-
-                                </div>
-                            </div>
-                        </div>
-
-
-                    </div>
-                </div>
-            </div>
-        </div>
-
     </div>
 
+    <!-- begin post -->
+    <div class="container animate">
 
-    </section>
-    <!-- end tags -->
+        <article class="post">
+            <div class="post__content">
+                <p>In Forter, we crunch multiple data streams each with its own different requirements. In order to
+                    choose the right tool for the job we mapped different event dispatching architectures that suit our
+                    needs.</p>
+                <p>For transaction processing we require durable job queue and for event processing we require high
+                    throughput event queue. Both types of queues are required to have low latencies. Another
+                    consideration is in favor of Amazon backed SaaS over Do It Yourself solutions.</p>
+                <p>This comparison focuses on event dispatching, and does not dive into the event processing
+                    architecture itself. Some stateful products such as Spark and In-Memory-Data-Grids can replace both
+                    dispatching and processing but are not covered here. For completeness, Elastic Load Balancer is also
+                    being compared to queues, even though it is not a queue.</p>
+                <h1>TL;DR</h1>
+                <p>If you are light on DevOps and not latency sensitive use SQS for job management and Kinesis for event
+                    stream processing.</p>
+                <p>If latency is an issue, use ELB or 2 RabbitMQs (or 2 beanstalkds) for job management and Redis for
+                    event stream processing.</p>
+                <div>
+                    <table>
+                        <tbody>
+                        <tr>
+                            <td></td>
+                            <td>ELB</td>
+                            <td>SQS</td>
+                            <td>2 RabbitMQs</td>
+                            <td>1 Redis (ElasticCache)</td>
+                            <td>Kinesis</td>
+                        </tr>
+                        <tr>
+                            <td>SaaS</td>
+                            <td class="green">yes</td>
+                            <td class="green">yes</td>
+                            <td>nope</td>
+                            <td class="green">yes</td>
+                            <td class="green">yes</td>
+                        </tr>
+                        <tr>
+                            <td>Low Latency</td>
+                            <td class="green">?</td>
+                            <td>~100ms</td>
+                            <td class="green">~5s</td>
+                        </tr>
+                        <tr>
+                            <td>High Throughput</td>
+                            <td class="green">auto scalable</td>
+                            <td>auto scalable but expensive</td>
+                            <td>~2-10k/s</td>
+                            <td>~10-50k/s</td>
+                            <td class="green">scalable</td>
+                        </tr>
+                        <tr>
+                            <td>Throughput spikes</td>
+                            <td>pre-warm</td>
+                            <td class="green">ok</td>
+                            <td class="green">ok</td>
+                            <td class="green">ok</td>
+                            <td>pre-scale</td>
+                        </tr>
+                        <tr>
+                            <td>Processing instances needed</td>
+                            <td>peak traffic</td>
+                            <td class="green">avg traffic</td>
+                            <td class="green">avg traffic or twice</td>
+                            <td class="green">avg traffic</td>
+                            <td class="green">avg traffic</td>
+                        </tr>
+                        <tr>
+                            <td>Failure Guarantees</td>
+                            <td class="yellow">client retries on failure</td>
+                            <td class="green">at-least once</td>
+                            <td class="yellow">it’s complicated</td>
+                            <td>at most once</td>
+                            <td class="green">at-least once</td>
+                        </tr>
+                        <tr>
+                            <td class="gray" colspan="6">Job Queue:</td>
+                        </tr>
+                        <tr>
+                            <td>reliable jobs (dead letter Q)</td>
+                            <td class="yellow">client reroutes on error</td>
+                            <td class="green">supported</td>
+                            <td class="green">supported</td>
+                            <td class="green">supported</td>
+                            <td>nope</td>
+                        </tr>
+                        <tr>
+                            <td>prioritization</td>
+                            <td>nope</td>
+                            <td class="yellow">multiple Qs</td>
+                            <td class="green">priority-queue plugin</td>
+                            <td class="yellow">multiple lists</td>
+                            <td class="yellow">multiple streams</td>
+                        </tr>
+                        <tr>
+                            <td class="gray" colspan="6">Event Processing:</td>
+                        </tr>
+                        <tr>
+                            <td>FIFO + batch</td>
+                            <td>nope</td>
+                            <td class="yellow">not guaranteed</td>
+                            <td>?</td>
+                            <td class="green">supported</td>
+                            <td class="green">supported</td>
+                        </tr>
+                        <tr>
+                            <td>multiple recipients</td>
+                            <td>nope</td>
+                            <td class="yellow">multiple Qs</td>
+                            <td class="yellow">multiple Qs</td>
+                            <td class="yellow">multiple lists</td>
+                            <td class="green">supported</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <p>Notes:</p>
+                <ul>
+                    <li><a href="https://www.cloudamqp.com/docs/index.html">https://www.cloudamqp.com</a> provides a
+                        hosted RabbitMQ service cluster and is not covered here. However, the Highly Available RabbitMQ
+                        cluster is included. CloudAMQP do not document what network partitioning mitigations they have
+                        configured for RabbitMQ cluster.
+                    </li>
+                    <li><a href="https://redislabs.com/redis-comparison">https://redislabs.com</a> provides a hosted
+                        Redis service and is not covered here. It uses custom replication and sharding proxies, but
+                        their assumptions are not documented anywhere.
+                    </li>
+                    <li><a href="http://iron.io/mq">http://iron.io</a> provides a full-featured hosted queuing service.
+                        It is not covered here since their product is not based on opensource, which makes it more
+                        difficult to evaluate it’s pros/cons.
+                    </li>
+                    <li><a href="http://kr.github.io/beanstalkd/">beanstalkd</a> is a really simple job queue. Consider
+                        beanstalkd as it provides priority queue and dead letter Q.
+                    </li>
+                    <li>All latency and throughput figures are ballpark figures.</li>
+                </ul>
+                <h1>Service Oriented Architecture (ELB)</h1>
+                <p>In classic SOA, each tier exposes a single endpoint. This is implemented using an AWS Elastic Load
+                    Balancer. A public facing ELB for the API servers, and an internal facing ELB for the Processing
+                    Servers.</p>
+                <div><img src="http://fortertech.wpengine.com/wp-content/uploads/2015/01/image_0.png" alt=""></div>
+                <p>Pros:</p>
+                <ul>
+                    <li>The latency overhead of the ELB itself is negligible.</li>
+                    <li>Session stickiness can be used to preload Processing Servers with cached state, and then send
+                        them requests to be processed faster.
+                    </li>
+                    <li>Out-of-the-box ELB monitoring and automation</li>
+                </ul>
+                <p>Cons:</p>
+                <ul>
+                    <li>Some API requests need to get a higher priority over other API requests, and that is not taken
+                        care of. This was one of our main problems with this architecture, especially with a mix of
+                        real-time clients and clients that send batch jobs.
+                    </li>
+                    <li>This architecture assumes that there is enough Processing Servers to handle all requests (peak
+                        throughput). If there isn’t the Processing Server applies back pressure on the API server (error
+                        or timeout), which in turn returns an error to the API user which in turn re-tries the API
+                        request (applying more pressure). To avoid this, the number of running processing servers needs
+                        to be enough to handle peak traffic.
+                    </li>
+                    <li>ELB was not designed to handle huge traffic spikes since it takes a few minutes to internally
+                        scale. You should contact AWS support to warm your ELB if you have a planned traffic spike. We
+                        at Forter are in the eCommerce market where traffic spikes are rare.
+                    </li>
+                    <li>API Server needs to handle retries. Not provided by the ELB itself.</li>
+                    <li>Processing Server must respond within the http timeout (configurable between 1 to 3600 seconds).
+                        Otherwise the protocol would need two phases which adds more complexity.
+                    </li>
+                </ul>
+                <h1>Master Worker Architecture (SQS)</h1>
+                <p>The Master Worker pattern is implemented by by introducing a queuing service. The API server puts the
+                    request into the end of the queue, and each processing server pulls one request from the beginning
+                    of the queue.</p>
+                <div><img src="http://fortertech.wpengine.com/wp-content/uploads/2015/01/image_1.png" alt=""></div>
+                <p>Pros:</p>
+                <ul>
+                    <li>SQS guarantees message delivery.</li>
+                    <li>Can handle large spikes of traffic that waits in the queue.</li>
+                    <li>The number of processing servers needed could be reduced to handle average load (though
+                        sacrificing latency).
+                    </li>
+                    <li>Request prioritization – The API server may insert different requests into different queues. The
+                        processing servers remove requests first from the high priority queue, and only if it’s empty
+                        from the lower priority queue.
+                    </li>
+                    <li>Request retries</li>
+                    <li>Out-of-the-box SQS monitoring and automation</li>
+                </ul>
+                <p>Cons:</p>
+                <ul>
+                    <li>The problem for us at Forter with SQS is that it is too slow for real-time transactions (can go
+                        up to 100ms end-to-end delay), and its per message pricing is too expensive for high throughput
+                        event analytics. So it’s a lose-lose tradeoff for us.
+                    </li>
+                    <li>Does not guarantee FIFO processing</li>
+                </ul>
+                <h1>DIY Master Worker Architecture (RabbitMQ)</h1>
+                <p>We replace SQS with two EC2 instances running RabbitMQ, each running on a separate availability zone.
+                    API servers round-robin between the RabbitMQ servers, and the processing server listens to messages
+                    on both RabbitMQ servers.</p>
+                <div><img src="http://fortertech.wpengine.com/wp-content/uploads/2015/01/image_2.png" alt=""></div>
+                <p>Pros:</p>
+                <ul>
+                    <li>Negligible latency.</li>
+                    <li>Can handle large spikes of traffic that waits in the queue.</li>
+                    <li>The number of processing servers needed could be reduced to handle average load (though
+                        sacrificing latency).
+                    </li>
+                    <li>Request prioritization (with multiple queues or with the priority plugin)</li>
+                    <li>Request retries</li>
+                </ul>
+                <p>Cons:</p>
+                <ul>
+                    <li>Not as a service. DevOps mana can be better used somewhere else.</li>
+                    <li>No message delivery guarantee in face of RabbitMQ server failure.</li>
+                    <li>Manual Discovery – Discovery of the RabbitMQ instances requires reaching out to to the EC2
+                        (describe instances) API to retrieve the latest RabbitMQ ip addresses (before connection/
+                        reconnection).
+                    </li>
+                    <li>Limited throughput (~10k)</li>
+                </ul>
+                <h1>DIY HA Master Worker Architecture (RabbitMQ HA)</h1>
+                <p>In forter we made two assumptions. First, our processing servers have enough power to make sure
+                    RabbitMQ is empty most of the time, which would reduce message loss in case of failures. Second, the
+                    API server degrades gracefully in cases the Processing Server did not get the message. So while HA
+                    is definitely on our roadmap we are not stressed out about it.</p>
+                <p>Deploying your own RabbitMQ HA solution on EC2 requires attention to details.</p>
+                <p>In order to recover from one instance failure we would need to hack <a
+                        href="http://stackoverflow.com/questions/14721413/rabbitmq-cluster-on-ec2-hostname-issues">RabbitMQ
+                    cluster discovery </a>to remove the old ip and add the new ip to the cluster.</p>
+                <p>Split Brain happens when network latencies between EC2 availability zones rises.When it comes to the
+                    CAP theorem we at Forter would prefer at least once messaging semantics (Availability) over at most
+                    once messaging semantics (Consistency). <a href="http://aphyr.com/posts/315-call-me-maybe-rabbitmq">RabbitMQ
+                        could lose messages</a> when handling split brains. It has three strategies:</p>
+                <ul>
+                    <li>pause_minority configuration – One of the availability zones stops working. The next version
+                        RabbitMQ is going to reduce the time it takes for it to stop working as to reduce the amount of
+                        accepted messages that are not processed. Even with the fix, this solution prefers Consistency
+                        over Availability which is not what we require.
+                    </li>
+                    <li>auto_heal configuration – All availability zones keep working (separately), however when the
+                        network partition is resolved one of the availability zones deletes all of its messages which is
+                        bad. The reason for this is that RabbitMQ have not implemented queue merging semantics on
+                        network partition recovery.
+                    </li>
+                    <li>ignore – No message is lost, however the cluster will no longer act as a cluster after the
+                        network is back to normal, so each time that happens the devops team would need to deploy a new
+                        version into production (where the cluster is in tact).
+                    </li>
+                </ul>
+                <h1>DIY Twice Master Worker Architecture (RabbitMQ)</h1>
+                <p>Avoiding message loss could be implemented on the application level. Some requests can generate more
+                    income than others, so in those cases we might be willing to spend twice the ec2 costs. The API
+                    server could send some requests to both RabbitMQ servers (running as standalone not as a
+                    cluster).</p>
+                <p>For example, given transaction <strong>foo</strong> the API server inserts it to the higher priority
+                    queue of the first server as foo1 and to the lower priority queue of the second server as foo2. The
+                    API then waits for either foo1 or foo2 to complete and returns the one to arrive first.</p>
+                <div><img src="http://fortertech.wpengine.com/wp-content/uploads/2015/01/image_3.png" alt=""></div>
+                <p>Pros:</p>
+                <ul>
+                    <li>Can handle 1 failure (either an instance or network partition)</li>
+                    <li>Much lower 99% percentile processing latency since chances are low for both foo1 and foo2 to be
+                        stuck in GC pause or virtualization pause.
+                    </li>
+                    <li>Negligible latency.</li>
+                    <li>Can handle large spikes of traffic that waits in the queue.</li>
+                    <li>Request prioritization (with multiple queues or with the priority plugin)</li>
+                </ul>
+                <p>Cons:</p>
+                <ul>
+                    <li>Sacrifices latency of low priority requests in favor of high priority. Need to use double the
+                        Processing Servers to handle low priority requests at peak traffic.
+                    </li>
+                    <li>May requires deduplication application semantics to reconcile foo1 and foo2 results.</li>
+                    <li>Limited throughput (~10k/sec)</li>
+                    <li>Not as a service.</li>
+                    <li>Manual Discovery</li>
+                </ul>
+                <h1>DIY Event Streaming Architecture (Redis)</h1>
+                <p>Redis is a fast single threaded server for storing useful data structures in memory
+                    (list,dictionary,etc..). AWS provides a managed Redis server (ElasticCache) which can hold a list of
+                    unprocessed events.</p>
+                <p>Each API server inserts to the beginning of the list. Each Processing server removes messages from
+                    the end of a single list, effectively implementing a queue.</p>
+                <p>In order to support N readers handling different messages we would need N lists. The API server would
+                    use <a href="http://en.wikipedia.org/wiki/Consistent_hashing">consistent hashing</a> of the event
+                    source to route the event to the correct list, effectively implementing FIFO shards.</p>
+                <p>In order to support K readers handling the same messages we would need K lists. The API server would
+                    write the same message to all K lists.</p>
+                <div><img src="http://fortertech.wpengine.com/wp-content/uploads/2015/01/image_4.png" alt=""></div>
+                <p>Pros:</p>
+                <ul>
+                    <li>Low latency when popping <a href="http://redis.io/commands/BLPOP">one message at a time</a> or
+                        with <a href="http://redis.io/commands/rpoplpush">dead letter list</a>.
+                    </li>
+                    <li>High throughput when <a
+                            href="http://stackoverflow.com/questions/20621775/pop-multiple-values-from-redis-data-structure-atomically">popping</a><a
+                            href="http://stackoverflow.com/questions/20621775/pop-multiple-values-from-redis-data-structure-atomically">
+                        a batch of messages</a> every X ms.
+                    </li>
+                    <li>FIFO (per list)</li>
+                </ul>
+                <p>Cons:</p>
+                <ul>
+                    <li>Event lost in case of redis node failure (ElasticCache does not support sharding).</li>
+                    <li>The API server needs to discard old events from time to time to prevent redis from running out
+                        of memory.
+                    </li>
+                    <li>Redis stores in memory, that means per GB price is considerably higher.</li>
+                    <li>ElasticCache redis does not support sharding. Need to do it client side</li>
+                    <li>Processing Server or redis failure results in events loss.</li>
+                    <li>All retries are handled by the processing server.</li>
+                </ul>
+                <h1>Event Streaming Architecture (Kinesis)</h1>
+                <p>Kinesis exposes an API for streams (buffers stored on disk) that keeps events in order for 24 hours
+                    (similar to Kafka). It can be used as event queuing service as long as the client keeps track the
+                    buffer offset to continue reading from.</p>
+                <div><img src="http://fortertech.wpengine.com/wp-content/uploads/2015/01/image_5.png" alt=""></div>
+                <p>Pros:</p>
+                <ul>
+                    <li>Highly Available</li>
+                    <li>Very high write throughput (sharded). Usually more shards are needed for read capacity.</li>
+                    <li>Same event can be consumed by different processing servers (one reading batches to S3, and
+                        another reading in realtime)
+                    </li>
+                    <li>Events are in order (per shard)</li>
+                </ul>
+                <p>Cons:</p>
+                <ul>
+                    <li>Reading clients are stateful (need to keep track of last index read, what shards to read from,
+                        other failed clients that require handover of work)
+                    </li>
+                    <li>A few seconds latency (http polling every ~5 seconds by each reader). Had we have chosen Kafka,
+                        we would have enjoyed shorter latency times, so we might switch in the future from Kinesis to
+                        Kafka.
+                    </li>
+                    <li>All retries are handled by the processing server.</li>
+                    <li>All events need to be processed within 24 hours, otherwise data is lost.</li>
+                </ul>
+                <p><a href="https://news.ycombinator.com/item?id=8940313">Discuss on hacker news</a></p>
+
+            </div>
+
+        </article>
+    </div>
+    <!-- end post -->
+
+
 </main>
 <!-- end content -->
+
 
 <!-- begin footer -->
 <footer class="footer">
@@ -4708,8 +4738,8 @@
 
                                 <li class="social__item">
                                     <a class="social__link"
-                                       href="https://www.youtube.com/channel/UCxAPyPoyVWu0yJbZ0gAvCqA"
-                                       target="_blank" rel="noopener"
+                                       href="https://www.youtube.com/channel/UCxAPyPoyVWu0yJbZ0gAvCqA" target="_blank"
+                                       rel="noopener"
                                        aria-label=" link"><i class="ion ion-logo-youtube"></i></a>
                                 </li>
 

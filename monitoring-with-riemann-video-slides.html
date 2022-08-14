@@ -6,25 +6,25 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Forter Tech Blog</title>
+    <title>Monitoring With Riemann (Video + Slides)</title>
     <meta name='description'
           content="Forter's technical blog, writing on security, performance, engineering culture, and more.">
 
-    <link rel="canonical" href="http://localhost:4000/">
-    <link rel="alternate" type="application/rss+xml" title="Forter Tech Blog" href="/feed.xml">
+    <link rel="canonical" href="http://localhost:4000/monitoring-with-riemann-video-slides/">
+    <link rel="alternate" type="application/rss+xml" title="TECH.FORTER.COM" href="/feed.xml">
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Forter Tech Blog">
+    <meta name="twitter:title" content="Monitoring With Riemann (Video + Slides) – TECH.FORTER.COM">
     <meta name="twitter:description"
-          content="Forter's technical blog, writing on security, performance, engineering culture, and more.">
-    <meta name="twitter:image:src" content="http://localhost:4000/images/forter.png">
+          content="Riemann is a powerful tool for monitoring freaks, lets you aggregate and process all of your application monitoring data in memory. Here is my presentation from StatsCraft 2015 about our monitoring our system and Riemann.">
+    <meta name="twitter:image:src" content="http://localhost:4000/images/post-img/reimann.png">
 
     <!-- Facebook OpenGraph -->
-    <meta property="og:title" content="Forter Tech Blog">
+    <meta property="og:title" content="Monitoring With Riemann (Video + Slides) – TECH.FORTER.COM">
     <meta property="og:description"
-          content="Forter's technical blog, writing on security, performance, engineering culture, and more.">
-    <meta property="og:image" content="http://localhost:4000/images/forter.png">
+          content="Riemann is a powerful tool for monitoring freaks, lets you aggregate and process all of your application monitoring data in memory. Here is my presentation from StatsCraft 2015 about our monitoring our system and Riemann.">
+    <meta property="og:image" content="http://localhost:4000/images/post-img/reimann.png">
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -4240,6 +4240,7 @@
                                 <a href="/" class="nav__link">Home</a>
                             </li>
 
+
                             <li class="nav__item nav__item-icon">
                                 <div class="toggle-theme">
                                     <div class="toggle-moon" title="Enable dark mode"><i class="ion ion-ios-moon"></i>
@@ -4292,378 +4293,69 @@
 
 <!-- begin content -->
 <main class="content" aria-label="Content">
-
-
-    <div class="tags__inner">
-
+    <div class="post-head">
         <div class="container">
             <div class="row">
-                <div class="col col-12">
-                    <div class="tag__info">
-                        <div class="tag__info-box">
-                            <div class="tag__counter">
-                                <span>2</span>
-                                <small>Posts</small>
-                            </div>
-                            <h2 class="tag__name" id="talks">Talks</h2>
-                        </div>
-                        <a class="top__link" href="#top">Return to top</a>
+
+                <div class="col col-6 col-d-12">
+                    <div class="post-image">
+                        <img class="lazy" data-src="/images/post-img/reimann.png"
+                             alt="Monitoring With Riemann (Video + Slides)">
                     </div>
                 </div>
-            </div>
-        </div>
 
-        <div class="container">
-            <div class="row">
-                <div class="col col-12">
-                    <div class="row">
+                <div class="col col-6 col-d-12">
+                    <div class="post__info ">
 
 
-                        <div class="article col col-4 col-d-6 col-t-12">
-                            <div class="article__inner">
+                        <div class="post__tags">
 
-                                <div class="article__head">
-                                    <time class="article__date" datetime="1970-01-01T00:00:00+00:00">01 Jan 1970</time>
+                            <a href="/tags#application monitoring" class="post__tag">application monitoring</a>
+                            <a href="/tags#reimann" class="post__tag">Riemann</a>
 
-                                    <div class="video-icon">
-                                        <div class="circle pulse"></div>
-                                        <div class="circle">
-                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
-                                                <polygon points="40,30 65,50 40,70"></polygon>
-                                            </svg>
-                                        </div>
-                                    </div>
-
-                                    <a class="article__image" href="/comparing-message-queue-architectures-on-aws">
-                                        <img class="lazy" data-src="/images/post-img/queue.png"
-                                             alt="Comparing Message Queue Architecture on AWS">
-                                    </a>
-
-
-                                </div>
-
-                                <div class="article__content">
-
-                                    <h2 class="article__title">
-                                        <a href="/comparing-message-queue-architectures-on-aws">Comparing Message Queue
-                                            Architecture on AWS</a>
-                                    </h2>
-
-
-                                </div>
-                            </div>
                         </div>
 
 
-                        <div class="article col col-4 col-d-6 col-t-12">
-                            <div class="article__inner">
+                        <h1 class="post__title">Monitoring With Riemann (Video + Slides)</h1>
 
-                                <div class="article__head">
-                                    <time class="article__date" datetime="1970-01-01T00:00:00+00:00">01 Jan 1970</time>
+                        <div class="post__meta">
+                            <a href="/about/" class="post__author-image">
+                                <img class="lazy" data-src="/images/authors/moshe.jpg" alt="Moshe Zada">
+                            </a>
 
-                                    <div class="video-icon">
-                                        <div class="circle pulse"></div>
-                                        <div class="circle">
-                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
-                                                <polygon points="40,30 65,50 40,70"></polygon>
-                                            </svg>
-                                        </div>
-                                    </div>
-
-                                    <a class="article__image" href="/comparing-message-queue-architectures-on-aws">
-                                        <img class="lazy" data-src="/images/post-img/queue.png"
-                                             alt="Comparing Message Queue Architecture on AWS">
-                                    </a>
-
-
-                                </div>
-
-                                <div class="article__content">
-
-                                    <h2 class="article__title">
-                                        <a href="/comparing-message-queue-architectures-on-aws">Comparing Message Queue
-                                            Architecture on AWS</a>
-                                    </h2>
-
-
-                                </div>
+                            <div class="post__meta-bottom">
+                                <span class="post__author">Moshe Zada</span>
+                                <time class="post__date" datetime="2015-09-02T00:00:00+00:00">2 Sep 2015</time>
                             </div>
                         </div>
-
 
                     </div>
                 </div>
             </div>
         </div>
-
-    </div>
-    <div class="tags__inner">
-
-        <div class="container">
-            <div class="row">
-                <div class="col col-12">
-                    <div class="tag__info">
-                        <div class="tag__info-box">
-                            <div class="tag__counter">
-                                <span>2</span>
-                                <small>Posts</small>
-                            </div>
-                            <h2 class="tag__name" id="security">Security</h2>
-                        </div>
-                        <a class="top__link" href="#top">Return to top</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="container">
-            <div class="row">
-                <div class="col col-12">
-                    <div class="row">
-
-
-                        <div class="article col col-4 col-d-6 col-t-12">
-                            <div class="article__inner">
-
-                                <div class="article__head">
-                                    <time class="article__date" datetime="1970-01-01T00:00:00+00:00">01 Jan 1970</time>
-
-
-                                    <a class="article__image" href="/comparing-message-queue-architectures-on-aws">
-                                        <img class="lazy" data-src="/images/post-img/queue.png"
-                                             alt="Comparing Message Queue Architecture on AWS">
-                                    </a>
-
-
-                                </div>
-
-                                <div class="article__content">
-
-                                    <h2 class="article__title">
-                                        <a href="/comparing-message-queue-architectures-on-aws">Comparing Message Queue
-                                            Architecture on AWS</a>
-                                    </h2>
-
-
-                                </div>
-                            </div>
-                        </div>
-
-
-                        <div class="article col col-4 col-d-6 col-t-12">
-                            <div class="article__inner">
-
-                                <div class="article__head">
-                                    <time class="article__date" datetime="1970-01-01T00:00:00+00:00">01 Jan 1970</time>
-
-
-                                    <a class="article__image" href="/comparing-message-queue-architectures-on-aws">
-                                        <img class="lazy" data-src="/images/post-img/queue.png"
-                                             alt="Comparing Message Queue Architecture on AWS">
-                                    </a>
-
-
-                                </div>
-
-                                <div class="article__content">
-
-                                    <h2 class="article__title">
-                                        <a href="/comparing-message-queue-architectures-on-aws">Comparing Message Queue
-                                            Architecture on AWS</a>
-                                    </h2>
-
-
-                                </div>
-                            </div>
-                        </div>
-
-
-                    </div>
-                </div>
-            </div>
-        </div>
-
-    </div>
-    <div class="tags__inner">
-
-        <div class="container">
-            <div class="row">
-                <div class="col col-12">
-                    <div class="tag__info">
-                        <div class="tag__info-box">
-                            <div class="tag__counter">
-                                <span>2</span>
-                                <small>Posts</small>
-                            </div>
-                            <h2 class="tag__name" id="culture">Engineering Culture</h2>
-                        </div>
-                        <a class="top__link" href="#top">Return to top</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="container">
-            <div class="row">
-                <div class="col col-12">
-                    <div class="row">
-
-
-                        <div class="article col col-4 col-d-6 col-t-12">
-                            <div class="article__inner">
-
-                                <div class="article__head">
-                                    <time class="article__date" datetime="1970-01-01T00:00:00+00:00">01 Jan 1970</time>
-
-
-                                    <a class="article__image" href="/comparing-message-queue-architectures-on-aws">
-                                        <img class="lazy" data-src="/images/post-img/queue.png"
-                                             alt="Comparing Message Queue Architecture on AWS">
-                                    </a>
-
-
-                                </div>
-
-                                <div class="article__content">
-
-                                    <h2 class="article__title">
-                                        <a href="/comparing-message-queue-architectures-on-aws">Comparing Message Queue
-                                            Architecture on AWS</a>
-                                    </h2>
-
-
-                                </div>
-                            </div>
-                        </div>
-
-
-                        <div class="article col col-4 col-d-6 col-t-12">
-                            <div class="article__inner">
-
-                                <div class="article__head">
-                                    <time class="article__date" datetime="1970-01-01T00:00:00+00:00">01 Jan 1970</time>
-
-
-                                    <a class="article__image" href="/comparing-message-queue-architectures-on-aws">
-                                        <img class="lazy" data-src="/images/post-img/queue.png"
-                                             alt="Comparing Message Queue Architecture on AWS">
-                                    </a>
-
-
-                                </div>
-
-                                <div class="article__content">
-
-                                    <h2 class="article__title">
-                                        <a href="/comparing-message-queue-architectures-on-aws">Comparing Message Queue
-                                            Architecture on AWS</a>
-                                    </h2>
-
-
-                                </div>
-                            </div>
-                        </div>
-
-
-                    </div>
-                </div>
-            </div>
-        </div>
-
-    </div>
-    <div class="tags__inner">
-
-        <div class="container">
-            <div class="row">
-                <div class="col col-12">
-                    <div class="tag__info">
-                        <div class="tag__info-box">
-                            <div class="tag__counter">
-                                <span>2</span>
-                                <small>Posts</small>
-                            </div>
-                            <h2 class="tag__name" id="production">Production</h2>
-                        </div>
-                        <a class="top__link" href="#top">Return to top</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="container">
-            <div class="row">
-                <div class="col col-12">
-                    <div class="row">
-
-
-                        <div class="article col col-4 col-d-6 col-t-12">
-                            <div class="article__inner">
-
-                                <div class="article__head">
-                                    <time class="article__date" datetime="1970-01-01T00:00:00+00:00">01 Jan 1970</time>
-
-
-                                    <a class="article__image" href="/comparing-message-queue-architectures-on-aws">
-                                        <img class="lazy" data-src="/images/post-img/queue.png"
-                                             alt="Comparing Message Queue Architecture on AWS">
-                                    </a>
-
-
-                                </div>
-
-                                <div class="article__content">
-
-                                    <h2 class="article__title">
-                                        <a href="/comparing-message-queue-architectures-on-aws">Comparing Message Queue
-                                            Architecture on AWS</a>
-                                    </h2>
-
-
-                                </div>
-                            </div>
-                        </div>
-
-
-                        <div class="article col col-4 col-d-6 col-t-12">
-                            <div class="article__inner">
-
-                                <div class="article__head">
-                                    <time class="article__date" datetime="1970-01-01T00:00:00+00:00">01 Jan 1970</time>
-
-
-                                    <a class="article__image" href="/comparing-message-queue-architectures-on-aws">
-                                        <img class="lazy" data-src="/images/post-img/queue.png"
-                                             alt="Comparing Message Queue Architecture on AWS">
-                                    </a>
-
-
-                                </div>
-
-                                <div class="article__content">
-
-                                    <h2 class="article__title">
-                                        <a href="/comparing-message-queue-architectures-on-aws">Comparing Message Queue
-                                            Architecture on AWS</a>
-                                    </h2>
-
-
-                                </div>
-                            </div>
-                        </div>
-
-
-                    </div>
-                </div>
-            </div>
-        </div>
-
     </div>
 
+    <!-- begin post -->
+    <div class="container animate">
 
-    </section>
-    <!-- end tags -->
+        <article class="post">
+            <div class="post__content">
+                <p>Riemann is a powerful tool for monitoring freaks, lets you aggregate and process all of your application monitoring data in memory. Here is my presentation from StatsCraft 2015 about our monitoring our system and Riemann.</p>
+                <p>The video is in Hebrew, the slides are in English.<br>
+                    Link to the <a href="http://moshezada.github.io/statscraft15/#1" target="_blank">presentation on GitHub</a></p>
+                <p><iframe loading="lazy" style="border: 1px solid #CCC; border-width: 1px; margin-bottom: 5px; max-width: 100%;" src="//www.youtube.net/slideshow/embed_code/key/IdAx9qYU79KwKl" width="425" height="355" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" allowfullscreen="allowfullscreen"> </iframe></p>
+                <div style="margin-bottom: 5px;"><strong> <a title="StatsCraft 2015: Monitoring using riemann - Moshe Zada" href="//www.slideshare.net/statscraft/monitoring-using-riemann" target="_blank">StatsCraft 2015: Monitoring using riemann – Moshe Zada</a> </strong> from <strong><a href="//www.slideshare.net/statscraft" target="_blank">StatsCraft</a></strong></div>
+
+            </div>
+
+        </article>
+    </div>
+    <!-- end post -->
+
+
 </main>
 <!-- end content -->
+
 
 <!-- begin footer -->
 <footer class="footer">
@@ -4708,8 +4400,8 @@
 
                                 <li class="social__item">
                                     <a class="social__link"
-                                       href="https://www.youtube.com/channel/UCxAPyPoyVWu0yJbZ0gAvCqA"
-                                       target="_blank" rel="noopener"
+                                       href="https://www.youtube.com/channel/UCxAPyPoyVWu0yJbZ0gAvCqA" target="_blank"
+                                       rel="noopener"
                                        aria-label=" link"><i class="ion ion-logo-youtube"></i></a>
                                 </li>
 

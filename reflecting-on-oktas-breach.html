@@ -6,25 +6,25 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Forter Tech Blog</title>
+    <title>Reflecting on Okta’s Breach</title>
     <meta name='description'
           content="Forter's technical blog, writing on security, performance, engineering culture, and more.">
 
-    <link rel="canonical" href="http://localhost:4000/">
-    <link rel="alternate" type="application/rss+xml" title="Forter Tech Blog" href="/feed.xml">
+    <link rel="canonical" href="http://localhost:4000/reflecting-on-oktas-breach">
+    <link rel="alternate" type="application/rss+xml" title="TECH.FORTER.COM" href="/feed.xml">
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Forter Tech Blog">
+    <meta name="twitter:title" content="Reflecting on Okta’s Breach – TECH.FORTER.COM">
     <meta name="twitter:description"
-          content="Forter's technical blog, writing on security, performance, engineering culture, and more.">
-    <meta name="twitter:image:src" content="http://localhost:4000/images/forter.png">
+          content="No one should expect services to be perfect. Bugs happen, and they get exploited. Employees make mistakes, accept bribes, etc. We know these things and account for them when choosing to use a third-party solution. That said, finding out that one of your providers suffered a breach is every customer’s worst nightmare.">
+    <meta name="twitter:image:src" content="http://localhost:4000/images/post-img/okta.jpg">
 
     <!-- Facebook OpenGraph -->
-    <meta property="og:title" content="Forter Tech Blog">
+    <meta property="og:title" content="Reflecting on Okta’s Breach – TECH.FORTER.COM">
     <meta property="og:description"
-          content="Forter's technical blog, writing on security, performance, engineering culture, and more.">
-    <meta property="og:image" content="http://localhost:4000/images/forter.png">
+          content="No one should expect services to be perfect. Bugs happen, and they get exploited. Employees make mistakes, accept bribes, etc. We know these things and account for them when choosing to use a third-party solution. That said, finding out that one of your providers suffered a breach is every customer’s worst nightmare.">
+    <meta property="og:image" content="http://localhost:4000/images/post-img/okta.jpg">
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -4240,6 +4240,7 @@
                                 <a href="/" class="nav__link">Home</a>
                             </li>
 
+
                             <li class="nav__item nav__item-icon">
                                 <div class="toggle-theme">
                                     <div class="toggle-moon" title="Enable dark mode"><i class="ion ion-ios-moon"></i>
@@ -4292,378 +4293,244 @@
 
 <!-- begin content -->
 <main class="content" aria-label="Content">
-
-
-    <div class="tags__inner">
-
+    <div class="post-head">
         <div class="container">
             <div class="row">
-                <div class="col col-12">
-                    <div class="tag__info">
-                        <div class="tag__info-box">
-                            <div class="tag__counter">
-                                <span>2</span>
-                                <small>Posts</small>
-                            </div>
-                            <h2 class="tag__name" id="talks">Talks</h2>
-                        </div>
-                        <a class="top__link" href="#top">Return to top</a>
+
+                <div class="col col-6 col-d-12">
+                    <div class="post-image">
+                        <img class="lazy" data-src="/images/post-img/okta.jpg"
+                             alt="Reflecting on Okta’s Breach">
                     </div>
                 </div>
-            </div>
-        </div>
 
-        <div class="container">
-            <div class="row">
-                <div class="col col-12">
-                    <div class="row">
+                <div class="col col-6 col-d-12">
+                    <div class="post__info ">
 
 
-                        <div class="article col col-4 col-d-6 col-t-12">
-                            <div class="article__inner">
+                        <div class="post__tags">
 
-                                <div class="article__head">
-                                    <time class="article__date" datetime="1970-01-01T00:00:00+00:00">01 Jan 1970</time>
+                            <a href="/tags#breach" class="post__tag">breach</a>
+                            <a href="/tags#insider attacks" class="post__tag">insider attacks</a>
+                            <a href="/tags#security tax" class="post__tag">security tax</a>
+                            <a href="/tags#vendor risk" class="post__tag">vendor risk</a>
+                            <a href="/tags#zero trust" class="post__tag">zero trust</a>
 
-                                    <div class="video-icon">
-                                        <div class="circle pulse"></div>
-                                        <div class="circle">
-                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
-                                                <polygon points="40,30 65,50 40,70"></polygon>
-                                            </svg>
-                                        </div>
-                                    </div>
-
-                                    <a class="article__image" href="/comparing-message-queue-architectures-on-aws">
-                                        <img class="lazy" data-src="/images/post-img/queue.png"
-                                             alt="Comparing Message Queue Architecture on AWS">
-                                    </a>
-
-
-                                </div>
-
-                                <div class="article__content">
-
-                                    <h2 class="article__title">
-                                        <a href="/comparing-message-queue-architectures-on-aws">Comparing Message Queue
-                                            Architecture on AWS</a>
-                                    </h2>
-
-
-                                </div>
-                            </div>
                         </div>
 
 
-                        <div class="article col col-4 col-d-6 col-t-12">
-                            <div class="article__inner">
+                        <h1 class="post__title">Reflecting on Okta’s Breach</h1>
 
-                                <div class="article__head">
-                                    <time class="article__date" datetime="1970-01-01T00:00:00+00:00">01 Jan 1970</time>
+                        <div class="post__meta">
+                            <a href="/about/" class="post__author-image">
+                                <img class="lazy" data-src="/images/authors/yonah.jpg" alt="Yonah Russ">
+                            </a>
 
-                                    <div class="video-icon">
-                                        <div class="circle pulse"></div>
-                                        <div class="circle">
-                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
-                                                <polygon points="40,30 65,50 40,70"></polygon>
-                                            </svg>
-                                        </div>
-                                    </div>
-
-                                    <a class="article__image" href="/comparing-message-queue-architectures-on-aws">
-                                        <img class="lazy" data-src="/images/post-img/queue.png"
-                                             alt="Comparing Message Queue Architecture on AWS">
-                                    </a>
-
-
-                                </div>
-
-                                <div class="article__content">
-
-                                    <h2 class="article__title">
-                                        <a href="/comparing-message-queue-architectures-on-aws">Comparing Message Queue
-                                            Architecture on AWS</a>
-                                    </h2>
-
-
-                                </div>
+                            <div class="post__meta-bottom">
+                                <span class="post__author">Yonah Russ</span>
+                                <time class="post__date" datetime="2022-04-05T00:00:00+00:00">5 April 2022</time>
                             </div>
                         </div>
-
 
                     </div>
                 </div>
             </div>
         </div>
-
-    </div>
-    <div class="tags__inner">
-
-        <div class="container">
-            <div class="row">
-                <div class="col col-12">
-                    <div class="tag__info">
-                        <div class="tag__info-box">
-                            <div class="tag__counter">
-                                <span>2</span>
-                                <small>Posts</small>
-                            </div>
-                            <h2 class="tag__name" id="security">Security</h2>
-                        </div>
-                        <a class="top__link" href="#top">Return to top</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="container">
-            <div class="row">
-                <div class="col col-12">
-                    <div class="row">
-
-
-                        <div class="article col col-4 col-d-6 col-t-12">
-                            <div class="article__inner">
-
-                                <div class="article__head">
-                                    <time class="article__date" datetime="1970-01-01T00:00:00+00:00">01 Jan 1970</time>
-
-
-                                    <a class="article__image" href="/comparing-message-queue-architectures-on-aws">
-                                        <img class="lazy" data-src="/images/post-img/queue.png"
-                                             alt="Comparing Message Queue Architecture on AWS">
-                                    </a>
-
-
-                                </div>
-
-                                <div class="article__content">
-
-                                    <h2 class="article__title">
-                                        <a href="/comparing-message-queue-architectures-on-aws">Comparing Message Queue
-                                            Architecture on AWS</a>
-                                    </h2>
-
-
-                                </div>
-                            </div>
-                        </div>
-
-
-                        <div class="article col col-4 col-d-6 col-t-12">
-                            <div class="article__inner">
-
-                                <div class="article__head">
-                                    <time class="article__date" datetime="1970-01-01T00:00:00+00:00">01 Jan 1970</time>
-
-
-                                    <a class="article__image" href="/comparing-message-queue-architectures-on-aws">
-                                        <img class="lazy" data-src="/images/post-img/queue.png"
-                                             alt="Comparing Message Queue Architecture on AWS">
-                                    </a>
-
-
-                                </div>
-
-                                <div class="article__content">
-
-                                    <h2 class="article__title">
-                                        <a href="/comparing-message-queue-architectures-on-aws">Comparing Message Queue
-                                            Architecture on AWS</a>
-                                    </h2>
-
-
-                                </div>
-                            </div>
-                        </div>
-
-
-                    </div>
-                </div>
-            </div>
-        </div>
-
-    </div>
-    <div class="tags__inner">
-
-        <div class="container">
-            <div class="row">
-                <div class="col col-12">
-                    <div class="tag__info">
-                        <div class="tag__info-box">
-                            <div class="tag__counter">
-                                <span>2</span>
-                                <small>Posts</small>
-                            </div>
-                            <h2 class="tag__name" id="culture">Engineering Culture</h2>
-                        </div>
-                        <a class="top__link" href="#top">Return to top</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="container">
-            <div class="row">
-                <div class="col col-12">
-                    <div class="row">
-
-
-                        <div class="article col col-4 col-d-6 col-t-12">
-                            <div class="article__inner">
-
-                                <div class="article__head">
-                                    <time class="article__date" datetime="1970-01-01T00:00:00+00:00">01 Jan 1970</time>
-
-
-                                    <a class="article__image" href="/comparing-message-queue-architectures-on-aws">
-                                        <img class="lazy" data-src="/images/post-img/queue.png"
-                                             alt="Comparing Message Queue Architecture on AWS">
-                                    </a>
-
-
-                                </div>
-
-                                <div class="article__content">
-
-                                    <h2 class="article__title">
-                                        <a href="/comparing-message-queue-architectures-on-aws">Comparing Message Queue
-                                            Architecture on AWS</a>
-                                    </h2>
-
-
-                                </div>
-                            </div>
-                        </div>
-
-
-                        <div class="article col col-4 col-d-6 col-t-12">
-                            <div class="article__inner">
-
-                                <div class="article__head">
-                                    <time class="article__date" datetime="1970-01-01T00:00:00+00:00">01 Jan 1970</time>
-
-
-                                    <a class="article__image" href="/comparing-message-queue-architectures-on-aws">
-                                        <img class="lazy" data-src="/images/post-img/queue.png"
-                                             alt="Comparing Message Queue Architecture on AWS">
-                                    </a>
-
-
-                                </div>
-
-                                <div class="article__content">
-
-                                    <h2 class="article__title">
-                                        <a href="/comparing-message-queue-architectures-on-aws">Comparing Message Queue
-                                            Architecture on AWS</a>
-                                    </h2>
-
-
-                                </div>
-                            </div>
-                        </div>
-
-
-                    </div>
-                </div>
-            </div>
-        </div>
-
-    </div>
-    <div class="tags__inner">
-
-        <div class="container">
-            <div class="row">
-                <div class="col col-12">
-                    <div class="tag__info">
-                        <div class="tag__info-box">
-                            <div class="tag__counter">
-                                <span>2</span>
-                                <small>Posts</small>
-                            </div>
-                            <h2 class="tag__name" id="production">Production</h2>
-                        </div>
-                        <a class="top__link" href="#top">Return to top</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="container">
-            <div class="row">
-                <div class="col col-12">
-                    <div class="row">
-
-
-                        <div class="article col col-4 col-d-6 col-t-12">
-                            <div class="article__inner">
-
-                                <div class="article__head">
-                                    <time class="article__date" datetime="1970-01-01T00:00:00+00:00">01 Jan 1970</time>
-
-
-                                    <a class="article__image" href="/comparing-message-queue-architectures-on-aws">
-                                        <img class="lazy" data-src="/images/post-img/queue.png"
-                                             alt="Comparing Message Queue Architecture on AWS">
-                                    </a>
-
-
-                                </div>
-
-                                <div class="article__content">
-
-                                    <h2 class="article__title">
-                                        <a href="/comparing-message-queue-architectures-on-aws">Comparing Message Queue
-                                            Architecture on AWS</a>
-                                    </h2>
-
-
-                                </div>
-                            </div>
-                        </div>
-
-
-                        <div class="article col col-4 col-d-6 col-t-12">
-                            <div class="article__inner">
-
-                                <div class="article__head">
-                                    <time class="article__date" datetime="1970-01-01T00:00:00+00:00">01 Jan 1970</time>
-
-
-                                    <a class="article__image" href="/comparing-message-queue-architectures-on-aws">
-                                        <img class="lazy" data-src="/images/post-img/queue.png"
-                                             alt="Comparing Message Queue Architecture on AWS">
-                                    </a>
-
-
-                                </div>
-
-                                <div class="article__content">
-
-                                    <h2 class="article__title">
-                                        <a href="/comparing-message-queue-architectures-on-aws">Comparing Message Queue
-                                            Architecture on AWS</a>
-                                    </h2>
-
-
-                                </div>
-                            </div>
-                        </div>
-
-
-                    </div>
-                </div>
-            </div>
-        </div>
-
     </div>
 
+    <!-- begin post -->
+    <div class="container animate">
 
-    </section>
-    <!-- end tags -->
+        <article class="post">
+            <div class="post__content">
+
+                <h1>TL;DR</h1>
+
+
+
+                <p>No one should expect services to be perfect. Bugs happen, and they get exploited. Employees make mistakes, accept bribes, etc. We know these things and account for them when choosing to use a third-party solution. That said, finding out that one of your providers suffered a breach is every customer’s worst nightmare.&nbsp;</p>
+
+
+
+                <p>This past week, the tech industry was startled by the announced breach of leading IDP Okta by a hacking group called LAPSUS$, known for recently leaking data and code from huge organizations like Microsoft, Samsung, LG, and NVidia.</p>
+
+
+
+                <p>In this article, we’ll briefly review what happened and then look at several lessons learned.</p>
+
+
+
+                <h1>Contact with the Enemy</h1>
+
+
+
+                <p>I knew it would be a hard day for everyone when my day started with a tweet that a group of hackers, LAPSUS$, had gotten administrative access inside Okta. Immediate inspection of the posts showed worrying evidence of compromise, including:</p>
+
+
+
+                <ul><li>access to customer accounts, specifically Cloudflare’s users</li><li>access to Okta’s JIRA instance</li><li>access to thousands of Slack channels&nbsp;</li></ul>
+
+
+
+                <p>Furthermore, the screenshots pointed to access as far back as January, meaning customers could be looking at months of malicious access.&nbsp;</p>
+
+
+
+                <p>We’ve all heard some variation of the quote “No plan survives first contact with the enemy,” the base assumption being you need a plan.</p>
+
+
+
+                <p>Per the plan, we assembled the relevant security and ops personnel and we began while assuming the worst:</p>
+
+
+
+                <ul><li>pulling and analyzing logs (This set of <a href="https://support.okta.com/help/s/article/System-Log-queries-for-attempted-account-takeover?language=en_US">queries from Okta</a> on finding IOCs in your logs, as well as <a href="https://github.com/SigmaHQ/sigma/tree/master/rules/cloud/okta">these rules from SigmaHQ</a> and <a href="https://github.com/elastic/detection-rules/tree/main/rules/integrations/okta">these rules from Elastic</a>, might help)</li><li>auditing our configurations</li><li>rotating credentials</li></ul>
+
+
+
+                <p>As Okta released more information, the severity of the system breach remained unclear. At first, they played down the severity, claiming that it was only a contained “attempt to compromise” a support engineer’s account. <a href="https://www.okta.com/blog/2022/03/updated-okta-statement-on-lapsus/">Later</a> <a href="https://www.okta.com/blog/2022/03/oktas-investigation-of-the-january-2022-compromise/">communications</a> were adamant that:</p>
+
+
+
+                <ul><li>Only 366 customers, not including Forter, could have been affected</li><li>No customer action was required</li></ul>
+
+
+
+                <p>LAPSUS$, in response to the posts above, added claims of obtaining AWS access keys from the breached Slack channels, implying additional and unaddressed attack vectors.&nbsp;</p>
+
+
+
+                <h1>Lessons Learned</h1>
+
+
+
+                <h2>Insider Attacks are Real</h2>
+
+
+
+                <p>Whether maliciously motivated, financially motivated, or honestly accidental, insider threats are the hardest to detect and the most likely to succeed. Rather than relying on good intentions and wishful thinking, take prophylactic steps to protect your business:</p>
+
+
+
+                <ul><li>Hire great people with good moral fiber and compensate them well. That’s the minimum but it’s not enough.</li><li>Implement least privilege and separate concerns like you mean it.&nbsp;</li><li>Require active support tickets, initiated or approved by your customers to perform any support operations at the user level or which involve access to confidential information.&nbsp;</li><li>Interfaces should not reveal PII when tokenization would suffice, e.g. the email addresses of Cloudflare users in the screenshots could have been replaced with internal identifiers.</li><li>Pay particular attention to “boring” areas – provisioning flows, password reset, device enrollment.</li></ul>
+
+
+
+                <h2>Implement independent controls</h2>
+
+
+
+                <p>This is the real meaning of Zero Trust Architecture. When Stephan Marsh, in his 1994 thesis <a href="https://dspace.stir.ac.uk/bitstream/1893/2010/1/Formalising%20trust%20as%20a%20computational%20concept.pdf">Formalising Trust as a Computational Concept</a>, first coined the term, he cited the blind trust attributed to users after login as a crucial factor enabling disasters like the Internet Worm People in 1988.&nbsp;</p>
+
+
+
+                <p>Recently this concept has been popularized as Perimeterless Security, encouraging people to throw away their VPNs, expose their internal services directly to the Internet, and rely on independent authentication to each service for protection.&nbsp;</p>
+
+
+
+                <p>Imagine such services relying solely on compromised Okta, or other IDP services to perform that authentication. Adopting a naive interpretation of Zero Trust Architecture has only shifted the blind trust they worried about from their VPN to their IDaaS.</p>
+
+
+
+                <p>For this reason, I still recommend authenticating internal services behind another layer, such as an independently authenticated VPN. The VPN establishes the least privilege necessary to attempt connections with protected services making even the total compromise of the primary IDP insufficient to cause a breach alone. In Marsh’s terms, we don’t use the VPN to attribute trust, only to establish an outer perimeter of distrust.&nbsp;</p>
+
+
+
+                <p>There are additional variations on the idea, e.g. IP address allow-lists, mTLS, device identities, each with its strengths and weaknesses. However we implement them, the key is using independent controls to give us, and our customers, peace of mind when stuff hits the fan.</p>
+
+
+
+                <h2>Verifiable is Reliable</h2>
+
+
+
+                <p>In Marsh’s work on trust, he posited that trust or distrust requires some prior knowledge. I’d add that knowledge requires facts, not belief or assumption. To facilitate trust in manufacturing, we have quality checkpoints like QA processes testing samples from batches, inspection on delivery, etc.</p>
+
+
+
+                <p>In the XaaS industry, there are no checkpoints where the customer can verify that everything is up to specification. Services are moving targets, sometimes deployed hundreds of times per day, relying on employees the customer never interviewed, and third-party services the customer never vetted.&nbsp;</p>
+
+
+
+                <p>As such, to truly trust a provider, customers need continuous evidence on which to base that trust. Sometimes, the customer can obtain that evidence independently. Other times, the provider must provide evidence to prove themselves trustworthy:</p>
+
+
+
+                <h3>Technical Verifications</h3>
+
+
+
+                <p>Okta has above average transparency, in terms of logging actions in the application, so companies theoretically have the logs they need to identify any compromise on the applicative level.&nbsp; If, however, Okta was infiltrated at a lower level, ie. via the AWS access keys supposedly seen by the attackers on Okta’s internal Slack channels, application logs are not enough.&nbsp;</p>
+
+
+
+                <p>If attackers disabled the MFA requirement for a user’s account at the DB level, for example, it could escape notice in application logs but still have the desired malicious effect. Using IaC tools like Terraform may help independently identify changes like these by noticing the undesired state and, hopefully, correcting it.&nbsp;</p>
+
+
+
+                <p>If attackers made malicious changes to the code, the application might stop enforcing the policies configured in the DB regardless. Next level organizations will write tests for their configurations to detect service level corruptions and validate that security policies behave as expected, i.e. preventing impossible travel logins, requiring MFA, etc.</p>
+
+
+
+                <p>For comparison, AWS charges exorbitant fees to log read or write access to S3 objects which is completely irresponsible. The XaaS industry, as a whole, must stop charging extra for basic security functionality.</p>
+
+
+
+                <h3>Organizational Verifications</h3>
+
+
+
+                <p>On the organizational level, this type of incident brings up questions about the trust that companies place in their providers.&nbsp;</p>
+
+
+
+                <p>We place a certain level of trust in publicly traded companies because this implies some level of regulatory oversight, but there are limits. Tech governance is immature and, in fact, the <a href="https://www.sec.gov/news/press-release/2022-39">SEC only recently proposed amendments</a> to its rules which would require companies to disclose any material cybersecurity incidents. In the meantime, being traded might encourage accountability to the stock price over accountability to the customers.</p>
+
+
+
+                <p>Others trust in the contractual obligations between the customer and the provider, but words and the associated legal gymnastics are cheap. What use are contracts if:</p>
+
+
+
+                <ul><li>We don’t know the contract was breached</li><li>We can’t prove the contract was breached</li><li>Knowing the contract was breached and moving to a new provider will cost months of unplanned work.</li></ul>
+
+
+
+                <p>I am not saying we don’t need contracts, just that we need enforceable contracts.</p>
+
+
+
+                <p>When it comes to transparency and verifiable foundations for trust in the XaaS industry today, I feel like SOC II attestations, though not perfect, are our greatest hope. Unfortunately, organizations have no obligation to involve their SOC II auditors in these situations. It could be months before their next audit, and there is no guarantee that the auditor will investigate every incident.&nbsp;</p>
+
+
+
+                <p>Companies committed to transparency and establishing a strong foundation of trust with their customers should go beyond the letter of the law, proactively involving their auditor in their real-time incident response (not at their next review). They should commission the auditor to release a detailed, unbiased review of the incident without weasel words or legal gymnastics.</p>
+
+
+
+                <h2>Love thy customers as thyself</h2>
+
+
+
+                <p>As I wrote above, no one expects services to be perfect. The question is never will there be a breach, but when there is a breach, how will it be handled? Ironically, Okta posted a tweet a while back asking, what percentage of customers will cut ties with a company if it suffers a data breach?<img src="https://lh4.googleusercontent.com/ij66EJ9eF0iFMsTFqcRmFQpo6B2k29P1BvZzsEm7z2zn2DuVZl8mx8ozYyiLHvTyP3C1-8Ggi0NAJOgS_VIrHNhg-FMZ8V8U-AgStSPrQTpPrYrcenepIreGhlZiYrdgk9UqFfA" width="605" height="284"></p>
+
+
+
+                <p>I think the answer lies in this adaptation of the biblical commandment to love thy neighbor – love thy customer as thyself. If we want our customers to stick with us through the bad times as well as the good:</p>
+
+
+
+                <ul><li>First, put ourselves in your customers’ shoes</li><li>Accept responsibility for the breach to come, don’t look for excuses</li><li>Do our best to prevent the breach</li><li>Do our best to minimize the blast radius of the breach</li><li>Do our best to detect the breach so it’s not Twitter telling customers that something’s wrong</li><li>Communicate the risk of a breach to customers as soon as we become aware of it so they can take steps to protect their systems and their customers</li><li>Don’t play games</li></ul>
+
+            </div>
+        </article>
+    </div>
+    <!-- end post -->
+
+
 </main>
 <!-- end content -->
+
 
 <!-- begin footer -->
 <footer class="footer">
@@ -4708,8 +4575,8 @@
 
                                 <li class="social__item">
                                     <a class="social__link"
-                                       href="https://www.youtube.com/channel/UCxAPyPoyVWu0yJbZ0gAvCqA"
-                                       target="_blank" rel="noopener"
+                                       href="https://www.youtube.com/channel/UCxAPyPoyVWu0yJbZ0gAvCqA" target="_blank"
+                                       rel="noopener"
                                        aria-label=" link"><i class="ion ion-logo-youtube"></i></a>
                                 </li>
 

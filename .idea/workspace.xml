@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="7ab4e46f-88f6-421b-a9f9-542c3ac6cf79" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/aws.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.jekyll-cache/Jekyll/Cache/Jekyll--Cache/b7/9606fb3afea5bd1609ed40b622142f1c98125abcfe89a76a661b0e8e343910" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/0flake-reaching-reliable-non-flaky-tests.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/23percent_are_addicts.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/9-5-low-latency-decision-as-a-service-design-patterns.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Gemfile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Gemfile.lock" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/_site/404.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/_site/CNAME" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/_site/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/_site/assets/files/cv.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/_site/favicon.ico" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/_site/forter-tech-blog.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/_site/js/common.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/_site/js/scripts.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/_site/robots.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/_site/search.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/_site/tags/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/best-practices-for-production-grade-scheduled-jobs.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/can-we-agree-on-dependency-and-version-management.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/comparing-message-queue-architectures-on-aws.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cross-region-data-replication.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/do-you-trust-your-front-end-tests-as-much-as-we-do.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forter-engineering-on-call-strategy.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forter-tech-blog.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hrd-how-to-buy-a-gift-for-a-software-engineer.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/authors/doron.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/authors/itai.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/authors/moshe.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/authors/oren.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/authors/ori.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/authors/reem.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/authors/yonah.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/forter.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/post-img/addict.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/post-img/bug.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/post-img/culture.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/post-img/dep.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/post-img/evo.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/post-img/flake.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/post-img/gift.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/post-img/itay.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/post-img/job.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/post-img/lock.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/post-img/okta.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/post-img/oncall.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/post-img/prod.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/post-img/queue.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/post-img/reimann.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/post-img/rep.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/post-img/security.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/post-img/selfconf.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/post-img/storm.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/post-img/talk.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/post-img/testim.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/post-img/time.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/post-img/vendor.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mindful-vendor-assessment-counteracting-cognitive-bias-when-choosing-third-party-solutions.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/monitoring-with-riemann-video-slides.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/reflecting-on-oktas-breach.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/security-101-for-saas-startups.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/selfconf-empowering-group-learning-for-software-engineers.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/storm-in-under-a-second-video-slides.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/the-evolution-of-web-data-binding.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/walkthrough-tracking-an-elasticsearch-java-client-sniffer-bug.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/what-happens-when-an-engineer-tries-to-explain-why-you-should-work-with-him.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/404.html" beforeDir="false" afterPath="$PROJECT_DIR$/404.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CNAME" beforeDir="false" afterPath="$PROJECT_DIR$/CNAME" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/about/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/check-thy-evidence-ibuprofen.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/contact/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/diagnostic-odyssey-mito.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/favicon.ico" beforeDir="false" afterPath="$PROJECT_DIR$/favicon.ico" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/feed.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ganna-gavrjushenko-ngs.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/genna-sluhanka-1.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/2021_04_29_mutationme_logo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/a_dna.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/favicons/android-chrome-192x192.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/favicons/android-chrome-512x512.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/favicons/apple-touch-icon.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/favicons/favicon-16x16.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/favicons/favicon-32x32.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/favicons/favicon.ico" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/favicons/mstile-150x150.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/favicons/safari-pinned-tab.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/g/g1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/g/g2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/g/g3.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/post-img/001-en.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/post-img/002-en.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/post-img/008-en.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/post-img/010-en.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/post-img/011-en.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/post-img/1598904939257.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/post-img/2022_05_09.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/post-img/2022_07_13.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/post-img/GenomeTesting-468428788-%5BConverted%5D.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/post-img/photo_2020-01-09_20-04-57.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/website-portrait-a.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/website-portrait.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/interview-berezovska-liver.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/interview-berezovska-pgd.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/proteomic-assay-for-fabry-disease.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/search.json" beforeDir="false" afterPath="$PROJECT_DIR$/search.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sitemap.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tags/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/tags/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ukrainian-antarctica.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/zika-virus-infected-cells-and-their-transcriptome.html" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="package.json" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2DJCfGaH9aSOXe1MS2vNdDEo3Xj" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "/Users/gilad_feder/dev/forter-tech-blog",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/images/post-img" />
+      <recent name="$PROJECT_DIR$/images/authors" />
+      <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/images" />
+    </key>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="7ab4e46f-88f6-421b-a9f9-542c3ac6cf79" name="Changes" comment="" />
+      <created>1660407902256</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1660407902256</updated>
+      <workItem from="1660407904808" duration="14934000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>

@@ -6,25 +6,25 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Forter Tech Blog</title>
+    <title>9.5 Low Latency Decision as a Service Design Patterns</title>
     <meta name='description'
           content="Forter's technical blog, writing on security, performance, engineering culture, and more.">
 
-    <link rel="canonical" href="http://localhost:4000/">
-    <link rel="alternate" type="application/rss+xml" title="Forter Tech Blog" href="/feed.xml">
+    <link rel="canonical" href="http://localhost:4000/9-5-low-latency-decision-as-a-service-design-patterns">
+    <link rel="alternate" type="application/rss+xml" title="TECH.FORTER.COM" href="/feed.xml">
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Forter Tech Blog">
+    <meta name="twitter:title" content="9.5 Low Latency Decision as a Service Design Patterns – TECH.FORTER.COM">
     <meta name="twitter:description"
-          content="Forter's technical blog, writing on security, performance, engineering culture, and more.">
-    <meta name="twitter:image:src" content="http://localhost:4000/images/forter.png">
+          content="A few hundred milliseconds latency is achievable for a complex fraud prevention system, but with very little wiggle room.">
+    <meta name="twitter:image:src" content="http://localhost:4000/images/post-img/time.png">
 
     <!-- Facebook OpenGraph -->
-    <meta property="og:title" content="Forter Tech Blog">
+    <meta property="og:title" content="9.5 Low Latency Decision as a Service Design Patterns – TECH.FORTER.COM">
     <meta property="og:description"
-          content="Forter's technical blog, writing on security, performance, engineering culture, and more.">
-    <meta property="og:image" content="http://localhost:4000/images/forter.png">
+          content="A few hundred milliseconds latency is achievable for a complex fraud prevention system, but with very little wiggle room. \">
+    <meta property="og:image" content="http://localhost:4000/images/post-img/time.png">
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -4240,6 +4240,7 @@
                                 <a href="/" class="nav__link">Home</a>
                             </li>
 
+
                             <li class="nav__item nav__item-icon">
                                 <div class="toggle-theme">
                                     <div class="toggle-moon" title="Enable dark mode"><i class="ion ion-ios-moon"></i>
@@ -4292,378 +4293,305 @@
 
 <!-- begin content -->
 <main class="content" aria-label="Content">
-
-
-    <div class="tags__inner">
-
+    <div class="post-head">
         <div class="container">
             <div class="row">
-                <div class="col col-12">
-                    <div class="tag__info">
-                        <div class="tag__info-box">
-                            <div class="tag__counter">
-                                <span>2</span>
-                                <small>Posts</small>
-                            </div>
-                            <h2 class="tag__name" id="talks">Talks</h2>
+
+                <div class="col col-6 col-d-12">
+                    <div class="post-image">
+                        <img class="lazy" data-src="/images/post-img/time.png"
+                             alt="9.5 Low Latency Decision as a Service Design Patterns">
+                    </div>
+                </div>
+
+                <div class="col col-6 col-d-12">
+                    <div class="post__info ">
+
+
+                        <div class="post__tags">
+
+                            <a href="/tags#decision" class="post__tag">decision</a>
+                            <a href="/tags#latency" class="post__tag">latency</a>
+                            <a href="/tags#subsystems" class="post__tag">subsystems</a>
+                            <a href="/tags#timeouts" class="post__tag">timeouts</a>
+                            <a href="/tags#traffic" class="post__tag">traffic</a>
+
                         </div>
-                        <a class="top__link" href="#top">Return to top</a>
+
+
+                        <h1 class="post__title">9.5 Low Latency Decision as a Service Design Patterns</h1>
+
+                        <div class="post__meta">
+                            <a href="/about/" class="post__author-image">
+                                <img class="lazy" data-src="/images/authors/itai.jpg" alt="Itay Frenkel">
+                            </a>
+
+                            <div class="post__meta-bottom">
+                                <span class="post__author">Itay Frenkel</span>
+                                <time class="post__date" datetime="2015-10-25T00:00:00+00:00">25 Oct 2015</time>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
             </div>
         </div>
+    </div>
 
-        <div class="container">
-            <div class="row">
-                <div class="col col-12">
-                    <div class="row">
+    <!-- begin post -->
+    <div class="container animate">
+
+        <article class="post">
+            <div class="post__content">
+                <p>A few hundred milliseconds latency is achievable for a complex fraud prevention system, but with very little wiggle room. In the past two years, we have selected a few design patterns that have helped us achieve our latency goals, using standard technologies used by most SaaS companies (load balancers, queues, JVM, rest APIs, etc…). Here, we share 9 and a half tips that have helped us to build a system we’re proud of.</p>
+                <h3>Some Context First</h3>
+                <p>Low Latency and Availability is essential to our product – and our SaaS product is the center of our business. Forter provides Fraud Prevention Decision as a Service for eCommerce merchants (retailers with either web or mobile presence). That’s fraud decisions for every transaction, in real-time. Our clients call Forter’s API during the checkout phase of their workflow. This is a very sensitive place to be, since a failure at that point could result in loss of business to our customers.</p>
+                <p>Low Latency is just as crucial to many other SaaS companies. If your service does not respond in time, it is not available. It’s as simple as that. For us, low latency means a few hundreds of milliseconds. To compare, here are some ballpark latency figures (above median latencies – the long tail figures could be worse):</p>
+                <ul>
+                    <li>A few network hops between AWS availability zones (~1ms)</li>
+                    <li>JVM young garbage collection of a few hundred MBs (~20ms)</li>
+                    <li>Read by primary key from SSD storage (~30ms)</li>
+                    <li>US West Coast to East Coast network latency (~100ms)</li>
+                    <li>JVM full garbage collection a few hundred MBs (~500ms-1000ms)</li>
+                </ul>
+                <h2>1. Measure your API Latency as a Function of Probability</h2>
+                <p>If our API does not respond on time, our clients cannot continue their workflow. So, internally, we log the latency of each API request, and calculate percentiles based on that raw data. For example, the API endpoint may return a decision within 300ms 90% of the time, and within 500ms 99.9% of the time.</p>
+                <p>This measurement gets tricky when using a stress test tool (there is a great presentation about exactly that, if you’d like to know more: <a href="https://vimeo.com/135065813">How NOT to Measure Latency</a>). It basically states that a typical benchmarking tool such as Apache Bench, when stuck waiting for that 1 response that never comes back (a hiccup), does not take into account the number of requests it didn’t even send during that time.</p>
+                <p>Another problem with a stress test tool is that it uses synthetic requests, which simulates a best case scenario where the caches are already hot, something that is not generally true for real-world transactions.</p>
+                <p>Measuring latency is essential, but do it the right way. Use percentiles, and distinguish real traffic from synthetic requests.</p>
+                <h2>2. Define How the Client Should React in Case of a Timeout</h2>
+                <p>The rest API client should place a timeout on the API call, and act when there is an error or timeout. It could retry the request or perform a predefined default action. In both cases, the service needs to be designed to support it.</p>
+                <p>Having the client retry means that the service needs to be idempotent. For example, let’s say that due to a network hiccup, a request with id 1234 has timed out. A second (retry) request with the same id 1234 is then sent to the service. The first request may have reached the service and so it means the service received two requests with the same ID. The service should handle that gracefully, and in both cases it should return the same decision.</p>
+                <p>Having the client choose a default action means that the transaction entry in our customer’s database may have a different value from our databases. For example, transaction id 1234 timed out, and the client has decided to approve the transaction. In the case where the request reached the service, it may have been registered as an approved transaction or a declined transaction, and in the case where it never reached the service, it would not have been registered at all. For these cases, a reconciliation process might be needed at the end of the billing period, in which these small discrepancies are sorted out.</p>
+                <p>The customers care about end-to-end service availability. Network hiccups happen, but they are simple to resolve by making the rest API client part of a coherent decision flow.</p>
+                <h2>3. All subsystems must be able to make a decision</h2>
+                <p>Continuous Deployment is great, since it allows us to change code rapidly. However, the reality is that code that changes could introduce new unexpected latency or stability issues, and is thus less trustworthy (stable) than code that worked flawlessly in the past weeks or months. <a href="http://2mlwm1eb459jcaws1qu2uq18-wpengine.netdna-ssl.com/wp-content/uploads/2015/10/GracefulDegredation.png"><img loading="lazy" class="alignnone size-large wp-image-42" src="http://2mlwm1eb459jcaws1qu2uq18-wpengine.netdna-ssl.com/wp-content/uploads/2015/10/GracefulDegredation-1024x577.png" alt="Code Stability vs Code Changes" width="1024" height="577" srcset="https://2mlwm1eb459jcaws1qu2uq18-wpengine.netdna-ssl.com/wp-content/uploads/2015/10/GracefulDegredation-1024x577.png 1024w, https://2mlwm1eb459jcaws1qu2uq18-wpengine.netdna-ssl.com/wp-content/uploads/2015/10/GracefulDegredation-300x169.png 300w, https://2mlwm1eb459jcaws1qu2uq18-wpengine.netdna-ssl.com/wp-content/uploads/2015/10/GracefulDegredation.png 1062w" sizes="(max-width: 1024px) 100vw, 1024px"></a></p>
+                <p>Our Storm code written in Java changes the most. If that component fails to decide on time (approve or decline a transaction), the API servers written with Node.js take a decision, and if it fails, then the nginx lua code takes a decision. If we hadn’t designed our system that way, the client would need to make the decision for us, which is something we would like to minimize.</p>
+                <p>It’s ok for the system to perform graceful degradation once in awhile, but over some threshold we need to rollback into a previous version (calculating that threshold is for another blog post). Our reality is that we always have two production systems online (we call them “prod” and “old prod”). In case of a graceful degradation alert, we have the option to switch back (via Amazon ELB API) to the “old prod”, giving us enough time to fix the problem.</p>
+                <p>There is a famous quote from an Israeli cult movie, where Krembo is asked how to win a swimming race: “You start with your fastest sprint, and gradually pick up the pace.” As a startup we must keep moving faster as we grow (not slower). That means more developers introducing more code changes every day. A multi-layered decision architecture, plus a hot standby, serves as our safety net.</p>
+                <h2>4. Handle Excess Traffic</h2>
+                <p>Don’t Pushback to the Client Some of our customers might send us transactions in batches. For example, in the case of a problem with their backend systems, they might want to rerun some of the transactions. If we perform simple throttling, the API would have to return an error back, which is unacceptable in a Decision as a Service system. If we do not perform throttling, we run the risk of overloading our real-time system, which would trigger the graceful degradation described above, which is something we would like to minimize.</p>
+                <p>So we do perform throttling, but instead of pushing back an error to the client, we divert the excess customer traffic to a different set of machines. We use a simple master/worker pattern, in which different queues have different set of workers, and we effectively push the transaction into a lower priority queue.</p>
+                <p>As with any multi-tenant system, isolation between tenants is a key component. More traffic is good for business, and shouldn’t be a cause for panic. By dynamically isolating traffic with different SLA requirements, we can keep all of our customers happy.</p>
+                <h2>5. Use Dynamic Timeouts for I/O Operations</h2>
+                <p>Each I/O operation (such as an SQL query or an internal Rest API call) must have a timeout. That timeout is a function of the minimum/maximum time for the operation to complete, and the time-to-live (remaining time) of this specific request.</p>
+                <h4>Global Timeout</h4>
+                <p>The timeout as defined by the SLA to the customer (median is good).</p>
+                <h4>Minimum Timeout:</h4>
+                <p>The time for the I/O operation to succeed 80% of the time. For example, most Redis read operations should return after 5ms.</p>
+                <h4>Maximum Timeout</h4>
+                <p>The time for the I/O operation to succeed 99.9% of the time. For example reading by primary key from an in-memory data store (such as Redis) should not take more than 10ms, and reading by primary key from a disk-based data store (such as MySQL) should not take more than 100ms. If it takes more, then there is either a network hiccup (that was not detected as a failure), or a data-store hiccup, or some type of congestion, and we consider the operation to be failed.</p>
+                <h4>Absolute Timing</h4>
+                <p>Absolute timing uses the current clock time and the time the request was received, in order to determine if we should use the maximum timeout, the minimum timeout, or somewhere in between.</p>
+                <p><script src="https://gist.github.com/itaifrenkel/eb56f4208ddc2253146d.js"></script><link rel="stylesheet" href="https://github.githubassets.com/assets/gist-embed-549f23051d8d.css"></p><div id="gist27179790" class="gist">
+                <div class="gist-file" translate="no">
+                    <div class="gist-data">
+                        <div class="js-gist-file-update-container js-task-list-container file-box">
+                            <div id="file-absolute_timing-txt" class="file my-2">
+
+                                <div itemprop="text" class="Box-body p-0 blob-wrapper data type-text  ">
 
 
-                        <div class="article col col-4 col-d-6 col-t-12">
-                            <div class="article__inner">
+                                    <div class="js-check-bidi js-blob-code-container blob-code-content">
 
-                                <div class="article__head">
-                                    <time class="article__date" datetime="1970-01-01T00:00:00+00:00">01 Jan 1970</time>
+                                        <template class="js-file-alert-template">
+                                            <div data-view-component="true" class="flash flash-warn flash-full d-flex flex-items-center">
+                                                <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-alert">
+                                                    <path fill-rule="evenodd" d="M8.22 1.754a.25.25 0 00-.44 0L1.698 13.132a.25.25 0 00.22.368h12.164a.25.25 0 00.22-.368L8.22 1.754zm-1.763-.707c.659-1.234 2.427-1.234 3.086 0l6.082 11.378A1.75 1.75 0 0114.082 15H1.918a1.75 1.75 0 01-1.543-2.575L6.457 1.047zM9 11a1 1 0 11-2 0 1 1 0 012 0zm-.25-5.25a.75.75 0 00-1.5 0v2.5a.75.75 0 001.5 0v-2.5z"></path>
+                                                </svg>
 
-                                    <div class="video-icon">
-                                        <div class="circle pulse"></div>
-                                        <div class="circle">
-                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
-                                                <polygon points="40,30 65,50 40,70"></polygon>
-                                            </svg>
-                                        </div>
+                                                <span>
+      This file contains bidirectional Unicode text that may be interpreted or compiled differently than what appears below. To review, open the file in an editor that reveals hidden Unicode characters.
+      <a href="https://github.co/hiddenchars" target="_blank">Learn more about bidirectional Unicode characters</a>
+    </span>
+
+
+                                                <div data-view-component="true" class="flash-action">        <a href="{{ revealButtonHref }}" data-view-component="true" class="btn-sm btn">    Show hidden characters
+                                                </a>
+                                                </div>
+                                            </div></template>
+                                        <template class="js-line-alert-template">
+  <span aria-label="This line has hidden Unicode characters" data-view-component="true" class="line-alert tooltipped tooltipped-e">
+    <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-alert">
+    <path fill-rule="evenodd" d="M8.22 1.754a.25.25 0 00-.44 0L1.698 13.132a.25.25 0 00.22.368h12.164a.25.25 0 00.22-.368L8.22 1.754zm-1.763-.707c.659-1.234 2.427-1.234 3.086 0l6.082 11.378A1.75 1.75 0 0114.082 15H1.918a1.75 1.75 0 01-1.543-2.575L6.457 1.047zM9 11a1 1 0 11-2 0 1 1 0 012 0zm-.25-5.25a.75.75 0 00-1.5 0v2.5a.75.75 0 001.5 0v-2.5z"></path>
+</svg>
+</span></template>
+
+                                        <table data-hpc="" class="highlight tab-size js-file-line-container js-code-nav-container js-tagsearch-file" data-tab-size="8" data-paste-markdown-skip="" data-tagsearch-lang="Text" data-tagsearch-path="absolute_timing.txt">
+                                            <tbody><tr>
+                                                <td id="file-absolute_timing-txt-L1" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="1"></td>
+                                                <td id="file-absolute_timing-txt-LC1" class="blob-code blob-code-inner js-file-line">UpstreamLatency = (CurrentTime - RequestReceivedTimestamp)</td>
+                                            </tr>
+                                            <tr>
+                                                <td id="file-absolute_timing-txt-L2" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="2"></td>
+                                                <td id="file-absolute_timing-txt-LC2" class="blob-code blob-code-inner js-file-line">DownstreamLatency = Approximate time needed to return a response to the client after this I/O operation completes.</td>
+                                            </tr>
+                                            <tr>
+                                                <td id="file-absolute_timing-txt-L3" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="3"></td>
+                                                <td id="file-absolute_timing-txt-LC3" class="blob-code blob-code-inner js-file-line">Timeout = Global Timeout - (UpstreamLatency + DownstreamLatency)</td>
+                                            </tr>
+                                            <tr>
+                                                <td id="file-absolute_timing-txt-L4" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="4"></td>
+                                                <td id="file-absolute_timing-txt-LC4" class="blob-code blob-code-inner js-file-line">if (Timeout &gt; MaximumTimeout) Timeout = MaximumTimeout</td>
+                                            </tr>
+                                            <tr>
+                                                <td id="file-absolute_timing-txt-L5" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="5"></td>
+                                                <td id="file-absolute_timing-txt-LC5" class="blob-code blob-code-inner js-file-line">if (Timeout &lt; MinimumTimeout) Timeout = MinimumTimeout</td>
+                                            </tr>
+                                            </tbody></table>
                                     </div>
 
-                                    <a class="article__image" href="/comparing-message-queue-architectures-on-aws">
-                                        <img class="lazy" data-src="/images/post-img/queue.png"
-                                             alt="Comparing Message Queue Architecture on AWS">
-                                    </a>
-
 
                                 </div>
 
-                                <div class="article__content">
-
-                                    <h2 class="article__title">
-                                        <a href="/comparing-message-queue-architectures-on-aws">Comparing Message Queue
-                                            Architecture on AWS</a>
-                                    </h2>
-
-
-                                </div>
                             </div>
                         </div>
 
-
-                        <div class="article col col-4 col-d-6 col-t-12">
-                            <div class="article__inner">
-
-                                <div class="article__head">
-                                    <time class="article__date" datetime="1970-01-01T00:00:00+00:00">01 Jan 1970</time>
-
-                                    <div class="video-icon">
-                                        <div class="circle pulse"></div>
-                                        <div class="circle">
-                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
-                                                <polygon points="40,30 65,50 40,70"></polygon>
-                                            </svg>
-                                        </div>
-                                    </div>
-
-                                    <a class="article__image" href="/comparing-message-queue-architectures-on-aws">
-                                        <img class="lazy" data-src="/images/post-img/queue.png"
-                                             alt="Comparing Message Queue Architecture on AWS">
-                                    </a>
-
-
-                                </div>
-
-                                <div class="article__content">
-
-                                    <h2 class="article__title">
-                                        <a href="/comparing-message-queue-architectures-on-aws">Comparing Message Queue
-                                            Architecture on AWS</a>
-                                    </h2>
-
-
-                                </div>
-                            </div>
-                        </div>
-
-
+                    </div>
+                    <div class="gist-meta">
+                        <a href="https://gist.github.com/itaifrenkel/eb56f4208ddc2253146d/raw/74420328f5f3c04be3ac2cced5744f5f8af6f537/absolute_timing.txt" style="float:right">view raw</a>
+                        <a href="https://gist.github.com/itaifrenkel/eb56f4208ddc2253146d#file-absolute_timing-txt">
+                            absolute_timing.txt
+                        </a>
+                        hosted with ❤ by <a href="https://github.com">GitHub</a>
                     </div>
                 </div>
             </div>
-        </div>
+                The three most important things in real-time systems are timing, timing and timing. In most cases, we would use the maximum timeout. However, in cases where a garbage collection or a network hiccup occurred, we would speed up the rest of the processing and lean towards the minimum timeout.<p></p>
+                <h2>6. Use Auto-Healing (Automatic Failover)</h2>
+                <p>This one is obvious, but it must be mentioned too. The reason that it doesn’t go without saying is that we humans are not fast enough to react to failures, and there are such good auto-healing tools out there, that it’s just a shame not to use them.</p>
+                <h4>Automatic Process Restart</h4>
+                <p>When an exception occurs in the code, it should bubble up the stack and crash the process (fail-fast unless the code handles retries or batch operations in which exceptions could be handled). The reason for fail-fast is that we do not trust our process state when an exception occurs. Once the process fails, an external operation system daemon (such as upstart, systemd or similar) should start it immediately.</p>
+                <h4>Automatic Virtual Machine Replacement</h4>
+                <p>When an ec2 instance terminates unexpectedly, we use an ec2 scaling group that detects it, terminates the instance and starts a new equivalent ec2 instance in its place. In rare cases, it takes quite a time to detect a problem with the instance as its hardware degrades slowly. In those cases a scaling group can take hours to respond.</p>
+                <h4>HTTP Load Balancing</h4>
+                <p>When a web server becomes unhealthy (for whatever reason, such as a single point of failure, or a availability zone problem), the Elastic Load Balancer diverts all traffic to the other healthy instances.</p>
+                <p>HTTP Fencing When the entire service stops responding, you can use <a href="http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/dns-failover.html">Route 53 failover</a> (or <a href="https://incapsula.zendesk.com/hc/en-us/articles/200295389-Incapsula-Load-Balancing">Incapsula Advanced load balancer</a>) to divert all traffic to a stand-by service, and trigger an alert.</p>
+                <p>Auto-healing is awesome, and doesn’t take much time to set up properly. Everyone does it, and so should you.</p>
+                <h2>7. Plot Latencies, it’s a Big Time Saver</h2>
+                <p>We have an internal monitoring system (worth a separate post), that can plot for each transaction the latency and the absolute timing of each storm bolt (names redacted from the snapshot): <a href="http://2mlwm1eb459jcaws1qu2uq18-wpengine.netdna-ssl.com/wp-content/uploads/2015/10/StormGraphVisualization.png"><img loading="lazy" class="alignnone size-full wp-image-43" src="http://2mlwm1eb459jcaws1qu2uq18-wpengine.netdna-ssl.com/wp-content/uploads/2015/10/StormGraphVisualization.png" alt="StormGraphVisualization" width="1020" height="588" srcset="https://2mlwm1eb459jcaws1qu2uq18-wpengine.netdna-ssl.com/wp-content/uploads/2015/10/StormGraphVisualization.png 1020w, https://2mlwm1eb459jcaws1qu2uq18-wpengine.netdna-ssl.com/wp-content/uploads/2015/10/StormGraphVisualization-300x173.png 300w" sizes="(max-width: 1020px) 100vw, 1020px"></a></p>
+                <p>A different view shows a timeline of the bolt latencies: <a href="http://2mlwm1eb459jcaws1qu2uq18-wpengine.netdna-ssl.com/wp-content/uploads/2015/10/StormTimeline.png"><img loading="lazy" class="alignnone size-large wp-image-44" src="http://2mlwm1eb459jcaws1qu2uq18-wpengine.netdna-ssl.com/wp-content/uploads/2015/10/StormTimeline-1024x537.png" alt="StormTimeline" width="1024" height="537" srcset="https://2mlwm1eb459jcaws1qu2uq18-wpengine.netdna-ssl.com/wp-content/uploads/2015/10/StormTimeline-1024x537.png 1024w, https://2mlwm1eb459jcaws1qu2uq18-wpengine.netdna-ssl.com/wp-content/uploads/2015/10/StormTimeline-300x157.png 300w, https://2mlwm1eb459jcaws1qu2uq18-wpengine.netdna-ssl.com/wp-content/uploads/2015/10/StormTimeline.png 1134w" sizes="(max-width: 1024px) 100vw, 1024px"></a></p>
+                <p>And of course a time-based view for multiple transactions, including latency percentiles on the right, exception plots, per deployment, per host , per transaction type filters and much more. One of the first things we learned from the time-based plots is that our system needs some time to warm up until it performs best, which has implications for the deployment life-cycle. <a href="http://2mlwm1eb459jcaws1qu2uq18-wpengine.netdna-ssl.com/wp-content/uploads/2015/10/StormKibana.png"><img loading="lazy" class="alignnone size-large wp-image-45" src="http://2mlwm1eb459jcaws1qu2uq18-wpengine.netdna-ssl.com/wp-content/uploads/2015/10/StormKibana-1024x640.png" alt="StormKibana" width="1024" height="640" srcset="https://2mlwm1eb459jcaws1qu2uq18-wpengine.netdna-ssl.com/wp-content/uploads/2015/10/StormKibana-1024x640.png 1024w, https://2mlwm1eb459jcaws1qu2uq18-wpengine.netdna-ssl.com/wp-content/uploads/2015/10/StormKibana-300x188.png 300w, https://2mlwm1eb459jcaws1qu2uq18-wpengine.netdna-ssl.com/wp-content/uploads/2015/10/StormKibana.png 1440w" sizes="(max-width: 1024px) 100vw, 1024px"></a></p>
+                <p>One of the first things you understand about low latency monitoring, is that the CPU graph doesn’t say much. First, the CPU probing doesn’t have high enough resolution to capture milliseconds CPU spikes, and some of the latency is due to I/O operations which are not registered by the CPU. So unless the system is overloaded the CPU will always show some low average. As for profiling tools – tracing profilers skews the latency results too much, and unless the system is overloaded, sampling profilers shows most of the time is spent in scheduler threads.</p>
+                <p>The most reliable way we found to detect latency problems is a timestamp before and after every sub-component of the system. Once the problematic sub-component is detected, you first look for incriminating recent code changes. If you can’t find the problem, reproduce with a unit test together with a profiler to pinpoint the root cause.</p>
+                <h2>8 Know Your (Latency) Enemy</h2>
+                <p>In many cases, however, latency monitoring reveals degradation that affects multiple components at once. Some of the components may not even perform I/O operations or had no recent code changes. In those cases, we start looking for the usual suspects. AWS EC2 Flakiness We only use c3.large instances or higher, for the sake of our sanity. Any ec2 instance (that is not on dedicated hardware) could be a victim of being hosted in a tough neighborhood. It happens less with larger instances. However, once you have tens of ec2 instances you should start expecting at least one machine per month to act strangely (as indicated by a weird CPU flakiness in the ec2 graph, even though nothing changed on the instance itself). Sometimes the gods of luck provide us with good machines and we get a drop of 100ms latency improvement without changing any bit of code.</p>
+                <h4>Logging/Eventing</h4>
+                <p>Many logging frameworks are synchronous and contribute to high latency. Even async event clients (such as Riemann clients) may contain pushback which in some extreme cases (unless configured otherwise) block the sending thread when all network queues are full.</p>
+                <h4>Regular Expressions</h4>
+                <p>Some regexes are a real piece of work. What you need to know is that given the right regular expression, and the right input, you could get a CPU core stuck on 100% CPU for a very long time (see <a href="http://www.regular-expressions.info/catastrophic.html">Catastrophic Backtracking</a>). We use a custom automated tool that tries to find these little gremlins during build time, but it’s not perfect yet (worth an open source project and a blog post, I know). In Node.js, a runaway regex could block the entire process, not just a single core. In Python, it could block the global interpreter lock, which is just as bad.</p>
+                <h4>TCP Nagle Algorithm and Delayed ACKs TCP</h4>
+                <p>nagle algorithm is on by default in most operating systems and programming languages, and its purpose is to reduce the number of tcp packets that needs to be sent over the network on the expense of latency. If you send a small http request, then the TCP nagle algorithm would wait for either:</p>
+                <ul>
+                    <li>More data to be sent in the same tcp packet, or</li>
+                    <li>An ack from the TCP receiver (for data previously sent).</li>
+                </ul>
+                <p>Alas, most tcp receiver implementations also implement delayed acks in order to reduce the number of acks (up to 500ms for the ack), so the tcp sender could be delayed for up to 500ms if the nagle algorithm is turned on. In practice it introduces latency of around 30ms with spikes of 200ms. To overcome this set the tcp socket settings SO_NODELAY to true (preferably in both the client and the server).</p>
+                <h4>JVM Garbage Collection, LRU caches and memory leaks</h4>
+                <p>Most modern languages require some tweaking to the GC settings. JVM settings provide a lot of tweaking options. As a rule a stateless system should not require much JVM memory. Most transactions evaporate after less than a second, which means it could happily stay in the young generation, which is faster to clean up. Any LRU caching (Least Recently Used eviction, such as Guava Cache) must not be hosted in the same JVM process. Use Memcached/Redis, but for the love of GC, do not host Java objects that survive the young generation and are moved to the old generation. It’s ok to load lookup tables into the old generation since they never require cleaning, but LRU (least recently used) is bad. Beware of memory leaks. This is what a memory leak looks like – notice how the GC tries to clean up memory but can’t due to the memory leak, and it tries more and more often as time progresses. <a href="http://2mlwm1eb459jcaws1qu2uq18-wpengine.netdna-ssl.com/wp-content/uploads/2015/10/JVMMemoryLeak.png"><img loading="lazy" class="alignnone size-full wp-image-46" src="http://2mlwm1eb459jcaws1qu2uq18-wpengine.netdna-ssl.com/wp-content/uploads/2015/10/JVMMemoryLeak.png" alt="JVMMemoryLeak" width="930" height="200" srcset="https://2mlwm1eb459jcaws1qu2uq18-wpengine.netdna-ssl.com/wp-content/uploads/2015/10/JVMMemoryLeak.png 930w, https://2mlwm1eb459jcaws1qu2uq18-wpengine.netdna-ssl.com/wp-content/uploads/2015/10/JVMMemoryLeak-300x65.png 300w" sizes="(max-width: 930px) 100vw, 930px"></a></p>
+                <p>It’s ok to print GC details in production. It should have no effect on performance. If you are on ec2 log to the ephemeral local drive, don’t use a network drive for Java logging. It’s synchronous.</p>
+                <p><code>-XX:+PrintGCDetails -Xloggc:/mnt/logs/gc-worker-pid%p.log -XX:+UseGCLogFileRotation -XX:NumberOfGCLogFiles=5 -XX:GCLogFileSize=10M -XX:-PrintTLAB</code></p>
+                <p>There is a tradeoff between the amount of work done during young GC and old GC. We run a small young generation and a small old generation heap and force very aggressive GC settings. We increase the heap sizes only when the GC logs indicate that we have to.</p>
+                <p>Good old parallel GC shows great performance tradeoff for small heaps. CMS has painful full GCs, but it might be worth checking on your use case.</p>
+                <p><code>-XX:+UseParallelGC -XX:+UseParallelOldGC</code></p>
+                <p>1024MB old, 768MB young (= 77MB x2 survivors + 615MB eden)</p>
+                <p><code>-Xms1792m -Xmx1792m -Xmn768m -XX:SurvivorRatio=8</code></p>
+                <p>Do not move from survivor space to old generation unless you have no other choice.</p>
+                <p><code>-XX:MaxTenuringThreshold=15</code></p>
+                <p>If Full-GC is already started, then make the most of it (easier to debug memory leaks that way too). This one is controversial at best.</p>
+                <p><code>-XX:HeapMaximumCompactionInterval=1</code></p>
+                <p>Use local object allocation (less multi-threading contention).</p>
+                <p><code>-XX:+UseTLAB -XX:+ResizeTLAB</code></p>
+                <p>No matter what your runtime environment or programming language is, optimizing for low latency has low-hanging fruits. The details change, but the principles are the same. Do not perform premature optimizations, but do take a moment and disable all loggers, or tail the garbage collection logs, or make a side-by-side latency comparison of the same code running on different ec2 instance from different days.</p>
+                <h2>9. Low-Latency Tweaks for Data Stores</h2>
+                <p>Most data store configurations are geared towards higher throughput, and also the benchmarks usually measure throughput (ops per second). When comparing various SQLs/NoSQLs make sure to think about low latency and compare apples-to-apples.</p>
+                <h4>Indexes in Memory or Disk?</h4>
+                <p>Are the indexes loaded from memory or disk? For example, with Couchbase there is a default configuration in which all indexes are loaded into memory. With other NoSQLs, they depend on the file system cache which after warm-up could load all indexes into memory.</p>
+                <h4>Data in Memory or Disk?</h4>
+                <p>Is the data loaded from memory or disk? For example, with Redis, all data is in-memory by default, and so fetches have lower latency. However memory is about 3 times more costly than SSDs. So if you are considering reading the data from disk, then benchmark the NoSQL based on your use case. Also, in the low latency use case more shards would probably be more performant than adding more read replicas due to better file system cache utilization (less disk copies, less cache needed).</p>
+                <h4>Available CPU Cores?</h4>
+                <p>Do you have enough available CPUs to handle the incoming requests? For example, with elasticsearch even if all data is cached, some complex queries require a dedicated CPU core available, and sending more queries than the available CPU cores would mean delaying some of them. Most systems never care about that latency spike since it has negligible effect on throughput, however if you are trying to improve the 99% percentile of latency, number of CPU cores could matter.</p>
+                <h4>Read vs Write Trade-offs</h4>
+                <p>Many data stores have different write/read trade-offs. For example, SELECT * on a table with tens of rows could be slower than SELECTing a single field. So during write you could lump all the required data in advance to a single field (like a K/V store would do). Similarly with a document database, when requesting the complete document it could take some time to push it through the network. Alas, when requesting specific fields, it would require parsing the document on the server side and creating a new document before sending it to the client (which is worse). In that case creating a scaled-down document during write time would reduce latency during read time.</p>
+                <h4>Client I/O Threads</h4>
+                <p>Many data store clients are optimized for high throughput, and are less optimized for low latency. For example, if you don’t have enough TCP connections open, some requests could be queued on the client side. In one case, we got lower latency (better) by proxying the request through a localhost proxy, only because we could set the proxy process priority to be higher. When the client was hosted in a Java process that had too many CPU hungry threads it was competing with the I/O threads of the NoSQL client.</p>
+                <p>Choosing the right data stores for each use case and then tweaking it takes time. Many startups call for external consultants to speed up the learning process, other startups learn it the hard way. We did both.</p>
+                <h2>9.5 Offload Tasks Before/After the Low Latency Critical Path</h2>
+                <p>As Forter’s fraud prevention system grew, we realized tweaking the low latency system would get us only so far, and that we needed to split our workload into three different subsystems.</p>
+                <p>Before the change:</p>
+                <div>
+                    <table>
+                        <tbody>
+                        <tr class="yellow">
+                            <td class="yellow">Subsystem</td>
+                            <td class="yellow">What does it do?</td>
+                            <td class="yellow">Limiting Design Constraint</td>
+                            <td class="yellow">Is Data Loss Acceptable?</td>
+                            <td class="yellow">Hard Business Requirements?</td>
+                        </tr>
+                        <tr>
+                            <td>TX Processing (The Critical Path)</td>
+                            <td>Approve/Decline Transactions in real-time</td>
+                            <td>Low Latency</td>
+                            <td>No</td>
+                            <td>Yes</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <p>After the change:</p>
+                <div>
+                    <table>
+                        <tbody>
+                        <tr>
+                            <td class="yellow">Subsystem</td>
+                            <td class="yellow">What does it do?</td>
+                            <td class="yellow">Limiting Design Constraint</td>
+                            <td class="yellow">Is Data Loss Acceptable?</td>
+                            <td class="yellow">Hard Business Requirements?</td>
+                        </tr>
+                        <tr>
+                            <td>Event Stream Processing</td>
+                            <td>Pre-process events before Transaction</td>
+                            <td>High Throughput</td>
+                            <td>Yes</td>
+                            <td>No(best effort)</td>
+                        </tr>
+                        <tr>
+                            <td>TX Processing (The Critical Path)</td>
+                            <td>Approve/Decline Transactions in real-time</td>
+                            <td>Low Latency</td>
+                            <td>No, but…</td>
+                            <td>No (best effort)</td>
+                        </tr>
+                        <tr>
+                            <td>Batch Processing</td>
+                            <td>Post-process all data</td>
+                            <td>High Volume</td>
+                            <td>Yes</td>
+                            <td>Yes (reconciliation)</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <h4>Event Stream Processing</h4>
+                <p>Some of the TX processing could be done before the transaction even started. The transaction might eventually never happen, so we might be doing extra work for nothing (higher throughput), but the tradeoff is there. Having the flexibility to trade low latency transaction processing requirements for high throughput event stream processing requirements can sometime shorten development time considerably.</p>
+                <h4>Batch Processing</h4>
+                <p>Similarly, if we have a batch processing system that works after the transaction is complete, we could relax the transaction processing requirements to be a best effort system, and perform billing reconciliation and other hard business requirements post-transaction.</p>
+                <h2>Closing notes</h2>
+                <p>Getting below 30ms latencies requires a different set of technologies (peer-to-peer clusters or even share-nothing architectures). However, running a complex business logic in a few hundred milliseconds latency is still achievable with commonly used technologies (http load balancers, SQL databases, NoSQLs, JVM). My hope is that you could apply some of the ideas presented here to your use case.</p>
+                <p>We are always looking to learn new stuff, and are happy to improve. If you have any comments or questions, let’s discuss on <a href="https://news.ycombinator.com/item?id=10463563"> Hacker News</a></p>
 
+            </div>
+
+        </article>
     </div>
-    <div class="tags__inner">
+    <!-- end post -->
 
-        <div class="container">
-            <div class="row">
-                <div class="col col-12">
-                    <div class="tag__info">
-                        <div class="tag__info-box">
-                            <div class="tag__counter">
-                                <span>2</span>
-                                <small>Posts</small>
-                            </div>
-                            <h2 class="tag__name" id="security">Security</h2>
-                        </div>
-                        <a class="top__link" href="#top">Return to top</a>
-                    </div>
-                </div>
-            </div>
-        </div>
 
-        <div class="container">
-            <div class="row">
-                <div class="col col-12">
-                    <div class="row">
-
-
-                        <div class="article col col-4 col-d-6 col-t-12">
-                            <div class="article__inner">
-
-                                <div class="article__head">
-                                    <time class="article__date" datetime="1970-01-01T00:00:00+00:00">01 Jan 1970</time>
-
-
-                                    <a class="article__image" href="/comparing-message-queue-architectures-on-aws">
-                                        <img class="lazy" data-src="/images/post-img/queue.png"
-                                             alt="Comparing Message Queue Architecture on AWS">
-                                    </a>
-
-
-                                </div>
-
-                                <div class="article__content">
-
-                                    <h2 class="article__title">
-                                        <a href="/comparing-message-queue-architectures-on-aws">Comparing Message Queue
-                                            Architecture on AWS</a>
-                                    </h2>
-
-
-                                </div>
-                            </div>
-                        </div>
-
-
-                        <div class="article col col-4 col-d-6 col-t-12">
-                            <div class="article__inner">
-
-                                <div class="article__head">
-                                    <time class="article__date" datetime="1970-01-01T00:00:00+00:00">01 Jan 1970</time>
-
-
-                                    <a class="article__image" href="/comparing-message-queue-architectures-on-aws">
-                                        <img class="lazy" data-src="/images/post-img/queue.png"
-                                             alt="Comparing Message Queue Architecture on AWS">
-                                    </a>
-
-
-                                </div>
-
-                                <div class="article__content">
-
-                                    <h2 class="article__title">
-                                        <a href="/comparing-message-queue-architectures-on-aws">Comparing Message Queue
-                                            Architecture on AWS</a>
-                                    </h2>
-
-
-                                </div>
-                            </div>
-                        </div>
-
-
-                    </div>
-                </div>
-            </div>
-        </div>
-
-    </div>
-    <div class="tags__inner">
-
-        <div class="container">
-            <div class="row">
-                <div class="col col-12">
-                    <div class="tag__info">
-                        <div class="tag__info-box">
-                            <div class="tag__counter">
-                                <span>2</span>
-                                <small>Posts</small>
-                            </div>
-                            <h2 class="tag__name" id="culture">Engineering Culture</h2>
-                        </div>
-                        <a class="top__link" href="#top">Return to top</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="container">
-            <div class="row">
-                <div class="col col-12">
-                    <div class="row">
-
-
-                        <div class="article col col-4 col-d-6 col-t-12">
-                            <div class="article__inner">
-
-                                <div class="article__head">
-                                    <time class="article__date" datetime="1970-01-01T00:00:00+00:00">01 Jan 1970</time>
-
-
-                                    <a class="article__image" href="/comparing-message-queue-architectures-on-aws">
-                                        <img class="lazy" data-src="/images/post-img/queue.png"
-                                             alt="Comparing Message Queue Architecture on AWS">
-                                    </a>
-
-
-                                </div>
-
-                                <div class="article__content">
-
-                                    <h2 class="article__title">
-                                        <a href="/comparing-message-queue-architectures-on-aws">Comparing Message Queue
-                                            Architecture on AWS</a>
-                                    </h2>
-
-
-                                </div>
-                            </div>
-                        </div>
-
-
-                        <div class="article col col-4 col-d-6 col-t-12">
-                            <div class="article__inner">
-
-                                <div class="article__head">
-                                    <time class="article__date" datetime="1970-01-01T00:00:00+00:00">01 Jan 1970</time>
-
-
-                                    <a class="article__image" href="/comparing-message-queue-architectures-on-aws">
-                                        <img class="lazy" data-src="/images/post-img/queue.png"
-                                             alt="Comparing Message Queue Architecture on AWS">
-                                    </a>
-
-
-                                </div>
-
-                                <div class="article__content">
-
-                                    <h2 class="article__title">
-                                        <a href="/comparing-message-queue-architectures-on-aws">Comparing Message Queue
-                                            Architecture on AWS</a>
-                                    </h2>
-
-
-                                </div>
-                            </div>
-                        </div>
-
-
-                    </div>
-                </div>
-            </div>
-        </div>
-
-    </div>
-    <div class="tags__inner">
-
-        <div class="container">
-            <div class="row">
-                <div class="col col-12">
-                    <div class="tag__info">
-                        <div class="tag__info-box">
-                            <div class="tag__counter">
-                                <span>2</span>
-                                <small>Posts</small>
-                            </div>
-                            <h2 class="tag__name" id="production">Production</h2>
-                        </div>
-                        <a class="top__link" href="#top">Return to top</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="container">
-            <div class="row">
-                <div class="col col-12">
-                    <div class="row">
-
-
-                        <div class="article col col-4 col-d-6 col-t-12">
-                            <div class="article__inner">
-
-                                <div class="article__head">
-                                    <time class="article__date" datetime="1970-01-01T00:00:00+00:00">01 Jan 1970</time>
-
-
-                                    <a class="article__image" href="/comparing-message-queue-architectures-on-aws">
-                                        <img class="lazy" data-src="/images/post-img/queue.png"
-                                             alt="Comparing Message Queue Architecture on AWS">
-                                    </a>
-
-
-                                </div>
-
-                                <div class="article__content">
-
-                                    <h2 class="article__title">
-                                        <a href="/comparing-message-queue-architectures-on-aws">Comparing Message Queue
-                                            Architecture on AWS</a>
-                                    </h2>
-
-
-                                </div>
-                            </div>
-                        </div>
-
-
-                        <div class="article col col-4 col-d-6 col-t-12">
-                            <div class="article__inner">
-
-                                <div class="article__head">
-                                    <time class="article__date" datetime="1970-01-01T00:00:00+00:00">01 Jan 1970</time>
-
-
-                                    <a class="article__image" href="/comparing-message-queue-architectures-on-aws">
-                                        <img class="lazy" data-src="/images/post-img/queue.png"
-                                             alt="Comparing Message Queue Architecture on AWS">
-                                    </a>
-
-
-                                </div>
-
-                                <div class="article__content">
-
-                                    <h2 class="article__title">
-                                        <a href="/comparing-message-queue-architectures-on-aws">Comparing Message Queue
-                                            Architecture on AWS</a>
-                                    </h2>
-
-
-                                </div>
-                            </div>
-                        </div>
-
-
-                    </div>
-                </div>
-            </div>
-        </div>
-
-    </div>
-
-
-    </section>
-    <!-- end tags -->
 </main>
 <!-- end content -->
+
 
 <!-- begin footer -->
 <footer class="footer">
@@ -4708,8 +4636,8 @@
 
                                 <li class="social__item">
                                     <a class="social__link"
-                                       href="https://www.youtube.com/channel/UCxAPyPoyVWu0yJbZ0gAvCqA"
-                                       target="_blank" rel="noopener"
+                                       href="https://www.youtube.com/channel/UCxAPyPoyVWu0yJbZ0gAvCqA" target="_blank"
+                                       rel="noopener"
                                        aria-label=" link"><i class="ion ion-logo-youtube"></i></a>
                                 </li>
 

@@ -6,25 +6,25 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Forter Tech Blog</title>
+    <title>0FLAKE – Reaching Reliable Non-Flaky Tests</title>
     <meta name='description'
           content="Forter's technical blog, writing on security, performance, engineering culture, and more.">
 
-    <link rel="canonical" href="http://localhost:4000/">
-    <link rel="alternate" type="application/rss+xml" title="Forter Tech Blog" href="/feed.xml">
+    <link rel="canonical" href="http://localhost:4000/can-we-agree-on-dependency-and-version-management">
+    <link rel="alternate" type="application/rss+xml" title="TECH.FORTER.COM" href="/feed.xml">
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Forter Tech Blog">
+    <meta name="twitter:title" content="0FLAKE – Reaching Reliable Non-Flaky Tests – TECH.FORTER.COM">
     <meta name="twitter:description"
-          content="Forter's technical blog, writing on security, performance, engineering culture, and more.">
-    <meta name="twitter:image:src" content="http://localhost:4000/images/forter.png">
+          content="Tests provide confidence. They provide confidence during development, in new deployments, and continuously in production (monitoring). Flaky tests, on the other hand, fail or pass for the same configuration, and erode confidence in our tests and in our systems. More often than not, test flakiness is the result of a binary “assertion” (tests passing or failing). Confidence is not a binary, it’s a spectrum. 0Flake is about the tools to create a spectrum of results.">
+    <meta name="twitter:image:src" content="http://localhost:4000/images/post-img/flake.png">
 
     <!-- Facebook OpenGraph -->
-    <meta property="og:title" content="Forter Tech Blog">
+    <meta property="og:title" content="0FLAKE – Reaching Reliable Non-Flaky Tests – TECH.FORTER.COM">
     <meta property="og:description"
-          content="Forter's technical blog, writing on security, performance, engineering culture, and more.">
-    <meta property="og:image" content="http://localhost:4000/images/forter.png">
+          content="Tests provide confidence. They provide confidence during development, in new deployments, and continuously in production (monitoring). Flaky tests, on the other hand, fail or pass for the same configuration, and erode confidence in our tests and in our systems. More often than not, test flakiness is the result of a binary “assertion” (tests passing or failing). Confidence is not a binary, it’s a spectrum. 0Flake is about the tools to create a spectrum of results.">
+    <meta property="og:image" content="http://localhost:4000/images/post-img/flake.png">
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -4240,6 +4240,7 @@
                                 <a href="/" class="nav__link">Home</a>
                             </li>
 
+
                             <li class="nav__item nav__item-icon">
                                 <div class="toggle-theme">
                                     <div class="toggle-moon" title="Enable dark mode"><i class="ion ion-ios-moon"></i>
@@ -4292,378 +4293,198 @@
 
 <!-- begin content -->
 <main class="content" aria-label="Content">
-
-
-    <div class="tags__inner">
-
+    <div class="post-head">
         <div class="container">
             <div class="row">
-                <div class="col col-12">
-                    <div class="tag__info">
-                        <div class="tag__info-box">
-                            <div class="tag__counter">
-                                <span>2</span>
-                                <small>Posts</small>
-                            </div>
-                            <h2 class="tag__name" id="talks">Talks</h2>
-                        </div>
-                        <a class="top__link" href="#top">Return to top</a>
+
+                <div class="col col-6 col-d-12">
+                    <div class="post-image">
+                        <img class="lazy" data-src="/images/post-img/flake.png"
+                             alt="0FLAKE – Reaching Reliable Non-Flaky Tests">
                     </div>
                 </div>
-            </div>
-        </div>
 
-        <div class="container">
-            <div class="row">
-                <div class="col col-12">
-                    <div class="row">
+                <div class="col col-6 col-d-12">
+                    <div class="post__info ">
 
 
-                        <div class="article col col-4 col-d-6 col-t-12">
-                            <div class="article__inner">
+                        <div class="post__tags">
 
-                                <div class="article__head">
-                                    <time class="article__date" datetime="1970-01-01T00:00:00+00:00">01 Jan 1970</time>
+                            <a href="/tags#test" class="post__tag">test</a>
+                            <a href="/tags#software architecture" class="post__tag">software architecture</a>
 
-                                    <div class="video-icon">
-                                        <div class="circle pulse"></div>
-                                        <div class="circle">
-                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
-                                                <polygon points="40,30 65,50 40,70"></polygon>
-                                            </svg>
-                                        </div>
-                                    </div>
-
-                                    <a class="article__image" href="/comparing-message-queue-architectures-on-aws">
-                                        <img class="lazy" data-src="/images/post-img/queue.png"
-                                             alt="Comparing Message Queue Architecture on AWS">
-                                    </a>
-
-
-                                </div>
-
-                                <div class="article__content">
-
-                                    <h2 class="article__title">
-                                        <a href="/comparing-message-queue-architectures-on-aws">Comparing Message Queue
-                                            Architecture on AWS</a>
-                                    </h2>
-
-
-                                </div>
-                            </div>
                         </div>
 
 
-                        <div class="article col col-4 col-d-6 col-t-12">
-                            <div class="article__inner">
+                        <h1 class="post__title">0FLAKE – Reaching Reliable Non-Flaky Tests</h1>
 
-                                <div class="article__head">
-                                    <time class="article__date" datetime="1970-01-01T00:00:00+00:00">01 Jan 1970</time>
+                        <div class="post__meta">
+                            <a href="/about/" class="post__author-image">
+                                <img class="lazy" data-src="/images/authors/itai.jpg" alt="Itay Frenkel">
+                            </a>
 
-                                    <div class="video-icon">
-                                        <div class="circle pulse"></div>
-                                        <div class="circle">
-                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
-                                                <polygon points="40,30 65,50 40,70"></polygon>
-                                            </svg>
-                                        </div>
-                                    </div>
-
-                                    <a class="article__image" href="/comparing-message-queue-architectures-on-aws">
-                                        <img class="lazy" data-src="/images/post-img/queue.png"
-                                             alt="Comparing Message Queue Architecture on AWS">
-                                    </a>
-
-
-                                </div>
-
-                                <div class="article__content">
-
-                                    <h2 class="article__title">
-                                        <a href="/comparing-message-queue-architectures-on-aws">Comparing Message Queue
-                                            Architecture on AWS</a>
-                                    </h2>
-
-
-                                </div>
+                            <div class="post__meta-bottom">
+                                <span class="post__author">Itay Frenkel</span>
+                                <time class="post__date" datetime="2018-12-18T00:00:00+00:00">18 Dec 2018</time>
                             </div>
                         </div>
-
 
                     </div>
                 </div>
             </div>
         </div>
-
-    </div>
-    <div class="tags__inner">
-
-        <div class="container">
-            <div class="row">
-                <div class="col col-12">
-                    <div class="tag__info">
-                        <div class="tag__info-box">
-                            <div class="tag__counter">
-                                <span>2</span>
-                                <small>Posts</small>
-                            </div>
-                            <h2 class="tag__name" id="security">Security</h2>
-                        </div>
-                        <a class="top__link" href="#top">Return to top</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="container">
-            <div class="row">
-                <div class="col col-12">
-                    <div class="row">
-
-
-                        <div class="article col col-4 col-d-6 col-t-12">
-                            <div class="article__inner">
-
-                                <div class="article__head">
-                                    <time class="article__date" datetime="1970-01-01T00:00:00+00:00">01 Jan 1970</time>
-
-
-                                    <a class="article__image" href="/comparing-message-queue-architectures-on-aws">
-                                        <img class="lazy" data-src="/images/post-img/queue.png"
-                                             alt="Comparing Message Queue Architecture on AWS">
-                                    </a>
-
-
-                                </div>
-
-                                <div class="article__content">
-
-                                    <h2 class="article__title">
-                                        <a href="/comparing-message-queue-architectures-on-aws">Comparing Message Queue
-                                            Architecture on AWS</a>
-                                    </h2>
-
-
-                                </div>
-                            </div>
-                        </div>
-
-
-                        <div class="article col col-4 col-d-6 col-t-12">
-                            <div class="article__inner">
-
-                                <div class="article__head">
-                                    <time class="article__date" datetime="1970-01-01T00:00:00+00:00">01 Jan 1970</time>
-
-
-                                    <a class="article__image" href="/comparing-message-queue-architectures-on-aws">
-                                        <img class="lazy" data-src="/images/post-img/queue.png"
-                                             alt="Comparing Message Queue Architecture on AWS">
-                                    </a>
-
-
-                                </div>
-
-                                <div class="article__content">
-
-                                    <h2 class="article__title">
-                                        <a href="/comparing-message-queue-architectures-on-aws">Comparing Message Queue
-                                            Architecture on AWS</a>
-                                    </h2>
-
-
-                                </div>
-                            </div>
-                        </div>
-
-
-                    </div>
-                </div>
-            </div>
-        </div>
-
-    </div>
-    <div class="tags__inner">
-
-        <div class="container">
-            <div class="row">
-                <div class="col col-12">
-                    <div class="tag__info">
-                        <div class="tag__info-box">
-                            <div class="tag__counter">
-                                <span>2</span>
-                                <small>Posts</small>
-                            </div>
-                            <h2 class="tag__name" id="culture">Engineering Culture</h2>
-                        </div>
-                        <a class="top__link" href="#top">Return to top</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="container">
-            <div class="row">
-                <div class="col col-12">
-                    <div class="row">
-
-
-                        <div class="article col col-4 col-d-6 col-t-12">
-                            <div class="article__inner">
-
-                                <div class="article__head">
-                                    <time class="article__date" datetime="1970-01-01T00:00:00+00:00">01 Jan 1970</time>
-
-
-                                    <a class="article__image" href="/comparing-message-queue-architectures-on-aws">
-                                        <img class="lazy" data-src="/images/post-img/queue.png"
-                                             alt="Comparing Message Queue Architecture on AWS">
-                                    </a>
-
-
-                                </div>
-
-                                <div class="article__content">
-
-                                    <h2 class="article__title">
-                                        <a href="/comparing-message-queue-architectures-on-aws">Comparing Message Queue
-                                            Architecture on AWS</a>
-                                    </h2>
-
-
-                                </div>
-                            </div>
-                        </div>
-
-
-                        <div class="article col col-4 col-d-6 col-t-12">
-                            <div class="article__inner">
-
-                                <div class="article__head">
-                                    <time class="article__date" datetime="1970-01-01T00:00:00+00:00">01 Jan 1970</time>
-
-
-                                    <a class="article__image" href="/comparing-message-queue-architectures-on-aws">
-                                        <img class="lazy" data-src="/images/post-img/queue.png"
-                                             alt="Comparing Message Queue Architecture on AWS">
-                                    </a>
-
-
-                                </div>
-
-                                <div class="article__content">
-
-                                    <h2 class="article__title">
-                                        <a href="/comparing-message-queue-architectures-on-aws">Comparing Message Queue
-                                            Architecture on AWS</a>
-                                    </h2>
-
-
-                                </div>
-                            </div>
-                        </div>
-
-
-                    </div>
-                </div>
-            </div>
-        </div>
-
-    </div>
-    <div class="tags__inner">
-
-        <div class="container">
-            <div class="row">
-                <div class="col col-12">
-                    <div class="tag__info">
-                        <div class="tag__info-box">
-                            <div class="tag__counter">
-                                <span>2</span>
-                                <small>Posts</small>
-                            </div>
-                            <h2 class="tag__name" id="production">Production</h2>
-                        </div>
-                        <a class="top__link" href="#top">Return to top</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="container">
-            <div class="row">
-                <div class="col col-12">
-                    <div class="row">
-
-
-                        <div class="article col col-4 col-d-6 col-t-12">
-                            <div class="article__inner">
-
-                                <div class="article__head">
-                                    <time class="article__date" datetime="1970-01-01T00:00:00+00:00">01 Jan 1970</time>
-
-
-                                    <a class="article__image" href="/comparing-message-queue-architectures-on-aws">
-                                        <img class="lazy" data-src="/images/post-img/queue.png"
-                                             alt="Comparing Message Queue Architecture on AWS">
-                                    </a>
-
-
-                                </div>
-
-                                <div class="article__content">
-
-                                    <h2 class="article__title">
-                                        <a href="/comparing-message-queue-architectures-on-aws">Comparing Message Queue
-                                            Architecture on AWS</a>
-                                    </h2>
-
-
-                                </div>
-                            </div>
-                        </div>
-
-
-                        <div class="article col col-4 col-d-6 col-t-12">
-                            <div class="article__inner">
-
-                                <div class="article__head">
-                                    <time class="article__date" datetime="1970-01-01T00:00:00+00:00">01 Jan 1970</time>
-
-
-                                    <a class="article__image" href="/comparing-message-queue-architectures-on-aws">
-                                        <img class="lazy" data-src="/images/post-img/queue.png"
-                                             alt="Comparing Message Queue Architecture on AWS">
-                                    </a>
-
-
-                                </div>
-
-                                <div class="article__content">
-
-                                    <h2 class="article__title">
-                                        <a href="/comparing-message-queue-architectures-on-aws">Comparing Message Queue
-                                            Architecture on AWS</a>
-                                    </h2>
-
-
-                                </div>
-                            </div>
-                        </div>
-
-
-                    </div>
-                </div>
-            </div>
-        </div>
-
     </div>
 
+    <!-- begin post -->
+    <div class="container animate">
 
-    </section>
-    <!-- end tags -->
+        <article class="post">
+            <div class="post__content">
+                <p><iframe src="//www.slideshare.net/slideshow/embed_code/key/pIB8paJ0uQ5NzI" width="595" height="485" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC; border-width:1px; margin-bottom:5px; max-width: 100%;" allowfullscreen=""> </iframe> </p>
+                <div style="margin-bottom:5px"> </div>
+                <h2>Testing Philosophy</h2>
+                <p><em>Tests provide confidence.</em> They provide confidence during development, in new deployments, and continuously in production (monitoring). Flaky tests, on the other hand, fail or pass for the same configuration, and erode confidence in our tests and in our systems. More often than not, test flakiness is the result of a binary “assertion” (tests passing or failing). Confidence is not a binary, it’s a spectrum. 0Flake is about the tools to create a spectrum of results.</p>
+                <p><em>Confidence is a business advantage.</em> When Forter approaches an enterprise e-commerce merchant, one of the most common questions is, “How do you prepare for Black Friday?” (that time of year during which they make most of their money). In the not so distant past, the “correct” answer was, “Code freeze 1 month ahead of the event.” Today, the “correct” answer is that the processes we have in place make us confident in introducing system changes all year long — including during peak seasons and holidays like Black Friday. Fraudsters (which Forter defends against) never rest, and neither do we. Having reliable non-flaky tests, used during development, deployment, and production are a big part of why we are able to be confident.</p>
+                <h2>Some Context</h2>
+                <p>Forter’s core offering is to prevent fraud for online e-commerce transactions. Transaction details are the input of this service, (such as the address related to the credit card holder and the shipping address). The output of this service is a decision. Declining the transaction means that the transaction is rejected, and the end user will likely reach out to customer support. As such, we aim to minimize those occurrences. Approving the transaction means that Forter gets a small cut (if the end user is legit) or returns money to our customer if the credit card holder claims they never bought a specific item, and that his identity or credit card were stolen.</p>
+                <div><img src="https://2mlwm1eb459jcaws1qu2uq18-wpengine.netdna-ssl.com/wp-content/uploads/2018/12/0flake_image4.png" alt=""></div>
+                <p>Internally, the raw transaction data is processed into machine learning features. For example, the billing and shipping addresses are geo-coded into latitude/longitude and the distance in miles between the billing and shipping addresses is calculated. Next, the machine learning model takes these features and predicts the probability of the transaction being fraudulent. The result is calibrated to reflect the real-world probability, but it is still not a final decision. The next component applies customer specific policies and provides an approve/decline decision. </p>
+                <h1>Flaky Unit Tests Due to Precision and Accuracy Issues</h1>
+                <p>As every developer eventually discovers, some floating point operations might introduce unexpected results. Floating points were designed to give an approximation, so precision is traded for a high range of values. Try this in one of your unit tests:</p>
+                <div><img src="https://2mlwm1eb459jcaws1qu2uq18-wpengine.netdna-ssl.com/wp-content/uploads/2018/12/0flake_image12.png" width="40%" alt=""></div>
+                <p>This problem also applies to testing the results of the <a href="https://github.com/geopy/geopy/blob/master/README.rst">geopy library</a> which calculates the distance between two geo-locations on earth:</p>
+                <div><img src="https://2mlwm1eb459jcaws1qu2uq18-wpengine.netdna-ssl.com/wp-content/uploads/2018/12/0flake_image7.png" alt="" width="80%"></div>
+                <p>Developers with healthy instincts quickly <del>solved</del> patched this test, by providing a range of values, just so the test would pass:</p>
+                <div><img src="https://2mlwm1eb459jcaws1qu2uq18-wpengine.netdna-ssl.com/wp-content/uploads/2018/12/0flake_image1.png" alt="" width="80%"></div>
+                <p>A few years passed, and on April 7th 2018, <a href="https://github.com/geopy/geopy/pull/144/files#diff-056668d68fc0cab3fb9c1d4e046d76c0R9">geopy improved the accuracy of the default distance algorithm</a>, and upgrades to the latest version of geopy resulted in test failures (again). </p>
+                <p>This time, we involved a fraud analyst, and apparently, for smaller distances 1 mile precision is enough, and for larger distances 1% is sufficient. Furthermore, this issue is not specific to geo-distances or floating points. Many of the features we introduce to our machine learning model have this range of outputs. </p>
+                <p>Therefore, the underlying problem was that developers were maintaining tests, without enough domain specific knowledge. With this in mind, we created a slim testing framework, and moved the responsibility of maintaining these tests to analysts. This framework allows an analyst to specify the input as raw transactional values (addresses as text in this case), and the expected results as a range, or one of a few values.</p>
+                <div><img src="https://2mlwm1eb459jcaws1qu2uq18-wpengine.netdna-ssl.com/wp-content/uploads/2018/12/0flake_image10.png" alt="" width="80%"></div>
+                <h1>Flaky Integration Tests Due to Non-Deterministic Results</h1>
+                <p>A fraud machine learning model is being fed with thousands of input data points, and some of these data points will not be available for each transaction. The code therefore uses fallback logic, trying to feed the machine learning model with whatever data it has – even when it seems like it doesn’t. During integration tests, this problem manifests too, when a service that we are trying to integrate with, fails during the test.</p>
+                <p>The following integration test, usually declines the transaction since the “bill_ship_dist” is “1200 miles.” When one day the geocoding service failed, fallback logic kicked in. The “bill_ship_dist” result changed from “1200 miles” to  “greater than 100 miles.” The fraud prediction model produced the result 19% fraud probability (just below the decline threshold), and the final decision changed from “decline” to “approve.” The test failed, even though nothing was wrong with the service that was actually being tested.</p>
+                <div><img src="https://2mlwm1eb459jcaws1qu2uq18-wpengine.netdna-ssl.com/wp-content/uploads/2018/12/0flake_image2.png" alt=""></div>
+                <p>Developers with healthy instincts quickly <del>solved</del> patched this test, by adding a “@retry” annotation. This could have worked if the geocoding service was having a temporary hiccup, but more often than not, these problems may persist. Delaying tests for long retry periods could result in terrible developer experience.</p>
+                <div><img src="https://2mlwm1eb459jcaws1qu2uq18-wpengine.netdna-ssl.com/wp-content/uploads/2018/12/0flake_image15.png" alt=""></div>
+                <p>So, the underlying problem here is that there is an inherent tradeoff between integration test stability, and integration coverage. </p>
+                <h3>Stubs</h3>
+                <p>On the far top left end of this tradeoff, we stub other services. For example, we can use <a href="https://pypi.org/project/fakeredis/">fakeredis</a> instead of connecting to a test redis server. The only problem is that the parts that are stable (stubs) do not cover all of the other service APIs, and definitely not its latest changes. Any such change would be noticeable only in production.</p>
+                <h3>Docker Sidecar</h3>
+                <p>Improving on the stubs solution, the most common practice is that each other service would have its own test-specific Docker running on localhost. Each test suite comes with a Docker compose file, that starts one Docker per other service. Instead of a stub, we use the latest version of the services with which we want to integrate. This increases integration coverage, without degrading the test stability. In some cases (such as redis Docker), this solution is perfect. However, given enough Docker dependencies (and their recursive dependencies and configuration), the test setup time and complexity could result in a sizeable upfront investment, and maintenance. </p>
+                <h3>Connecting to other Services</h3>
+                <p>On the far bottom right of this tradeoff, we connect only to real instances of the other services. There is a sizeable investment in a “develop env,” which is similar to the “production env,” only scaled down, lesser SLA, and only has access to test data. With a lesser SLA, and with a complex enough service mesh, this test could fail every other week, and could result in terrible developer experience. </p>
+                <p>One could argue that we can similarly maintain a high SLA for the “develop env,” but this would result in redundancy, monitoring, alerts, and a general increase in developer fatigue. We measure developer fatigue by the amount of alerts each developer needs to handle, the amount of maintenance operation, and the context switches. Not to mention that a relapse of one service SLA in development would ripple throughout integration tests and block integration tests for everyone. This would not be a tenable situation.</p>
+                <h3>Ignoring Some Exceptions</h3>
+                <p>Improving on the previous solution, we decide to let the test pass even when some other services are offline. When the code runs in production, the monitoring service propagates exceptions to emails, alerts, and dashboards. During integration tests however, the monitoring service stub adds the exception to a list. Just before the test completes, the test inspects the swallowed exceptions and decides whether the test should pass or fail. Some exceptions could trigger a test failure, but others could be silently ignored, since they are a distinct indication for another service being offline.</p>
+                <p>This would result in a small reduction in test integration coverage but would result in a much more stable test environment.</p>
+                <h3>Relaxing Asserts</h3>
+                <p>Simple solutions usually hide in plain sight. Even after everything we’ve just described, the integration test may still fail on this line:<br>
+                    assert decision == ‘decline’<br>
+                    So we remove it. We remove the assert. We delete it. No git revert. No regrets. Confidence is a spectrum, not an equals statement. The test passes. Mission accomplished! </p>
+                <p>Well…not quite. Keep reading…</p>
+                <h1>Testing In Production</h1>
+                <p>(The truth is, we couldn’t remove that last assert, before we started testing in production).</p>
+                <h2>Canary Deployment (à la Netflix)</h2>
+                <p>Netflix has been doing canary deployments for a long time now, and as Netflix does so, they open source their deployment tooling. The domestic canary is a small songbird very sensitive to lethal gas. Coal miners used to bring this songbird into underground tunnels with them, and as the birds’ songs would come to an abrupt halt, the miners would know it was time to “git revert” and head back. Similarly, a Canary Deployment involves sacrificing a small part of the traffic in order to detect lethal bugs early.</p>
+                <p>Here is the gist:</p>
+                <ol>
+                    <li>When a new version (v2) is ready to deploy, it starts with only three instances and the load balancer routes a small part of the traffic to this new version.
+                    </li><li>We would like to compare the monitoring metrics of the canary deployment with the production deployment, but that wouldn’t be a fair comparison. The production deployment has all of its caches and connections setup, and has many more instances.
+                </li><li>So, simultaneously with the Canary, a third deployment, called Baseline, is deployed with the exact version as the production environment.
+                </li><li>Any statistical anomaly between Baseline and Canary is analyzed and a decision is made whether to complete the v2 deployment, or revert it.
+                </li></ol>
+                <div><img src="https://2mlwm1eb459jcaws1qu2uq18-wpengine.netdna-ssl.com/wp-content/uploads/2018/12/0flake_image13.png" alt=""></div>
+                <p>Canary isn’t a good fit for us, since we can’t sacrifice any part of our traffic. Forter measures the loss incurred due to analytical and engineering errors. Analytical errors are part of the cost of doing business in an adversary environment. Fraudsters are very persistent and they try and retry their attempts to commit fraud. Engineering errors however, are of our own making.</p>
+                <p>The engineering loss in case of a faulty Canary Deployment is described in the following formula:</p>
+                <div><img src="https://2mlwm1eb459jcaws1qu2uq18-wpengine.netdna-ssl.com/wp-content/uploads/2018/12/0flake_image17.png" alt=""></div>
+                <p>In a worst case scenario, in which the Canary Deployment approves all transactions, Forter would have to refund its customers for all products stolen by fraudsters (approximately 1.5% of the Canary transaction total value). In order to be able to detect statistically significant changes between the Canary and the Baseline deployment, we need a minimum number of transactions to be processed (tx_throughput * T1). Multiply these two numbers and the result is the engineering loss in case of a serious bug in the fraud detection logic or configuration.</p>
+                <h2>Blue/Green Effectless Deployment (à la Forter)</h2>
+                <p>In a blue/green deployment the v2 environment is already scaled out, and ready to process data. The effectless variation streams a copy of the real traffic to the v2 environment for about 14 minutes, and only if there is no deviation between v2 and v1, do we stream real traffic to the new v2 version.</p>
+                <ol>
+                    <li>Every new version is deployed with the “Effectless” toggle turned on by default. This toggle changes the code behavior very slightly so it won’t overwrite production data (for example instead of uploading to S3 /mybucket/prodcution/myfilename it uploads to /mybucket/effectless/myfilename).
+                    </li><li>We stream fake test traffic to the new environment, and validate that there are no exceptions being raised. This also forces the new environment to setup connections to the databases.
+                    <div><img src="https://2mlwm1eb459jcaws1qu2uq18-wpengine.netdna-ssl.com/wp-content/uploads/2018/12/0flake_image6.png" alt=""></div>
+                </li><li>We then forward a copy of all production requests to the effectless environment and compare the results of both versions (more on this later).
+                    <div><img src="https://2mlwm1eb459jcaws1qu2uq18-wpengine.netdna-ssl.com/wp-content/uploads/2018/12/0flake_image9.png" alt=""></div>
+                </li><li>If the blue environment (v2) results does not diverge from the green environment (v1), the new version is ready to process production traffic. The stream of traffic from the database is stopped, the blue env is drained, the effectless toggle is switched off, and production traffic is routed to the blue env and the green env is drained.
+                    <div><img src="https://2mlwm1eb459jcaws1qu2uq18-wpengine.netdna-ssl.com/wp-content/uploads/2018/12/0flake_image5.png" alt=""></div>
+                </li><li>Though we routed real traffic to the blue env, we don’t completely trust it just yet. The green env (v1) remains on standby as a quick fallback. Small problems slip through the effectless test and can eventually accumulate, resulting in precision drift. We monitor the business KPIs of the blue env against business thresholds, and after only 4 hours we can safely remove the green env.
+                    <div><img src="https://2mlwm1eb459jcaws1qu2uq18-wpengine.netdna-ssl.com/wp-content/uploads/2018/12/0flake_image3.png" alt=""></div>
+                </li></ol>
+                <h3>The Effectless Test</h3>
+                <p>The effectless tests run for around 14 minutes (T1). A report is sent to Slack after 7 minutes and again after 14 minutes:</p>
+                <div><img src="https://2mlwm1eb459jcaws1qu2uq18-wpengine.netdna-ssl.com/wp-content/uploads/2018/12/0flake_image11.png" alt="" width="70%"></div>
+                <p>The tests compares the statistics between the blue and the green environments:</p>
+                <ul>
+                    <li>The sum of transactions which received different decisions must have insignificant business impact.
+                    </li><li>API latencies difference between the environments:
+                    <ul>
+                        <li>It is easiest to compare the 50% and the 95% percentiles.
+                        </li><li>The 99% percentile is noisy, and requires more complex processing.
+                    </li><li>Caching effects favor the effectless environment, since effectless processes the same data that the production environment just processed a few seconds ago, and the databases’ LRU caches are hot.
+                    </li></ul>
+                </li><li>Absolute and relative number of exceptions. Exception thresholds must be gradually tightened with the maturity of the code. It is not realistic to expect zero exceptions in production for new features.
+                </li><li>All test stats need to be grouped by tenant / by sub-service / by host, in order to detect local problems that are not evident when looking at the entire cluster.
+                    <ul>
+                        <li>Small sub-services are ignored.
+                        </li><li>Small tenants need to be grouped together to be statistically significant.
+                    </li><li>Every host matters.
+                    </li></ul>
+                </li></ul>
+                <p>Sometimes the test fails because the blue environment is actually better than the green environment. In these cases the developer and the analyst that introduced the change need to dive into the details, and then they can override and deploy the blue environment, even though the effectless test failed.</p>
+                <h1>Flaky System Tests Due to Data Pipeline Hiccups</h1>
+                <p>Until now, we described a single (micro) service that handles transaction decisions. The system also contains an analytics service that aggregates interesting fraud-related insights for customers, and billing services that generate invoices. </p>
+                <p>Each service has its own database, and a reliable data pipeline keeps them synchronized. For example each time a new transaction completes processing, a notification is sent to the data pipeline, which eventually updates the analytics database. Even though the data pipeline is “reliable”, this can go wrong in a couple of ways:</p>
+                <ul>
+                    <li>Configuration of the publish-subscribe is not up to date, or spread across too many repositories.
+                    </li><li>Messages that failed processing went to the Dead Letter Queue, but the DLQ pattern requires manual intervention. The engineer that handled the DLQ may have made an honest mistake.
+                </li><li>A bug in the analytics code got into production for a few days, and during that time it updated the analytics database incorrectly.
+                </li></ul>
+                <p>The analytics insights are used by our customer’s fraud manager on a daily basis and the invoices are checked by our customers’ billing departments. Any mistakes in that data are immediately visible to our customer’s top decision makers.</p>
+                <p>So, we decided to go ahead and implement a simple sanity system test. The test sends a fake transaction into the decision service, sleeps for 15 seconds, and then checks that the transaction has arrived to the analytics and billing databases. This test works well, most of the time. During traffic spikes, the data pipeline queues fill up, and the analytics database gets out of sync for longer periods of time. The result is a flaky system test. The important point here is that this doesn’t happen too often and is considered healthy behavior of the data pipeline. However, it is unacceptable for a system test to raise a false alert even once in two weeks.</p>
+                <p>Developers with healthy instincts quickly <del>solved</del> patched this test, by increasing the sleep period from 15 to 600 seconds. The problem is that the analytics service should only be 15 seconds behind the decision service, and not 600 seconds. </p>
+                <div><img src="https://2mlwm1eb459jcaws1qu2uq18-wpengine.netdna-ssl.com/wp-content/uploads/2018/12/0flake_image16.png" alt=""></div>
+                <h2>Data Reconciliation</h2>
+                <p>Instead of this simple system test, we built a data reconciliation service. It has direct access to each one of the relevant microservices’ databases, and it performs simple sanity checks. An alert is raised if it detects:</p>
+                <ul>
+                    <li>Data is missing (max transaction timestamp, missing transaction id).
+                        <ul>
+                            <li>The time-drift threshold can be configured separately for each database.</li></ul>
+                    </li><li>Referential integrity problems (“broken links” between databases).
+                    <ul>
+                        <li>For example, the billing invoice requires special treatment for canceled transactions.</li></ul>
+                </li></ul>
+                <div><img src="https://2mlwm1eb459jcaws1qu2uq18-wpengine.netdna-ssl.com/wp-content/uploads/2018/12/0flake_image14.png" alt=""></div>
+                <p>There are two important metadata prerequisites:</p>
+                <ul>
+                    <li>A mapping between each data “type” and the database that serves as its source of truth. In this example, the transaction’s source of truth resides in the decision service database.
+                    </li><li>Since the microservice API isolation is violated, a unified metadata repository is needed to reduce the tight coupling between the reconciliator and each service db schema.
+                </li></ul>
+                <p>Maintaining the reconciliation gets harder as you try to add more databases. Therefore, there must be a very good business justification for the implementation of one.</p>
+                <h2>Positive Feedback Loops</h2>
+                <p>The next step is for the data reconciliation service to proactively fix missing data, by “replaying” it into the Data Pipeline automatically.</p>
+                <div><img src="https://2mlwm1eb459jcaws1qu2uq18-wpengine.netdna-ssl.com/wp-content/uploads/2018/12/0flake_image8.png" alt=""></div>
+                <p>The implementation details are important. Let’s say that a transaction takes 100ms to be processed by the analytics service. However, rare transactions with large payloads take 10 times longer to be processed. Ordinarily, these transactions are rare, and the system handles them slightly more slowly. Now, for some reason, all of these large transactions fail to process correctly, and the data reconciliation replays them all at once. Although full of good intentions, the reconciliation service has effectively clogged the analytics service. After a few minutes the reconciliator detects more missing transactions (the analytics service is clogged – remember?) and it replays them too…and so on. In control theory this is called a <a href="https://en.wikipedia.org/wiki/Positive_feedback">positive feedback loop</a>:</p>
+                <blockquote><p>Positive feedback tends to cause system instability…increasing oscillations, chaotic behavior or other divergences from equilibrium. <strong>System parameters will typically accelerate towards extreme values, which may damage or destroy the system…</strong></p></blockquote>
+                <p>Luckily, there is more:</p>
+                <blockquote><p>Positive feedback may be controlled by signals in the system being filtered, damped, or limited, or it can be cancelled or reduced by adding negative feedback.</p></blockquote>
+                <p>Translating to our domain:</p>
+                <p><strong>Filtering</strong> – Fix only serious data problems that affects the business.<br>
+                    <strong>Damping</strong> – After fixing a problem, wait 1 minute before trying to fix another problem.<br>
+                    <strong>Limiting</strong> – Replay each missing transaction only once.<br>
+                    <strong>Negative feedback</strong> – Inspect the health of the analytics service (or its relevant Data Pipeline Input Queues), and pause reconciliation until service health is back to normal.</p>
+                <p>Data Reconciliation is hard, and would require strong business justification and some experimenting. Peer developers might resist the violation of micro-service isolation. However, if implemented correctly, it increases the confidence in the system to the level we desire.</p>
+                <p>The solutions described in this post were designed, implemented, tweaked and re-implemented by <a href="https://www.linkedin.com/in/bensimhon/">Re’em Ben Simhon</a>, <a href="https://www.linkedin.com/in/dan-kilman-2a093456/">Dan Kilman</a> , <a href="https://www.linkedin.com/in/tal-amuyal-47644744/">Tal Amuyal</a> and <a href="https://www.linkedin.com/in/roy-tsabari-55589b12/">Roy Tsabari</a>. If you have any questions, or would like to join us at our Tel Aviv office, send me an email to <a href="mailto:itai@forter.com">itai@forter.com</a>, or directly to our VP Engineering <a href="mailto:oren@forter.com">oren@forter.com</a>. </p>
+
+            </div>
+        </article>
+    </div>
+    <!-- end post -->
+
+
 </main>
 <!-- end content -->
+
 
 <!-- begin footer -->
 <footer class="footer">
@@ -4708,8 +4529,8 @@
 
                                 <li class="social__item">
                                     <a class="social__link"
-                                       href="https://www.youtube.com/channel/UCxAPyPoyVWu0yJbZ0gAvCqA"
-                                       target="_blank" rel="noopener"
+                                       href="https://www.youtube.com/channel/UCxAPyPoyVWu0yJbZ0gAvCqA" target="_blank"
+                                       rel="noopener"
                                        aria-label=" link"><i class="ion ion-logo-youtube"></i></a>
                                 </li>
 

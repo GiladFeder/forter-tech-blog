@@ -6,25 +6,25 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Forter Tech Blog</title>
+    <title>Walkthrough: Tracking an Elasticsearch Java Client Sniffer Bug</title>
     <meta name='description'
           content="Forter's technical blog, writing on security, performance, engineering culture, and more.">
 
-    <link rel="canonical" href="http://localhost:4000/">
-    <link rel="alternate" type="application/rss+xml" title="Forter Tech Blog" href="/feed.xml">
+    <link rel="canonical" href="http://localhost:4000/walkthrough-tracking-an-elasticsearch-java-client-sniffer-bug">
+    <link rel="alternate" type="application/rss+xml" title="TECH.FORTER.COM" href="/feed.xml">
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Forter Tech Blog">
+    <meta name="twitter:title" content="Walkthrough: Tracking an Elasticsearch Java Client Sniffer Bug – TECH.FORTER.COM">
     <meta name="twitter:description"
-          content="Forter's technical blog, writing on security, performance, engineering culture, and more.">
-    <meta name="twitter:image:src" content="http://localhost:4000/images/forter.png">
+          content="Elasticsearch has always been good to us at Forter. It’s truly reliable. It’s damn good at searching, and it’s a solid distributed application as well. It balances a cluster relatively quickly, and it is easy to configure and easy to backup/restore, etc., but… we were haunted by an issue which had a catastrophic effect on our system.">
+    <meta name="twitter:image:src" content="http://localhost:4000/images/post-img/rep.jpg">
 
     <!-- Facebook OpenGraph -->
-    <meta property="og:title" content="Forter Tech Blog">
+    <meta property="og:title" content="Walkthrough: Tracking an Elasticsearch Java Client Sniffer Bug – TECH.FORTER.COM">
     <meta property="og:description"
-          content="Forter's technical blog, writing on security, performance, engineering culture, and more.">
-    <meta property="og:image" content="http://localhost:4000/images/forter.png">
+          content="Elasticsearch has always been good to us at Forter. It’s truly reliable. It’s damn good at searching, and it’s a solid distributed application as well. It balances a cluster relatively quickly, and it is easy to configure and easy to backup/restore, etc., but… we were haunted by an issue which had a catastrophic effect on our system.">
+    <meta property="og:image" content="http://localhost:4000/images/post-img/rep.jpg">
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -4240,6 +4240,7 @@
                                 <a href="/" class="nav__link">Home</a>
                             </li>
 
+
                             <li class="nav__item nav__item-icon">
                                 <div class="toggle-theme">
                                     <div class="toggle-moon" title="Enable dark mode"><i class="ion ion-ios-moon"></i>
@@ -4292,378 +4293,263 @@
 
 <!-- begin content -->
 <main class="content" aria-label="Content">
-
-
-    <div class="tags__inner">
-
+    <div class="post-head">
         <div class="container">
             <div class="row">
-                <div class="col col-12">
-                    <div class="tag__info">
-                        <div class="tag__info-box">
-                            <div class="tag__counter">
-                                <span>2</span>
-                                <small>Posts</small>
-                            </div>
-                            <h2 class="tag__name" id="talks">Talks</h2>
+
+                <div class="col col-6 col-d-12">
+                    <div class="post-image">
+                        <img class="lazy" data-src="/images/post-img/bug.jpg"
+                             alt="Walkthrough: Tracking an Elasticsearch Java Client Sniffer Bug">
+                    </div>
+                </div>
+
+                <div class="col col-6 col-d-12">
+                    <div class="post__info ">
+
+
+                        <div class="post__tags">
+
+                            <a href="/tags#bug" class="post__tag">bug</a>
+                            <a href="/tags#elasticsearch" class="post__tag">elasticsearch</a>
+                            <a href="/tags#production" class="post__tag">production</a>
+                            <a href="/tags#walkthrough" class="post__tag">walkthrough</a>
+                            <a href="/tags#software architecture" class="post__tag">software architecture</a>
+
                         </div>
-                        <a class="top__link" href="#top">Return to top</a>
+
+
+                        <h1 class="post__title">Walkthrough: Tracking an Elasticsearch Java Client Sniffer Bug</h1>
+
+                        <div class="post__meta">
+                            <a href="/about/" class="post__author-image">
+                                <img class="lazy" data-src="/images/authors/reem.jpg" alt="Re'em Bensimhon">
+                            </a>
+
+                            <div class="post__meta-bottom">
+                                <span class="post__author">Re'em Bensimhon</span>
+                                <time class="post__date" datetime="2018-01-01T00:00:00+00:00">1 Jan 2018</time>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
             </div>
         </div>
+    </div>
 
-        <div class="container">
-            <div class="row">
-                <div class="col col-12">
-                    <div class="row">
+    <!-- begin post -->
+    <div class="container animate">
+
+        <article class="post">
+            <div class="post__content">
+                <p>&nbsp;</p>
+                <p>Elasticsearch has always been good to us at Forter. It’s truly reliable. It’s damn good at searching, and it’s a solid distributed application as well. It balances a cluster relatively quickly, and it is easy to configure and easy to backup/restore, etc., but… we were haunted by an issue which had a catastrophic effect on our system.</p>
+                <p>&nbsp;</p>
+                <p>The Observed Issue – Chain of Events:</p>
+                <ul>
+                    <li>An under-utilized ES cluster needs downscaling;</li>
+                    <li>De-allocating of all shards from the nodes planned for termination via <a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/allocation-filtering.html">Shard Allocation Filtering;</a></li>
+                    <li>Wait for the cluster state to become “green” again;</li>
+                    <li>Terminate the nodes that are now vacant;</li>
+                    <li><strong>Issue</strong>: All ES operations from the Java clients freeze.</li>
+                </ul>
+                <p>&nbsp;</p>
+                <p style="padding-left: 30px;"><strong>Some Background:</strong></p>
+                <p style="padding-left: 30px;">We use Elasticsearch in a Storm topology. Storm is a Java distributed streaming framework. We use Storm to do some real-time fraud prevention, and it’s essential for business that our Storm application returns an answer in under 1 second. We use the official <a href="https://github.com/elastic/elasticsearch/blob/master/client/rest/src/main/java/org/elasticsearch/client/RestClient.java">Elasticsearch Java REST API client</a> (latest, 5.5.3) because we care about forward compatibility. The ES REST client is a wrapper around a version of &nbsp;<a href="https://hc.apache.org/httpcomponents-core-ga/tutorial/html/nio.html">Apache Async HttpClient</a> (4.1.2). Actually, due to the nature of Java and our application infrastructures, we had to migrate all of our previously HTTP blocking clients to async when we adopted the new ES REST client, so you can say that we are pretty invested.</p>
+                <p>&nbsp;</p>
+                <p>What do I mean by, “ES operations from the Java clients freeze,” you might ask? Well, usually when using an async HTTP client you can start a request and use a Future object to wait for the response. This waiting process happens on a separate thread to where any I/O might happen, and that really comes in handy when in need of an accurate timeout mechanism. Client-side timeouts are indeed supported in the ES REST client API via the <a href="https://github.com/elastic/elasticsearch/blob/v5.2.1/client/rest/src/main/java/org/elasticsearch/client/RestClient.java#L576">SyncResponseListener</a> class. In other words, using a SyncResponseListener object that was initialized with a 5 second timeout should guarantee that the request would take no more than 5 seconds, regardless of the cluster state. However, that is not what we were observing: Instead, we see all clients freezing completely for long periods of time the minute nodes are terminated. We expected the clients to timeout any requests to the terminated nodes after the determined timeout, having them instead freeze is terrible for our system. It’s the kind of bug we simply can’t afford to guess at in order to fix. It’s also the kind of bug that involves a nuanced interplay between at least three different processes: 2 ES nodes and a Java client.</p>
+                <p>&nbsp;</p>
+                <p>With no errors other than timeouts anywhere to be found, there wasn’t much for us to do short of replicating the issue locally.</p>
+                <h2></h2>
+                <p>&nbsp;</p>
+                <h2>Reproducing Issue Locally</h2>
+                <p>To replicate the issue I needed an ES cluster: 2 VBox machines running the latest Elasticsearch docker image were enough – I didn’t just use two docker containers on my machine because I wanted them to have host-network IPs (VBox bridged network adapter, no NAT involved). For the Java client I used a <a href="https://github.com/reembs/kumulus">Kumulus</a> (shameless self promotion, lightweight Storm implementation), topology with a single component: An ES client that indexes one document every second to the cluster. The ES REST client was built with sniffing and on-failure hook support.&nbsp;The client construction code looked like this:</p>
+                <p>&nbsp;</p>
+                <script src="https://gist.github.com/8d190ba30d8b5c9d2bdeabdfa00e1496.js?file=EsRestInit.java"></script><link rel="stylesheet" href="https://github.githubassets.com/assets/gist-embed-549f23051d8d.css"><div id="gist84712279" class="gist">
+                <div class="gist-file" translate="no">
+                    <div class="gist-data">
+                        <div class="js-gist-file-update-container js-task-list-container file-box">
+                            <div id="file-esrestinit-java" class="file my-2">
+
+                                <div itemprop="text" class="Box-body p-0 blob-wrapper data type-java  ">
 
 
-                        <div class="article col col-4 col-d-6 col-t-12">
-                            <div class="article__inner">
+                                    <div class="js-check-bidi js-blob-code-container blob-code-content">
 
-                                <div class="article__head">
-                                    <time class="article__date" datetime="1970-01-01T00:00:00+00:00">01 Jan 1970</time>
+                                        <template class="js-file-alert-template">
+                                            <div data-view-component="true" class="flash flash-warn flash-full d-flex flex-items-center">
+                                                <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-alert">
+                                                    <path fill-rule="evenodd" d="M8.22 1.754a.25.25 0 00-.44 0L1.698 13.132a.25.25 0 00.22.368h12.164a.25.25 0 00.22-.368L8.22 1.754zm-1.763-.707c.659-1.234 2.427-1.234 3.086 0l6.082 11.378A1.75 1.75 0 0114.082 15H1.918a1.75 1.75 0 01-1.543-2.575L6.457 1.047zM9 11a1 1 0 11-2 0 1 1 0 012 0zm-.25-5.25a.75.75 0 00-1.5 0v2.5a.75.75 0 001.5 0v-2.5z"></path>
+                                                </svg>
 
-                                    <div class="video-icon">
-                                        <div class="circle pulse"></div>
-                                        <div class="circle">
-                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
-                                                <polygon points="40,30 65,50 40,70"></polygon>
-                                            </svg>
-                                        </div>
+                                                <span>
+      This file contains bidirectional Unicode text that may be interpreted or compiled differently than what appears below. To review, open the file in an editor that reveals hidden Unicode characters.
+      <a href="https://github.co/hiddenchars" target="_blank">Learn more about bidirectional Unicode characters</a>
+    </span>
+
+
+                                                <div data-view-component="true" class="flash-action">        <a href="{{ revealButtonHref }}" data-view-component="true" class="btn-sm btn">    Show hidden characters
+                                                </a>
+                                                </div>
+                                            </div></template>
+                                        <template class="js-line-alert-template">
+  <span aria-label="This line has hidden Unicode characters" data-view-component="true" class="line-alert tooltipped tooltipped-e">
+    <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-alert">
+    <path fill-rule="evenodd" d="M8.22 1.754a.25.25 0 00-.44 0L1.698 13.132a.25.25 0 00.22.368h12.164a.25.25 0 00.22-.368L8.22 1.754zm-1.763-.707c.659-1.234 2.427-1.234 3.086 0l6.082 11.378A1.75 1.75 0 0114.082 15H1.918a1.75 1.75 0 01-1.543-2.575L6.457 1.047zM9 11a1 1 0 11-2 0 1 1 0 012 0zm-.25-5.25a.75.75 0 00-1.5 0v2.5a.75.75 0 001.5 0v-2.5z"></path>
+</svg>
+</span></template>
+
+                                        <table data-hpc="" class="highlight tab-size js-file-line-container js-code-nav-container js-tagsearch-file" data-tab-size="8" data-paste-markdown-skip="" data-tagsearch-lang="Java" data-tagsearch-path="EsRestInit.java">
+                                            <tbody><tr>
+                                                <td id="file-esrestinit-java-L1" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="1"></td>
+                                                <td id="file-esrestinit-java-LC1" class="blob-code blob-code-inner js-file-line"><span class="pl-smi">SniffOnFailureListener</span> <span class="pl-s1">sniffOnFailureListener</span> = <span class="pl-k">new</span> <span class="pl-smi">SniffOnFailureListener</span>();</td>
+                                            </tr>
+                                            <tr>
+                                                <td id="file-esrestinit-java-L2" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="2"></td>
+                                                <td id="file-esrestinit-java-LC2" class="blob-code blob-code-inner js-file-line"><span class="pl-smi">RestClient</span> <span class="pl-s1">restClient</span> = <span class="pl-s1">RestClient</span>.<span class="pl-en">builder</span>(<span class="pl-s1">Iterables</span>.<span class="pl-en">toArray</span>(<span class="pl-s1">hosts</span>, <span class="pl-smi">HttpHost</span>.<span class="pl-s1">class</span>))</td>
+                                            </tr>
+                                            <tr>
+                                                <td id="file-esrestinit-java-L3" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="3"></td>
+                                                <td id="file-esrestinit-java-LC3" class="blob-code blob-code-inner js-file-line">    .<span class="pl-en">setMaxRetryTimeoutMillis</span>(<span class="pl-s1">timeoutInMillis</span>)</td>
+                                            </tr>
+                                            <tr>
+                                                <td id="file-esrestinit-java-L4" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="4"></td>
+                                                <td id="file-esrestinit-java-LC4" class="blob-code blob-code-inner js-file-line">    .<span class="pl-en">setFailureListener</span>(<span class="pl-s1">sniffOnFailureListener</span>)</td>
+                                            </tr>
+                                            <tr>
+                                                <td id="file-esrestinit-java-L5" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="5"></td>
+                                                <td id="file-esrestinit-java-LC5" class="blob-code blob-code-inner js-file-line">    .<span class="pl-en">build</span>();</td>
+                                            </tr>
+                                            <tr>
+                                                <td id="file-esrestinit-java-L6" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="6"></td>
+                                                <td id="file-esrestinit-java-LC6" class="blob-code blob-code-inner js-file-line"><span class="pl-smi">Sniffer</span> <span class="pl-s1">sniffer</span> = <span class="pl-s1">Sniffer</span>.<span class="pl-en">builder</span>(<span class="pl-s1">restClient</span>)</td>
+                                            </tr>
+                                            <tr>
+                                                <td id="file-esrestinit-java-L7" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="7"></td>
+                                                <td id="file-esrestinit-java-LC7" class="blob-code blob-code-inner js-file-line">    .<span class="pl-en">setSniffIntervalMillis</span>(<span class="pl-c1">SNIFFING_INTERVAL</span>)</td>
+                                            </tr>
+                                            <tr>
+                                                <td id="file-esrestinit-java-L8" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="8"></td>
+                                                <td id="file-esrestinit-java-LC8" class="blob-code blob-code-inner js-file-line">    .<span class="pl-en">build</span>();</td>
+                                            </tr>
+                                            <tr>
+                                                <td id="file-esrestinit-java-L9" class="blob-num js-line-number js-code-nav-line-number js-blob-rnum" data-line-number="9"></td>
+                                                <td id="file-esrestinit-java-LC9" class="blob-code blob-code-inner js-file-line"><span class="pl-s1">sniffOnFailureListener</span>.<span class="pl-en">setSniffer</span>(<span class="pl-s1">sniffer</span>);</td>
+                                            </tr>
+                                            </tbody></table>
                                     </div>
 
-                                    <a class="article__image" href="/comparing-message-queue-architectures-on-aws">
-                                        <img class="lazy" data-src="/images/post-img/queue.png"
-                                             alt="Comparing Message Queue Architecture on AWS">
-                                    </a>
-
 
                                 </div>
 
-                                <div class="article__content">
-
-                                    <h2 class="article__title">
-                                        <a href="/comparing-message-queue-architectures-on-aws">Comparing Message Queue
-                                            Architecture on AWS</a>
-                                    </h2>
-
-
-                                </div>
                             </div>
                         </div>
 
-
-                        <div class="article col col-4 col-d-6 col-t-12">
-                            <div class="article__inner">
-
-                                <div class="article__head">
-                                    <time class="article__date" datetime="1970-01-01T00:00:00+00:00">01 Jan 1970</time>
-
-                                    <div class="video-icon">
-                                        <div class="circle pulse"></div>
-                                        <div class="circle">
-                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
-                                                <polygon points="40,30 65,50 40,70"></polygon>
-                                            </svg>
-                                        </div>
-                                    </div>
-
-                                    <a class="article__image" href="/comparing-message-queue-architectures-on-aws">
-                                        <img class="lazy" data-src="/images/post-img/queue.png"
-                                             alt="Comparing Message Queue Architecture on AWS">
-                                    </a>
-
-
-                                </div>
-
-                                <div class="article__content">
-
-                                    <h2 class="article__title">
-                                        <a href="/comparing-message-queue-architectures-on-aws">Comparing Message Queue
-                                            Architecture on AWS</a>
-                                    </h2>
-
-
-                                </div>
-                            </div>
-                        </div>
-
-
+                    </div>
+                    <div class="gist-meta">
+                        <a href="https://gist.github.com/reembs/8d190ba30d8b5c9d2bdeabdfa00e1496/raw/516bbd7df87a9f1f1d3f11cd6e05ae41c27a02a0/EsRestInit.java" style="float:right">view raw</a>
+                        <a href="https://gist.github.com/reembs/8d190ba30d8b5c9d2bdeabdfa00e1496#file-esrestinit-java">
+                            EsRestInit.java
+                        </a>
+                        hosted with ❤ by <a href="https://github.com">GitHub</a>
                     </div>
                 </div>
             </div>
-        </div>
 
+                <p>&nbsp;</p>
+                <p>Right off the bat I noticed something strange here: The builder pattern used for the initialization of <span style="font-family: courier new, courier, monospace;">restClient</span> is very common in Java. Its semantics imply that once you call the <span style="font-family: courier new, courier, monospace;">build()</span> method you construct a new “final” object. While obviously syntactically possible, it is a bit confusing to have it get an empty instance of <span style="font-family: courier new, courier, monospace;">SniffOnFailureListener</span>&nbsp;that would get its <span style="font-family: courier new, courier, monospace;">setSniffer()</span> called after the <span style="font-family: courier new, courier, monospace;">build()</span> method that was already executed with the “final” instance created. Also, notice how <span style="font-family: courier new, courier, monospace;">sniffOnFailureListener</span> eventually contains a reference to <span style="font-family: courier new, courier, monospace;">sniffer</span> that contains a reference to <span style="font-family: courier new, courier, monospace;">restClient</span>. That’s while <span style="font-family: courier new, courier, monospace;">sniffOnFailureListener</span> is used in the initialization of that very same <span style="font-family: courier new, courier, monospace;">restClient</span>. It isn’t hard to imagine a situation in which this kind of reference chain can lead to bugs of a circular nature. I had an inkling that a thread synchronization issue was the culprit, so now I needed a thread dump.</p>
+                <p>&nbsp;</p>
+                <p>With my cluster online I started the tester app and produced some output for the valid state:</p>
+                <pre><span style="font-size: 10pt;"><span style="font-family: terminal, monaco, monospace;">15:09:39.914 [KumulusThread-26] DEBUG com.forter.es.EsClientSnifferIT - StatusCode: 201, Result: created, SuccessShards: 2, FailedShards: 0</span>
+<span style="font-family: terminal, monaco, monospace;">15:09:40.436 [pool-8-thread-1] DEBUG com.forter.utils.elasticsearch.ForterElasticsearchHostsSniffer - Sniffing ES hosts</span>
+<span style="font-family: terminal, monaco, monospace;">15:09:41.121 [KumulusThread-27] DEBUG com.forter.es.EsClientSnifferIT - StatusCode: 201, Result: created, SuccessShards: 2, FailedShards: 0</span></span></pre>
+                <p>One log line should be produced every ~1.1 second since the timeout in the requests is 100 milliseconds and I sleep 1 second in between them. Next, I need to terminate a machine (I chose to skip the deallocation step).</p>
+                <p style="padding-left: 30px;"><strong>Side note</strong>: Another thing that comes in handy with VBox machines is that you can pause them. In that case, all processing stops, but the IP address isn’t returning connection refused errors like when you kill an underlying service. Instead, you are at the mercy of the network in search of a missing IP address. That’s perfect because it is exactly what happens when we terminate our cloud instances in production.</p>
+                <p>Initially after terminating the slave machine, things go as expected:</p>
+                <pre><span style="font-size: 12pt;"><span style="font-family: terminal, monaco, monospace;">15:15:18.427 [KumulusThread-32] ERROR com.forter.es.EsClientSnifferIT - Got exception: TimeoutException</span>
+<span style="font-family: terminal, monaco, monospace;">15:15:19.740 [KumulusThread-33] ERROR com.forter.es.EsClientSnifferIT - Got exception: TimeoutException</span>
+<span style="font-family: terminal, monaco, monospace;">15:15:21.055 [KumulusThread-34] ERROR com.forter.es.EsClientSnifferIT - Got exception: TimeoutException</span></span></pre>
+                <p>Those <span style="font-family: courier new, courier, monospace;">TimeoutException</span> errors are good. They tell us the request failed, but it did so without blocking more than it should. Note that a line is printed every ~1.1 second. But that’s only for the first 3 seconds. Once a premature sniffing call is initiated due to use of <span style="font-family: courier new, courier, monospace;">setFailureListener()</span> in building the client, things break. Next on the log is:</p>
+                <pre><span style="font-family: terminal, monaco, monospace; font-size: 12pt;">15:15:21.957 [pool-7-thread-1] DEBUG com.forter.utils.elasticsearch.ForterElasticsearchHostsSniffer - Sniffing ES hosts</span></pre>
+                <p>And then, silence. The time is 15:15:21 and the next line on the log appears at 15:15:51. This tells the whole story:</p>
+                <pre><span style="font-size: 12pt;"><span style="font-family: terminal, monaco, monospace;">Dec 25, 2017 3:15:51 PM org.elasticsearch.client.sniff.Sniffer sniff</span>
+<span style="font-family: terminal, monaco, monospace;">SEVERE: error while sniffing nodes</span>
+<span style="font-family: terminal, monaco, monospace;">java.io.IOException: listener timeout after waiting for [30000] ms</span>
+<span style="font-family: terminal, monaco, monospace;">at org.elasticsearch.client.RestClient$SyncResponseListener.get(RestClient.java:617)</span>
+<span style="font-family: terminal, monaco, monospace;">...</span>
+<span style="font-family: terminal, monaco, monospace;">at com.forter.utils.elasticsearch.ForterElasticsearchHostsSniffer.sniffHosts(ForterElasticsearchHostsSniffer.java:69)</span>
+<span style="font-family: terminal, monaco, monospace;">...</span>
+<span style="font-family: terminal, monaco, monospace;">at org.elasticsearch.client.sniff.Sniffer.sniffOnFailure(Sniffer.java:59)</span>
+<span style="font-family: terminal, monaco, monospace;">...</span>
+<span style="font-family: terminal, monaco, monospace;">at org.apache.http.concurrent.BasicFuture.failed(BasicFuture.java:134)</span>
+<span style="font-family: terminal, monaco, monospace;">at org.apache.http.nio.pool.RouteSpecificPool.timeout(RouteSpecificPool.java:168)</span>
+<span style="font-family: terminal, monaco, monospace;">at org.apache.http.nio.pool.AbstractNIOConnPool.requestTimeout(AbstractNIOConnPool.java:561)</span></span></pre>
+                <p>The thread dump shows a similar stack trace on pool-7-thread-1 (note the call to sniffHosts):</p>
+                <pre><span style="font-size: 12pt;"><span style="font-family: terminal, monaco, monospace;">"pool-7-thread-1" #68 prio=5 os_prio=31 tid=0x00007fc37b262800 nid=0x14603 waiting on condition [0x0000700006539000]</span>
+<span style="font-family: terminal, monaco, monospace;">java.lang.Thread.State: TIMED_WAITING (parking)</span>
+<span style="font-family: terminal, monaco, monospace;">at sun.misc.Unsafe.park(Native Method)</span>
+<span style="font-family: terminal, monaco, monospace;">- parking to wait for &nbsp;&lt;0x00000007bff88000&gt; (a java.util.concurrent.CountDownLatch$Sync)</span>
+<span style="font-family: terminal, monaco, monospace;">...</span>
+<span style="font-family: terminal, monaco, monospace;">at java.util.concurrent.CountDownLatch.await(CountDownLatch.java:277)</span>
+<span style="font-family: terminal, monaco, monospace;">at org.elasticsearch.client.RestClient$SyncResponseListener.get(RestClient.java:616)</span>
+<span style="font-family: terminal, monaco, monospace;">at org.elasticsearch.client.RestClient.performRequest(RestClient.java:212)</span>
+<span style="font-family: terminal, monaco, monospace;">...</span>
+<span style="font-family: terminal, monaco, monospace;">at com.forter.utils.elasticsearch.ForterElasticsearchHostsSniffer.sniffHosts(ForterElasticsearchHostsSniffer.java:69)</span>
+<span style="font-family: terminal, monaco, monospace;">...</span>
+<span style="font-family: terminal, monaco, monospace;">at org.elasticsearch.client.sniff.Sniffer.sniffOnFailure(Sniffer.java:59)</span>
+<span style="font-family: terminal, monaco, monospace;">...</span>
+<span style="font-family: terminal, monaco, monospace;">at org.apache.http.impl.nio.client.AbstractClientExchangeHandler.connectionRequestFailed(AbstractClientExchangeHandler.java:335)</span>
+<span style="font-family: terminal, monaco, monospace;">...</span>
+<span style="font-family: terminal, monaco, monospace;">at org.apache.http.nio.pool.AbstractNIOConnPool.requestTimeout(AbstractNIOConnPool.java:561)</span>
+<span style="font-family: terminal, monaco, monospace;">...</span>
+<span style="font-family: terminal, monaco, monospace;">- locked &lt;0x00000007bff90328&gt; (a org.apache.http.impl.nio.reactor.SessionRequestImpl)</span>
+<span style="font-family: terminal, monaco, monospace;">at org.apache.http.impl.nio.reactor.DefaultConnectingIOReactor.processTimeouts(DefaultConnectingIOReactor.java:210)</span>
+<span style="font-family: terminal, monaco, monospace;">...</span>
+<span style="font-family: terminal, monaco, monospace;">"KumulusThread-37" #52 daemon prio=5 os_prio=31 tid=0x00007fc377a7c000 nid=0x7e03 waiting on condition [0x0000700005509000]</span>
+<span style="font-family: terminal, monaco, monospace;">java.lang.Thread.State: WAITING (parking)</span>
+<span style="font-family: terminal, monaco, monospace;">at sun.misc.Unsafe.park(Native Method)</span>
+<span style="font-family: terminal, monaco, monospace;">- parking to wait for &nbsp;&lt;0x0000000760661018&gt; (a java.util.concurrent.locks.ReentrantLock$NonfairSync)</span>
+<span style="font-family: terminal, monaco, monospace;">...</span>
+<span style="font-family: terminal, monaco, monospace;">at java.util.concurrent.locks.ReentrantLock$NonfairSync.lock(ReentrantLock.java:209)</span>
+<span style="font-family: terminal, monaco, monospace;">at java.util.concurrent.locks.ReentrantLock.lock(ReentrantLock.java:285)</span>
+<span style="font-family: terminal, monaco, monospace;">at org.apache.http.nio.pool.AbstractNIOConnPool.lease(AbstractNIOConnPool.java:272)</span>
+<span style="font-family: terminal, monaco, monospace;">at org.apache.http.impl.nio.conn.PoolingNHttpClientConnectionManager.requestConnection(PoolingNHttpClientConnectionManager.java:266)</span>
+<span style="font-family: terminal, monaco, monospace;">...</span>
+<span style="font-family: terminal, monaco, monospace;">at com.forter.utils.storm.bolts.elasticsearch.AbstractElasticsearchRestBolt.execute(AbstractElasticsearchRestBolt.java:142)</span>
+<span style="font-family: terminal, monaco, monospace;">...</span></span></pre>
+                <p>So the Kumulus thread (KumulusThread-37) that’s supposed to block for a maximum of ~1.1 seconds is currently stuck on a lock at <span style="font-family: courier new, courier, monospace;">AbstractNIOConnPool.lease(AbstractNIOConnPool.java:272)</span> which is held by Apache HTTP client at thread pool-7-thread-1 <span style="font-family: courier new, courier, monospace;">AbstractNIOConnPool.requestTimeout(AbstractNIOConnPool.java:561)</span>.</p>
+                <p>&nbsp;</p>
+                <p>&nbsp;</p>
+                <h2>Eureka! (Plus, workarounds fresh out the oven)</h2>
+                <p>Basically, what happened here was that the ES REST client registered a callback to the Apache client’s onTimeout hook, and that callback is performed on a computation thread belonging to the Apache async HTTP client. The sniffer opted to do the sniffing operation I/O (an API call) on that thread, which is a bug. You are not supposed to block those threads for long, and <em>definitely</em> not supposed to do any blocking I/O operations on them. If you do, as demonstrated in our production env, all subsequent operations on the same client will be blocked until the I/O finishes (sniffing request times-out or finishes).</p>
+                <p>I submitted a <a href="https://github.com/elastic/elasticsearch/pull/27985">PR</a> to fix the issue to the Elastic repository.</p>
+                <p>In the meantime, if you are encountering this issue, the following workarounds can be applied:</p>
+                <ul>
+                    <li>Not using <span style="font-family: courier new, courier, monospace;">setFailureListener()</span></li>
+                </ul>
+                <ul>
+                    <li>Killing the ES services on the de-allocated nodes manually before terminating them to produce connection refused errors in clients until they sniff the new cluster state (as speculated by my learned friend <a href="https://github.com/moshe">Moshe</a> prior to this reproduction).</li>
+                </ul>
+                <p>&nbsp;</p>
+                <p>&nbsp;</p>
+                <h2>Conclusions from a day’s work:</h2>
+                <ul>
+                    <li>From Apache HC’s perspective, you can say that the fault was with the user. The API was simply misused. See section 3.2.1 of the <a href="https://hc.apache.org/httpcomponents-core-ga/tutorial/html/nio.html">guide</a>, titled I/O dispatchers. It says clearly you shouldn’t block I/O dispatcher threads. But that’s a pretty easy detail to inadvertently ignore when implementing an interface. Java is missing a lot of fundamental language support for async operations so async implementations in Java tend to be cumbersome and complex (Apache Async HC as a perfect example). I wonder if an HTTP client written using Kotlin <a href="https://kotlinlang.org/docs/reference/coroutines.html">coroutines</a> can make that API clearer in the JVM.</li>
+                    <li>The weirdness of the API, where the reference to the ES REST client was passed into its own member hierarchy turned out not to be the issue after all, but in some magical way the issue was hiding right around that corner. Coincidence?</li>
+                    <li>Connection refused is my favorite of all errors. It happens fast and it tells you exactly what the problem is. Why can’t all errors be like that?</li>
+                </ul>
+
+            </div>
+
+        </article>
     </div>
-    <div class="tags__inner">
+    <!-- end post -->
 
-        <div class="container">
-            <div class="row">
-                <div class="col col-12">
-                    <div class="tag__info">
-                        <div class="tag__info-box">
-                            <div class="tag__counter">
-                                <span>2</span>
-                                <small>Posts</small>
-                            </div>
-                            <h2 class="tag__name" id="security">Security</h2>
-                        </div>
-                        <a class="top__link" href="#top">Return to top</a>
-                    </div>
-                </div>
-            </div>
-        </div>
 
-        <div class="container">
-            <div class="row">
-                <div class="col col-12">
-                    <div class="row">
-
-
-                        <div class="article col col-4 col-d-6 col-t-12">
-                            <div class="article__inner">
-
-                                <div class="article__head">
-                                    <time class="article__date" datetime="1970-01-01T00:00:00+00:00">01 Jan 1970</time>
-
-
-                                    <a class="article__image" href="/comparing-message-queue-architectures-on-aws">
-                                        <img class="lazy" data-src="/images/post-img/queue.png"
-                                             alt="Comparing Message Queue Architecture on AWS">
-                                    </a>
-
-
-                                </div>
-
-                                <div class="article__content">
-
-                                    <h2 class="article__title">
-                                        <a href="/comparing-message-queue-architectures-on-aws">Comparing Message Queue
-                                            Architecture on AWS</a>
-                                    </h2>
-
-
-                                </div>
-                            </div>
-                        </div>
-
-
-                        <div class="article col col-4 col-d-6 col-t-12">
-                            <div class="article__inner">
-
-                                <div class="article__head">
-                                    <time class="article__date" datetime="1970-01-01T00:00:00+00:00">01 Jan 1970</time>
-
-
-                                    <a class="article__image" href="/comparing-message-queue-architectures-on-aws">
-                                        <img class="lazy" data-src="/images/post-img/queue.png"
-                                             alt="Comparing Message Queue Architecture on AWS">
-                                    </a>
-
-
-                                </div>
-
-                                <div class="article__content">
-
-                                    <h2 class="article__title">
-                                        <a href="/comparing-message-queue-architectures-on-aws">Comparing Message Queue
-                                            Architecture on AWS</a>
-                                    </h2>
-
-
-                                </div>
-                            </div>
-                        </div>
-
-
-                    </div>
-                </div>
-            </div>
-        </div>
-
-    </div>
-    <div class="tags__inner">
-
-        <div class="container">
-            <div class="row">
-                <div class="col col-12">
-                    <div class="tag__info">
-                        <div class="tag__info-box">
-                            <div class="tag__counter">
-                                <span>2</span>
-                                <small>Posts</small>
-                            </div>
-                            <h2 class="tag__name" id="culture">Engineering Culture</h2>
-                        </div>
-                        <a class="top__link" href="#top">Return to top</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="container">
-            <div class="row">
-                <div class="col col-12">
-                    <div class="row">
-
-
-                        <div class="article col col-4 col-d-6 col-t-12">
-                            <div class="article__inner">
-
-                                <div class="article__head">
-                                    <time class="article__date" datetime="1970-01-01T00:00:00+00:00">01 Jan 1970</time>
-
-
-                                    <a class="article__image" href="/comparing-message-queue-architectures-on-aws">
-                                        <img class="lazy" data-src="/images/post-img/queue.png"
-                                             alt="Comparing Message Queue Architecture on AWS">
-                                    </a>
-
-
-                                </div>
-
-                                <div class="article__content">
-
-                                    <h2 class="article__title">
-                                        <a href="/comparing-message-queue-architectures-on-aws">Comparing Message Queue
-                                            Architecture on AWS</a>
-                                    </h2>
-
-
-                                </div>
-                            </div>
-                        </div>
-
-
-                        <div class="article col col-4 col-d-6 col-t-12">
-                            <div class="article__inner">
-
-                                <div class="article__head">
-                                    <time class="article__date" datetime="1970-01-01T00:00:00+00:00">01 Jan 1970</time>
-
-
-                                    <a class="article__image" href="/comparing-message-queue-architectures-on-aws">
-                                        <img class="lazy" data-src="/images/post-img/queue.png"
-                                             alt="Comparing Message Queue Architecture on AWS">
-                                    </a>
-
-
-                                </div>
-
-                                <div class="article__content">
-
-                                    <h2 class="article__title">
-                                        <a href="/comparing-message-queue-architectures-on-aws">Comparing Message Queue
-                                            Architecture on AWS</a>
-                                    </h2>
-
-
-                                </div>
-                            </div>
-                        </div>
-
-
-                    </div>
-                </div>
-            </div>
-        </div>
-
-    </div>
-    <div class="tags__inner">
-
-        <div class="container">
-            <div class="row">
-                <div class="col col-12">
-                    <div class="tag__info">
-                        <div class="tag__info-box">
-                            <div class="tag__counter">
-                                <span>2</span>
-                                <small>Posts</small>
-                            </div>
-                            <h2 class="tag__name" id="production">Production</h2>
-                        </div>
-                        <a class="top__link" href="#top">Return to top</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="container">
-            <div class="row">
-                <div class="col col-12">
-                    <div class="row">
-
-
-                        <div class="article col col-4 col-d-6 col-t-12">
-                            <div class="article__inner">
-
-                                <div class="article__head">
-                                    <time class="article__date" datetime="1970-01-01T00:00:00+00:00">01 Jan 1970</time>
-
-
-                                    <a class="article__image" href="/comparing-message-queue-architectures-on-aws">
-                                        <img class="lazy" data-src="/images/post-img/queue.png"
-                                             alt="Comparing Message Queue Architecture on AWS">
-                                    </a>
-
-
-                                </div>
-
-                                <div class="article__content">
-
-                                    <h2 class="article__title">
-                                        <a href="/comparing-message-queue-architectures-on-aws">Comparing Message Queue
-                                            Architecture on AWS</a>
-                                    </h2>
-
-
-                                </div>
-                            </div>
-                        </div>
-
-
-                        <div class="article col col-4 col-d-6 col-t-12">
-                            <div class="article__inner">
-
-                                <div class="article__head">
-                                    <time class="article__date" datetime="1970-01-01T00:00:00+00:00">01 Jan 1970</time>
-
-
-                                    <a class="article__image" href="/comparing-message-queue-architectures-on-aws">
-                                        <img class="lazy" data-src="/images/post-img/queue.png"
-                                             alt="Comparing Message Queue Architecture on AWS">
-                                    </a>
-
-
-                                </div>
-
-                                <div class="article__content">
-
-                                    <h2 class="article__title">
-                                        <a href="/comparing-message-queue-architectures-on-aws">Comparing Message Queue
-                                            Architecture on AWS</a>
-                                    </h2>
-
-
-                                </div>
-                            </div>
-                        </div>
-
-
-                    </div>
-                </div>
-            </div>
-        </div>
-
-    </div>
-
-
-    </section>
-    <!-- end tags -->
 </main>
 <!-- end content -->
+
 
 <!-- begin footer -->
 <footer class="footer">
@@ -4708,8 +4594,8 @@
 
                                 <li class="social__item">
                                     <a class="social__link"
-                                       href="https://www.youtube.com/channel/UCxAPyPoyVWu0yJbZ0gAvCqA"
-                                       target="_blank" rel="noopener"
+                                       href="https://www.youtube.com/channel/UCxAPyPoyVWu0yJbZ0gAvCqA" target="_blank"
+                                       rel="noopener"
                                        aria-label=" link"><i class="ion ion-logo-youtube"></i></a>
                                 </li>
 

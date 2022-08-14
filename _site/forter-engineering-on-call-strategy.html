@@ -6,25 +6,25 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Forter Tech Blog</title>
+    <title>Forter Engineering On-Call Strategy</title>
     <meta name='description'
           content="Forter's technical blog, writing on security, performance, engineering culture, and more.">
 
-    <link rel="canonical" href="http://localhost:4000/">
-    <link rel="alternate" type="application/rss+xml" title="Forter Tech Blog" href="/feed.xml">
+    <link rel="canonical" href="http://localhost:4000/forter-engineering-on-call-strategy">
+    <link rel="alternate" type="application/rss+xml" title="TECH.FORTER.COM" href="/feed.xml">
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Forter Tech Blog">
+    <meta name="twitter:title" content="Forter Engineering On-Call Strategy – TECH.FORTER.COM">
     <meta name="twitter:description"
-          content="Forter's technical blog, writing on security, performance, engineering culture, and more.">
-    <meta name="twitter:image:src" content="http://localhost:4000/images/forter.png">
+          content="Solving inherent on-call problems is greatly more important (and urgent) than making alerts’ UX better, e.g. have a proper documentation per alert (playbook), include a link in every alert to the relevant dashboard.">
+    <meta name="twitter:image:src" content="http://localhost:4000/images/post-img/oncall.png">
 
     <!-- Facebook OpenGraph -->
-    <meta property="og:title" content="Forter Tech Blog">
+    <meta property="og:title" content="Forter Engineering On-Call Strategy – TECH.FORTER.COM">
     <meta property="og:description"
-          content="Forter's technical blog, writing on security, performance, engineering culture, and more.">
-    <meta property="og:image" content="http://localhost:4000/images/forter.png">
+          content="Solving inherent on-call problems is greatly more important (and urgent) than making alerts’ UX better, e.g. have a proper documentation per alert (playbook), include a link in every alert to the relevant dashboard.">
+    <meta property="og:image" content="http://localhost:4000/images/post-img/oncall.png">
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -4240,6 +4240,7 @@
                                 <a href="/" class="nav__link">Home</a>
                             </li>
 
+
                             <li class="nav__item nav__item-icon">
                                 <div class="toggle-theme">
                                     <div class="toggle-moon" title="Enable dark mode"><i class="ion ion-ios-moon"></i>
@@ -4292,378 +4293,359 @@
 
 <!-- begin content -->
 <main class="content" aria-label="Content">
-
-
-    <div class="tags__inner">
-
+    <div class="post-head">
         <div class="container">
             <div class="row">
-                <div class="col col-12">
-                    <div class="tag__info">
-                        <div class="tag__info-box">
-                            <div class="tag__counter">
-                                <span>2</span>
-                                <small>Posts</small>
-                            </div>
-                            <h2 class="tag__name" id="talks">Talks</h2>
-                        </div>
-                        <a class="top__link" href="#top">Return to top</a>
+
+                <div class="col col-6 col-d-12">
+                    <div class="post-image">
+                        <img class="lazy" data-src="/images/post-img/oncall.png"
+                             alt="Forter Engineering On-Call Strategy">
                     </div>
                 </div>
-            </div>
-        </div>
 
-        <div class="container">
-            <div class="row">
-                <div class="col col-12">
-                    <div class="row">
+                <div class="col col-6 col-d-12">
+                    <div class="post__info ">
 
 
-                        <div class="article col col-4 col-d-6 col-t-12">
-                            <div class="article__inner">
+                        <div class="post__tags">
 
-                                <div class="article__head">
-                                    <time class="article__date" datetime="1970-01-01T00:00:00+00:00">01 Jan 1970</time>
+                            <a href="/tags#oncall" class="post__tag">oncall</a>
+                            <a href="/tags#culture" class="post__tag">engineering culture</a>
+                            <a href="/tags#software architecture" class="post__tag">software architecture</a>
 
-                                    <div class="video-icon">
-                                        <div class="circle pulse"></div>
-                                        <div class="circle">
-                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
-                                                <polygon points="40,30 65,50 40,70"></polygon>
-                                            </svg>
-                                        </div>
-                                    </div>
-
-                                    <a class="article__image" href="/comparing-message-queue-architectures-on-aws">
-                                        <img class="lazy" data-src="/images/post-img/queue.png"
-                                             alt="Comparing Message Queue Architecture on AWS">
-                                    </a>
-
-
-                                </div>
-
-                                <div class="article__content">
-
-                                    <h2 class="article__title">
-                                        <a href="/comparing-message-queue-architectures-on-aws">Comparing Message Queue
-                                            Architecture on AWS</a>
-                                    </h2>
-
-
-                                </div>
-                            </div>
                         </div>
 
 
-                        <div class="article col col-4 col-d-6 col-t-12">
-                            <div class="article__inner">
+                        <h1 class="post__title">Forter Engineering On-Call Strategy</h1>
 
-                                <div class="article__head">
-                                    <time class="article__date" datetime="1970-01-01T00:00:00+00:00">01 Jan 1970</time>
+                        <div class="post__meta">
+                            <a href="/about/" class="post__author-image">
+                                <img class="lazy" data-src="/images/authors/oren.jpg" alt="Oren Ellenbogen">
+                            </a>
 
-                                    <div class="video-icon">
-                                        <div class="circle pulse"></div>
-                                        <div class="circle">
-                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
-                                                <polygon points="40,30 65,50 40,70"></polygon>
-                                            </svg>
-                                        </div>
-                                    </div>
-
-                                    <a class="article__image" href="/comparing-message-queue-architectures-on-aws">
-                                        <img class="lazy" data-src="/images/post-img/queue.png"
-                                             alt="Comparing Message Queue Architecture on AWS">
-                                    </a>
-
-
-                                </div>
-
-                                <div class="article__content">
-
-                                    <h2 class="article__title">
-                                        <a href="/comparing-message-queue-architectures-on-aws">Comparing Message Queue
-                                            Architecture on AWS</a>
-                                    </h2>
-
-
-                                </div>
+                            <div class="post__meta-bottom">
+                                <span class="post__author">Oren Ellenbogen</span>
+                                <time class="post__date" datetime="2022-08-14T00:00:00+00:00">14 Aug 2022</time>
                             </div>
                         </div>
-
 
                     </div>
                 </div>
             </div>
         </div>
-
-    </div>
-    <div class="tags__inner">
-
-        <div class="container">
-            <div class="row">
-                <div class="col col-12">
-                    <div class="tag__info">
-                        <div class="tag__info-box">
-                            <div class="tag__counter">
-                                <span>2</span>
-                                <small>Posts</small>
-                            </div>
-                            <h2 class="tag__name" id="security">Security</h2>
-                        </div>
-                        <a class="top__link" href="#top">Return to top</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="container">
-            <div class="row">
-                <div class="col col-12">
-                    <div class="row">
-
-
-                        <div class="article col col-4 col-d-6 col-t-12">
-                            <div class="article__inner">
-
-                                <div class="article__head">
-                                    <time class="article__date" datetime="1970-01-01T00:00:00+00:00">01 Jan 1970</time>
-
-
-                                    <a class="article__image" href="/comparing-message-queue-architectures-on-aws">
-                                        <img class="lazy" data-src="/images/post-img/queue.png"
-                                             alt="Comparing Message Queue Architecture on AWS">
-                                    </a>
-
-
-                                </div>
-
-                                <div class="article__content">
-
-                                    <h2 class="article__title">
-                                        <a href="/comparing-message-queue-architectures-on-aws">Comparing Message Queue
-                                            Architecture on AWS</a>
-                                    </h2>
-
-
-                                </div>
-                            </div>
-                        </div>
-
-
-                        <div class="article col col-4 col-d-6 col-t-12">
-                            <div class="article__inner">
-
-                                <div class="article__head">
-                                    <time class="article__date" datetime="1970-01-01T00:00:00+00:00">01 Jan 1970</time>
-
-
-                                    <a class="article__image" href="/comparing-message-queue-architectures-on-aws">
-                                        <img class="lazy" data-src="/images/post-img/queue.png"
-                                             alt="Comparing Message Queue Architecture on AWS">
-                                    </a>
-
-
-                                </div>
-
-                                <div class="article__content">
-
-                                    <h2 class="article__title">
-                                        <a href="/comparing-message-queue-architectures-on-aws">Comparing Message Queue
-                                            Architecture on AWS</a>
-                                    </h2>
-
-
-                                </div>
-                            </div>
-                        </div>
-
-
-                    </div>
-                </div>
-            </div>
-        </div>
-
-    </div>
-    <div class="tags__inner">
-
-        <div class="container">
-            <div class="row">
-                <div class="col col-12">
-                    <div class="tag__info">
-                        <div class="tag__info-box">
-                            <div class="tag__counter">
-                                <span>2</span>
-                                <small>Posts</small>
-                            </div>
-                            <h2 class="tag__name" id="culture">Engineering Culture</h2>
-                        </div>
-                        <a class="top__link" href="#top">Return to top</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="container">
-            <div class="row">
-                <div class="col col-12">
-                    <div class="row">
-
-
-                        <div class="article col col-4 col-d-6 col-t-12">
-                            <div class="article__inner">
-
-                                <div class="article__head">
-                                    <time class="article__date" datetime="1970-01-01T00:00:00+00:00">01 Jan 1970</time>
-
-
-                                    <a class="article__image" href="/comparing-message-queue-architectures-on-aws">
-                                        <img class="lazy" data-src="/images/post-img/queue.png"
-                                             alt="Comparing Message Queue Architecture on AWS">
-                                    </a>
-
-
-                                </div>
-
-                                <div class="article__content">
-
-                                    <h2 class="article__title">
-                                        <a href="/comparing-message-queue-architectures-on-aws">Comparing Message Queue
-                                            Architecture on AWS</a>
-                                    </h2>
-
-
-                                </div>
-                            </div>
-                        </div>
-
-
-                        <div class="article col col-4 col-d-6 col-t-12">
-                            <div class="article__inner">
-
-                                <div class="article__head">
-                                    <time class="article__date" datetime="1970-01-01T00:00:00+00:00">01 Jan 1970</time>
-
-
-                                    <a class="article__image" href="/comparing-message-queue-architectures-on-aws">
-                                        <img class="lazy" data-src="/images/post-img/queue.png"
-                                             alt="Comparing Message Queue Architecture on AWS">
-                                    </a>
-
-
-                                </div>
-
-                                <div class="article__content">
-
-                                    <h2 class="article__title">
-                                        <a href="/comparing-message-queue-architectures-on-aws">Comparing Message Queue
-                                            Architecture on AWS</a>
-                                    </h2>
-
-
-                                </div>
-                            </div>
-                        </div>
-
-
-                    </div>
-                </div>
-            </div>
-        </div>
-
-    </div>
-    <div class="tags__inner">
-
-        <div class="container">
-            <div class="row">
-                <div class="col col-12">
-                    <div class="tag__info">
-                        <div class="tag__info-box">
-                            <div class="tag__counter">
-                                <span>2</span>
-                                <small>Posts</small>
-                            </div>
-                            <h2 class="tag__name" id="production">Production</h2>
-                        </div>
-                        <a class="top__link" href="#top">Return to top</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="container">
-            <div class="row">
-                <div class="col col-12">
-                    <div class="row">
-
-
-                        <div class="article col col-4 col-d-6 col-t-12">
-                            <div class="article__inner">
-
-                                <div class="article__head">
-                                    <time class="article__date" datetime="1970-01-01T00:00:00+00:00">01 Jan 1970</time>
-
-
-                                    <a class="article__image" href="/comparing-message-queue-architectures-on-aws">
-                                        <img class="lazy" data-src="/images/post-img/queue.png"
-                                             alt="Comparing Message Queue Architecture on AWS">
-                                    </a>
-
-
-                                </div>
-
-                                <div class="article__content">
-
-                                    <h2 class="article__title">
-                                        <a href="/comparing-message-queue-architectures-on-aws">Comparing Message Queue
-                                            Architecture on AWS</a>
-                                    </h2>
-
-
-                                </div>
-                            </div>
-                        </div>
-
-
-                        <div class="article col col-4 col-d-6 col-t-12">
-                            <div class="article__inner">
-
-                                <div class="article__head">
-                                    <time class="article__date" datetime="1970-01-01T00:00:00+00:00">01 Jan 1970</time>
-
-
-                                    <a class="article__image" href="/comparing-message-queue-architectures-on-aws">
-                                        <img class="lazy" data-src="/images/post-img/queue.png"
-                                             alt="Comparing Message Queue Architecture on AWS">
-                                    </a>
-
-
-                                </div>
-
-                                <div class="article__content">
-
-                                    <h2 class="article__title">
-                                        <a href="/comparing-message-queue-architectures-on-aws">Comparing Message Queue
-                                            Architecture on AWS</a>
-                                    </h2>
-
-
-                                </div>
-                            </div>
-                        </div>
-
-
-                    </div>
-                </div>
-            </div>
-        </div>
-
     </div>
 
+    <!-- begin post -->
+    <div class="container animate">
 
-    </section>
-    <!-- end tags -->
+        <article class="post">
+            <div class="post__content">
+
+
+                <h2><strong>Strategy: make on-call obsolete, not convenient&nbsp;</strong></h2>
+
+
+                <p>Solving inherent on-call problems is greatly more important (and urgent) than making alerts’ UX
+                    better, e.g. have a proper documentation per alert (playbook), include a link in every alert to the
+                    relevant dashboard.<br><br>Why? It’s a paradox: If you’re doing a good job, you’ll practice less
+                    on-call during work hours and outside of work hours, making it less effective to invest in on-call
+                    documentation or howtos when they do happen. We’ll invest mostly in alerts’ UX when the risk is too
+                    high (often after the fact, or before that with “Game Days”, more on it later), rather than in every
+                    alert we have.</p>
+
+
+                <p>It will make it a requirement for everyone to learn and understand how to build and operate resilient
+                    distributed systems. Operational health is part of every estimation an engineer is giving and part
+                    of every Design Review we present.</p>
+
+
+                <p>Operational health will include tests (local strategy, production strategy), monitoring, and alerts
+                    we seek to have to avoid the on-call burden.</p>
+
+
+                <p>As part of making on-call obsolete, Mature Products (internal link redacted) will have explicit and
+                    visible SLOs (Service Level Objective) to our clients around availability, latency, throughput, etc.
+                    Products will also include SLOs for the team that operate it, e.g. low-level alerts &amp; high-level
+                    alerts, during work hours and off work hours. It should be monitored and automatically reported
+                    weekly (email the team) to track progress.&nbsp;</p>
+
+
+                <p>The only failures we won’t be able to automate are those that are too expensive or too rare. In those
+                    cases, nothing will save us from calling our “domain expert” and getting them to join us during an
+                    on-call incident. After these incidents happen, doing a team retrospective and “lessons learned”
+                    from it, including documenting it, will be extremely meaningful and effective.</p>
+
+
+                <h2><strong>Measure where we are now</strong></h2>
+
+
+                <p>Each Product should have an Operational Health dashboard in Kibana/Honeycomb, i.e. “[Product]
+                    Operational Health”. This will be based on events gathering from PagerDuty. This will be provided as
+                    part of Forter’s Observability stack.&nbsp;</p>
+
+
+                <p>Internal measurements baseline (dashboard):</p>
+
+
+                <ul>
+                    <li><strong>Daily number of high alerts during work hours</strong>
+                        <ul>
+                            <li>Why: see how noisy (good and bad) our alerts are. Gives us a good proxy for how much
+                                investment we’ll need to make these alerts obsolete as the system is more robust.
+                                Question the value/usefulness of the alert as a high alert that might wake someone up.
+                            </li>
+                        </ul>
+                    </li>
+                    <li><strong>Daily number of low alerts during work hours</strong>
+                        <ul>
+                            <li>Why: see how noisy (good and bad) our alerts are. Gives us a good proxy for how much
+                                investment we’ll need to make these alerts obsolete as the system is more robust.
+                                Question the value/usefulness of the alert.
+                            </li>
+                        </ul>
+                    </li>
+                    <li><strong>Daily number of high level alerts off work hours</strong>
+                        <ul>
+                            <li>Why: understand how often people get paged and need to act.</li>
+                        </ul>
+                    </li>
+                    <li><strong>Daily number of false alerts off work hours</strong>: i.e. wake up to see the problem
+                        was auto-resolved, or Non-actionable alerts – wake up to find an alert is actually
+                        non-actionable and is “notification” only.
+                        <ul>
+                            <li>Why: frustrating to get paged only to understand I’m not required. This is noise our
+                                system should have resolved without us – either the alert system (via state, e.g.
+                                “service A report error X 5 times in the past T seconds”) or the production system (via
+                                state, e.g. count failure and report a special event if it’s above X)
+                            </li>
+                        </ul>
+                    </li>
+                    <li><strong>Weekly number of false negatives alerts off work hours</strong>: i.e. didn’t wake up
+                        while the system was in a bad state&nbsp;<ul>
+                            <li>Why: Spot areas where we lack alerts that could have saved us money or honored our
+                                uptime/latency SLA. The assumption is that it’s very rare, so long it is only when it’s
+                                clear (part of BetterNext) – we usually detect those in the morning, by an analyst or
+                                engineer
+                            </li>
+                            <li>We should manually report that to some spreadsheet or push it via Betty (bot) to our ELK
+                                with proper tagging.&nbsp;
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+
+
+                <p></p>
+
+
+                <h2><strong>Tactics to consider</strong></h2>
+
+
+                <h3>Systems act differently outside of working hours</h3>
+
+
+                <p>When you build Products, you should plan that their Operational strategy will look different during
+                    different hours. Our scale-out mechanisms are tested mostly during these hours of high traffic.</p>
+
+
+                <p>The system should be aware of the work/off hours of the team that supports it. The system should
+                    change its scale strategy given the amount of traffic OR or on-call shifts of the team. The former
+                    will save us money, the latter will save us energy/morale. In many cases, paying more during
+                    off-hours with extra capacity will make sense, if we know how to cap it, e.g. not more than
+                    $X/day.</p>
+
+
+                <h3>Systems act differently under load</h3>
+
+
+                <p>The system should know if it’s under a heavy load and change its behavior. Sometimes load can be
+                    expected (e.g. holidays sales). Use that information.</p>
+
+
+                <p>Why? Retries are a dangerous solution for distributed systems as we assume we can completely DoS
+                    ourselves with such policies. Yet under low load, retry is an extremely simple and powerful
+                    solution.&nbsp;</p>
+
+
+                <p>Given an external system that monitors throughput or other indications of load (e.g. holidays
+                    calendar), and updates every 30 seconds a dedicated storage, we can change our strategy of how our
+                    systems behave with <a href="https://martinfowler.com/bliki/CircuitBreaker.html">Circuit
+                        Breakers</a> (open, close, semi-open).&nbsp;</p>
+
+
+                <p>We can turn to a more naive solution for X minutes until we see the load is back to normal, e.g. use
+                    more <a href="https://en.wikipedia.org/wiki/Fast_path">fast path optimization</a>, move more traffic
+                    to low queue, don’t allow certain resource consuming flows, report alerts as a low priority instead
+                    of high priority, etc.&nbsp;</p>
+
+
+                <h3>Learn from our Domain Experts via “Game Days”</h3>
+
+
+                <p>One way to proactively deal with the paradox mentioned above is to practice “Team Game Day” (example:
+                    <a href="https://www.datadoghq.com/blog/elasticsearch-game-day/">here</a>). This will get the domain
+                    expert to create a few scenarios where the team can practice their intuition (“what do you think
+                    will happen?”) and explain how they’d debug it if it happens.&nbsp;</p>
+
+
+                <p>The domain expert can share their knowledge and explain how they’d approach it if it happens. The
+                    team can finish the day by writing proper documentation that mostly covers how to quickly reduce the
+                    number of options to look for (how to eliminate potential issues during an incident) and how to use
+                    the current tools the team has – important dashboards, how to read alerts, etc.</p>
+
+
+                <h3>Audit Existing Alerts</h3>
+
+
+                <p>Existing systems have lots of alerts that are non-actionable, non-urgent, indicate an indirect
+                    symptom or should be aggregated in a dimension, e.g. all machines going down in a single
+                    AvailabilityZone will page one-by-one. Having an audit of these alerts and deleting, de-duplicating,
+                    rephrasing, and reassigning alerts can reduce the team’s load as a proactive measure.</p>
+
+
+                <p>This should come hand-in-hand with a team constantly feeling like they are the sole owners of the
+                    alerts they receive and, as such, are trusted to delete those alerts they deem to be irrelevant
+                    (with a review process to be decided inside the team).</p>
+
+
+                <h2><strong>Supporting urgent changes (deployments) is not on-call</strong></h2>
+
+
+                <p>The need (and Operational thinking) here is completely different. There is no technical problem
+                    involved but rather a business one. This should be measured separately and tools should be built to
+                    tackle that either automatically or by empowering our clients to safely and securely make the change
+                    they seek.<br><br>The team should be called only if the change failed to happen safely due to some
+                    technical problem.</p>
+
+
+                <p>Some systems were born from this need: Spectator and Confetti (internal systems) are just two
+                    examples. Consider if we need more (or better) tools to cover use-cases that happen often.</p>
+
+
+                <p>Consider letting your clients deploy the changes if the deployment is automated.&nbsp;</p>
+
+
+                <p>If this is very common in your team, you should track how often it happens and when, and set KPIs to
+                    track and solve them. Solutions will be very different, and usually involve tools and training our
+                    clients on how to use them effectively.</p>
+
+
+                <h2><strong><br></strong><strong>Moving away from fire fighting to cruise control?</strong></h2>
+
+
+                <p><strong>Owners: Engineering Managers</strong></p>
+
+
+                <ol>
+                    <li>Make sure you have <a
+                            href="https://docs.google.com/document/d/1Cw95iSDIDXrmAs2H2ky6ZBgxw3B-5lmQ4Xep806R8tk/edit?fbclid=IwAR1elxqHnw7BVaee5yXmtJNMGNtXtDHaQ8Rr_GgfcO1KjMHjH7YbC6uwV2s#heading=h.gr0i1aqn0bc">Operational
+                        Health dashboards for your Products</a>. Use data from PagerDuty to describe the team’s on-call
+                        burden. Make it visible to the team and to your clients. Use data to understand Products
+                        stability and performance, don’t rely on your memory.
+                    </li>
+                </ol>
+
+
+                <ol start="2">
+                    <li>Set an Alerting SLO for your Products and team (team owns a suite of products): e.g. No more
+                        than 1 high alert during off-hours every month, no more than 10 high alerts during work hours a
+                        month, etc. Cover both high and low alerts. Alert fatigue is dangerous.<br></li>
+                    <li>SLO breached? Understand what can be done immediately. Treat it just like any other production
+                        incident, and delay current efforts while communicating with stakeholders. Engineering managers
+                        should stand behind this and verify it happens.
+                    </li>
+                </ol>
+
+
+                <ol start="4">
+                    <li>Group alerts by systems and run a diagnostic to understand what can be done to resolve these
+                        alerts completely. Use the strategies above if needed. Bring an estimation of how much effort it
+                        will take versus how many alerts (or how often) it will solve.&nbsp;
+                    </li>
+                </ol>
+
+
+                <ol start="5">
+                    <li>Invest in these areas every quarter. Make it part of your quarterly planning. Chiefs, Tech
+                        Leads, and Engineering Managers should represent and push to prioritize that with their clients.
+                        If the team is busy with firefighting, it cannot work on new efforts. It’s in your clients’ best
+                        interest for you to focus on stability to get the team focusing (later on) on adding value.<br>
+                    </li>
+                    <li>Set clear internal SLOs for your Products and Services. Explicitly “advertise” it to
+                        Engineering. Start the process towards only high-alerting on things that are directly impacting
+                        any of the SLIs. This, as a long-term strategy, will give teams the psychological safety they
+                        need to remove “bad” alerts.
+                    </li>
+                </ol>
+
+
+                <p>This is an ongoing effort. But most probably you should stop now and invest in 1-3, and then make
+                    sure 4 and 5 are taken into account every quarter.&nbsp;</p>
+
+
+                <h2><strong>Keeping on-call hygiene&nbsp;</strong></h2>
+
+
+                <ol>
+                    <li>Engineering Managers – Make sure that people take time off after an incident. If someone woke up
+                        during the night, it’s expected to take a few hours off (on Forter’s expense!) depending on the
+                        length of the incident – If it was a long one, we expect people to take a day off to
+                        recharge.<br></li>
+                    <li>Product Chief (EM to verify) – Send a monthly report of the statistics and the effort that was
+                        made to improve Operational Health. You can do it per Product and for the team (all products) so
+                        the team will see the trend. Remind them what was done to create this impact.
+                        <strong>Note</strong>: if the Product is stable for more than 3 quarters, that can wait for the
+                        Director’s quarterly update (see next bullet).<br></li>
+                    <li>Directors will share on a quarterly basis their Products-space, SLOs, and actual performance.
+                        This will be done as part of the “Quarterly lookback” slides that each Director is presenting to
+                        their stakeholders.<br></li>
+                    <li>Practice a “Game Day” at least once every 2 quarters until the majority of the team feels
+                        comfortable operating the tools the team has, eliminating options quickly, and having enough
+                        context shared between team members to help each other out without depending only on your Domain
+                        Experts. Directors should organize it in their groups, assuming multiple teams within the group
+                        will be influenced by it, and to build some group knowledge.<br></li>
+                </ol>
+
+
+                <h2><strong>Required Reading:</strong></h2>
+
+
+                <ul>
+                    <li><a href="https://speakerdeck.com/charity/the-paradox-of-alerts">The Paradox of Alerts</a></li>
+                    <li><a href="https://www.youtube.com/watch?v=VZePNGQojfA">Stability Patterns &amp; Antipatterns</a>
+                    </li>
+                </ul>
+
+
+                <h2><strong>Bonus Reading:</strong></h2>
+
+
+                <ul>
+                    <li>AWS page about <a
+                            href="https://wa.aws.amazon.com/wellarchitected/2020-07-02T19-33-23/wat.concept.gameday.en.html">the
+                        game concept</a></li>
+                    <li>
+                        <a href="https://web.archive.org/web/20180403191607/https://stripe.com/blog/game-day-exercises-at-stripe">Stripe’s
+                            post</a> from via Wayback Machine
+                    </li>
+                    <li>Google’s <a
+                            href="https://www.usenix.org/conference/lisa15/conference-program/presentation/krishnan">DiRT
+                        talk</a></li>
+                    <li><a href="https://esynergy.co.uk/technical-debts-hidden-cousin-dark-debt/">Dark Debt</a>&nbsp;
+                    </li>
+                </ul>
+
+            </div>
+    </div>
+    </article>
+    </div>
+    <!-- end post -->
+
+
 </main>
 <!-- end content -->
+
 
 <!-- begin footer -->
 <footer class="footer">
@@ -4708,8 +4690,8 @@
 
                                 <li class="social__item">
                                     <a class="social__link"
-                                       href="https://www.youtube.com/channel/UCxAPyPoyVWu0yJbZ0gAvCqA"
-                                       target="_blank" rel="noopener"
+                                       href="https://www.youtube.com/channel/UCxAPyPoyVWu0yJbZ0gAvCqA" target="_blank"
+                                       rel="noopener"
                                        aria-label=" link"><i class="ion ion-logo-youtube"></i></a>
                                 </li>
 
@@ -4730,25 +4712,25 @@
 
                         </div>
 
+
                     </div>
-                </div>
 
 
-            </div>
-        </div>
-    </div>
-
-    <div class="footer__info">
-        <div class="container">
-            <div class="row">
-                <div class="col col-12">
-                    <div class="footer__info-box">
-                        <div class="top" title="Top"><i class="ion ion-ios-arrow-up"></i></div>
-                    </div>
                 </div>
             </div>
         </div>
-    </div>
+
+        <div class="footer__info">
+            <div class="container">
+                <div class="row">
+                    <div class="col col-12">
+                        <div class="footer__info-box">
+                            <div class="top" title="Top"><i class="ion ion-ios-arrow-up"></i></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
 </footer>
 <!-- end footer -->

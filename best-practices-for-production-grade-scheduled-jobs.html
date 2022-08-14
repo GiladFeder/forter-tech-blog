@@ -6,25 +6,25 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Forter Tech Blog</title>
+    <title>Best Practices for Production Grade Scheduled Jobs</title>
     <meta name='description'
           content="Forter's technical blog, writing on security, performance, engineering culture, and more.">
 
-    <link rel="canonical" href="http://localhost:4000/">
-    <link rel="alternate" type="application/rss+xml" title="Forter Tech Blog" href="/feed.xml">
+    <link rel="canonical" href="http://localhost:4000/can-we-agree-on-dependency-and-version-management">
+    <link rel="alternate" type="application/rss+xml" title="TECH.FORTER.COM" href="/feed.xml">
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Forter Tech Blog">
+    <meta name="twitter:title" content="Best Practices for Production Grade Scheduled Jobs – TECH.FORTER.COM">
     <meta name="twitter:description"
-          content="Forter's technical blog, writing on security, performance, engineering culture, and more.">
-    <meta name="twitter:image:src" content="http://localhost:4000/images/forter.png">
+          content="At Forter we develop an online, low latency fraud prevention service. We started out with a single real time system, but as throughput increased, we gradually decided to offload more and more jobs to run periodically. This varies from sophisticated anomaly detection systems to detect new types of fraud, to simpler, ETL jobs that perform maintenance on our rapidly growing databases.">
+    <meta name="twitter:image:src" content="http://localhost:4000/images/post-img/job.png">
 
     <!-- Facebook OpenGraph -->
-    <meta property="og:title" content="Forter Tech Blog">
+    <meta property="og:title" content="Best Practices for Production Grade Scheduled Jobs – TECH.FORTER.COM">
     <meta property="og:description"
-          content="Forter's technical blog, writing on security, performance, engineering culture, and more.">
-    <meta property="og:image" content="http://localhost:4000/images/forter.png">
+          content="At Forter we develop an online, low latency fraud prevention service. We started out with a single real time system, but as throughput increased, we gradually decided to offload more and more jobs to run periodically. This varies from sophisticated anomaly detection systems to detect new types of fraud, to simpler, ETL jobs that perform maintenance on our rapidly growing databases.">
+    <meta property="og:image" content="http://localhost:4000/images/post-img/job.png">
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -4240,6 +4240,7 @@
                                 <a href="/" class="nav__link">Home</a>
                             </li>
 
+
                             <li class="nav__item nav__item-icon">
                                 <div class="toggle-theme">
                                     <div class="toggle-moon" title="Enable dark mode"><i class="ion ion-ios-moon"></i>
@@ -4292,378 +4293,289 @@
 
 <!-- begin content -->
 <main class="content" aria-label="Content">
-
-
-    <div class="tags__inner">
-
+    <div class="post-head">
         <div class="container">
             <div class="row">
-                <div class="col col-12">
-                    <div class="tag__info">
-                        <div class="tag__info-box">
-                            <div class="tag__counter">
-                                <span>2</span>
-                                <small>Posts</small>
-                            </div>
-                            <h2 class="tag__name" id="talks">Talks</h2>
-                        </div>
-                        <a class="top__link" href="#top">Return to top</a>
+
+                <div class="col col-6 col-d-12">
+                    <div class="post-image">
+                        <img class="lazy" data-src="/images/post-img/job.png"
+                             alt="Best Practices for Production Grade Scheduled Jobs">
                     </div>
                 </div>
-            </div>
-        </div>
 
-        <div class="container">
-            <div class="row">
-                <div class="col col-12">
-                    <div class="row">
+                <div class="col col-6 col-d-12">
+                    <div class="post__info ">
 
 
-                        <div class="article col col-4 col-d-6 col-t-12">
-                            <div class="article__inner">
+                        <div class="post__tags">
 
-                                <div class="article__head">
-                                    <time class="article__date" datetime="1970-01-01T00:00:00+00:00">01 Jan 1970</time>
+                            <a href="/tags#cron" class="post__tag">cron</a>
+                            <a href="/tags#elasticsearch" class="post__tag">elasticsearch</a>
+                            <a href="/tags#scale" class="post__tag">scale</a>
+                            <a href="/tags#scheduled-jobs" class="post__tag">scheduled-jobs</a>
+                            <a href="/tags#software engineering" class="post__tag">software engineering</a>
+                            <a href="/tags#software architecture" class="post__tag">software architecture</a>
 
-                                    <div class="video-icon">
-                                        <div class="circle pulse"></div>
-                                        <div class="circle">
-                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
-                                                <polygon points="40,30 65,50 40,70"></polygon>
-                                            </svg>
-                                        </div>
-                                    </div>
-
-                                    <a class="article__image" href="/comparing-message-queue-architectures-on-aws">
-                                        <img class="lazy" data-src="/images/post-img/queue.png"
-                                             alt="Comparing Message Queue Architecture on AWS">
-                                    </a>
-
-
-                                </div>
-
-                                <div class="article__content">
-
-                                    <h2 class="article__title">
-                                        <a href="/comparing-message-queue-architectures-on-aws">Comparing Message Queue
-                                            Architecture on AWS</a>
-                                    </h2>
-
-
-                                </div>
-                            </div>
                         </div>
 
 
-                        <div class="article col col-4 col-d-6 col-t-12">
-                            <div class="article__inner">
+                        <h1 class="post__title">Best Practices for Production Grade Scheduled Jobs</h1>
 
-                                <div class="article__head">
-                                    <time class="article__date" datetime="1970-01-01T00:00:00+00:00">01 Jan 1970</time>
+                        <div class="post__meta">
+                            <a href="/about/" class="post__author-image">
+                                <img class="lazy" data-src="/images/authors/doron.jpg" alt="Doron Yaacoby">
+                            </a>
 
-                                    <div class="video-icon">
-                                        <div class="circle pulse"></div>
-                                        <div class="circle">
-                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
-                                                <polygon points="40,30 65,50 40,70"></polygon>
-                                            </svg>
-                                        </div>
-                                    </div>
-
-                                    <a class="article__image" href="/comparing-message-queue-architectures-on-aws">
-                                        <img class="lazy" data-src="/images/post-img/queue.png"
-                                             alt="Comparing Message Queue Architecture on AWS">
-                                    </a>
-
-
-                                </div>
-
-                                <div class="article__content">
-
-                                    <h2 class="article__title">
-                                        <a href="/comparing-message-queue-architectures-on-aws">Comparing Message Queue
-                                            Architecture on AWS</a>
-                                    </h2>
-
-
-                                </div>
+                            <div class="post__meta-bottom">
+                                <span class="post__author">Doron Yaacoby</span>
+                                <time class="post__date" datetime="2020-03-16T00:00:00+00:00">16 Mar 2020</time>
                             </div>
                         </div>
-
 
                     </div>
                 </div>
             </div>
         </div>
-
-    </div>
-    <div class="tags__inner">
-
-        <div class="container">
-            <div class="row">
-                <div class="col col-12">
-                    <div class="tag__info">
-                        <div class="tag__info-box">
-                            <div class="tag__counter">
-                                <span>2</span>
-                                <small>Posts</small>
-                            </div>
-                            <h2 class="tag__name" id="security">Security</h2>
-                        </div>
-                        <a class="top__link" href="#top">Return to top</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="container">
-            <div class="row">
-                <div class="col col-12">
-                    <div class="row">
-
-
-                        <div class="article col col-4 col-d-6 col-t-12">
-                            <div class="article__inner">
-
-                                <div class="article__head">
-                                    <time class="article__date" datetime="1970-01-01T00:00:00+00:00">01 Jan 1970</time>
-
-
-                                    <a class="article__image" href="/comparing-message-queue-architectures-on-aws">
-                                        <img class="lazy" data-src="/images/post-img/queue.png"
-                                             alt="Comparing Message Queue Architecture on AWS">
-                                    </a>
-
-
-                                </div>
-
-                                <div class="article__content">
-
-                                    <h2 class="article__title">
-                                        <a href="/comparing-message-queue-architectures-on-aws">Comparing Message Queue
-                                            Architecture on AWS</a>
-                                    </h2>
-
-
-                                </div>
-                            </div>
-                        </div>
-
-
-                        <div class="article col col-4 col-d-6 col-t-12">
-                            <div class="article__inner">
-
-                                <div class="article__head">
-                                    <time class="article__date" datetime="1970-01-01T00:00:00+00:00">01 Jan 1970</time>
-
-
-                                    <a class="article__image" href="/comparing-message-queue-architectures-on-aws">
-                                        <img class="lazy" data-src="/images/post-img/queue.png"
-                                             alt="Comparing Message Queue Architecture on AWS">
-                                    </a>
-
-
-                                </div>
-
-                                <div class="article__content">
-
-                                    <h2 class="article__title">
-                                        <a href="/comparing-message-queue-architectures-on-aws">Comparing Message Queue
-                                            Architecture on AWS</a>
-                                    </h2>
-
-
-                                </div>
-                            </div>
-                        </div>
-
-
-                    </div>
-                </div>
-            </div>
-        </div>
-
-    </div>
-    <div class="tags__inner">
-
-        <div class="container">
-            <div class="row">
-                <div class="col col-12">
-                    <div class="tag__info">
-                        <div class="tag__info-box">
-                            <div class="tag__counter">
-                                <span>2</span>
-                                <small>Posts</small>
-                            </div>
-                            <h2 class="tag__name" id="culture">Engineering Culture</h2>
-                        </div>
-                        <a class="top__link" href="#top">Return to top</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="container">
-            <div class="row">
-                <div class="col col-12">
-                    <div class="row">
-
-
-                        <div class="article col col-4 col-d-6 col-t-12">
-                            <div class="article__inner">
-
-                                <div class="article__head">
-                                    <time class="article__date" datetime="1970-01-01T00:00:00+00:00">01 Jan 1970</time>
-
-
-                                    <a class="article__image" href="/comparing-message-queue-architectures-on-aws">
-                                        <img class="lazy" data-src="/images/post-img/queue.png"
-                                             alt="Comparing Message Queue Architecture on AWS">
-                                    </a>
-
-
-                                </div>
-
-                                <div class="article__content">
-
-                                    <h2 class="article__title">
-                                        <a href="/comparing-message-queue-architectures-on-aws">Comparing Message Queue
-                                            Architecture on AWS</a>
-                                    </h2>
-
-
-                                </div>
-                            </div>
-                        </div>
-
-
-                        <div class="article col col-4 col-d-6 col-t-12">
-                            <div class="article__inner">
-
-                                <div class="article__head">
-                                    <time class="article__date" datetime="1970-01-01T00:00:00+00:00">01 Jan 1970</time>
-
-
-                                    <a class="article__image" href="/comparing-message-queue-architectures-on-aws">
-                                        <img class="lazy" data-src="/images/post-img/queue.png"
-                                             alt="Comparing Message Queue Architecture on AWS">
-                                    </a>
-
-
-                                </div>
-
-                                <div class="article__content">
-
-                                    <h2 class="article__title">
-                                        <a href="/comparing-message-queue-architectures-on-aws">Comparing Message Queue
-                                            Architecture on AWS</a>
-                                    </h2>
-
-
-                                </div>
-                            </div>
-                        </div>
-
-
-                    </div>
-                </div>
-            </div>
-        </div>
-
-    </div>
-    <div class="tags__inner">
-
-        <div class="container">
-            <div class="row">
-                <div class="col col-12">
-                    <div class="tag__info">
-                        <div class="tag__info-box">
-                            <div class="tag__counter">
-                                <span>2</span>
-                                <small>Posts</small>
-                            </div>
-                            <h2 class="tag__name" id="production">Production</h2>
-                        </div>
-                        <a class="top__link" href="#top">Return to top</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="container">
-            <div class="row">
-                <div class="col col-12">
-                    <div class="row">
-
-
-                        <div class="article col col-4 col-d-6 col-t-12">
-                            <div class="article__inner">
-
-                                <div class="article__head">
-                                    <time class="article__date" datetime="1970-01-01T00:00:00+00:00">01 Jan 1970</time>
-
-
-                                    <a class="article__image" href="/comparing-message-queue-architectures-on-aws">
-                                        <img class="lazy" data-src="/images/post-img/queue.png"
-                                             alt="Comparing Message Queue Architecture on AWS">
-                                    </a>
-
-
-                                </div>
-
-                                <div class="article__content">
-
-                                    <h2 class="article__title">
-                                        <a href="/comparing-message-queue-architectures-on-aws">Comparing Message Queue
-                                            Architecture on AWS</a>
-                                    </h2>
-
-
-                                </div>
-                            </div>
-                        </div>
-
-
-                        <div class="article col col-4 col-d-6 col-t-12">
-                            <div class="article__inner">
-
-                                <div class="article__head">
-                                    <time class="article__date" datetime="1970-01-01T00:00:00+00:00">01 Jan 1970</time>
-
-
-                                    <a class="article__image" href="/comparing-message-queue-architectures-on-aws">
-                                        <img class="lazy" data-src="/images/post-img/queue.png"
-                                             alt="Comparing Message Queue Architecture on AWS">
-                                    </a>
-
-
-                                </div>
-
-                                <div class="article__content">
-
-                                    <h2 class="article__title">
-                                        <a href="/comparing-message-queue-architectures-on-aws">Comparing Message Queue
-                                            Architecture on AWS</a>
-                                    </h2>
-
-
-                                </div>
-                            </div>
-                        </div>
-
-
-                    </div>
-                </div>
-            </div>
-        </div>
-
     </div>
 
+    <!-- begin post -->
+    <div class="container animate">
 
-    </section>
-    <!-- end tags -->
+        <article class="post">
+            <div class="post__content">
+
+                <p>At Forter we develop an online, low latency fraud prevention service. We started out with a single real time system, but as throughput increased, we gradually decided to offload more and more jobs to run periodically. This varies from sophisticated anomaly detection systems to detect new types of fraud, to simpler, ETL jobs that perform maintenance on our rapidly growing databases.</p>
+
+
+
+                <p>An offline job is any program you run at scheduled intervals. Usually it is implemented as a command line tool that’s executed by a job scheduler (for example, Jenkins).</p>
+
+
+
+                <p>So you’ve decided to write such a job. Perhaps it’s some ETL that copies records from Elasticsearch to S3. Or perhaps it’s a daily report, sending you an email with interesting statistics on your production environment. Offline (or scheduled) jobs are first class citizens of most production systems.</p>
+
+
+
+                <p>However, it can be tempting to write offline jobs as a “one of”, or a “write and forget”. After all, since they are not in the real time critical path, they can <em>feel</em> less critical or less production grade. This can turn out to be a big mistake. In Forter’s case, it could mean a fraudster is slipping past our net. Or perhaps an analyst can’t do her work properly because the data she needs is not available.</p>
+
+
+
+                <p>Worry not, though, ‘cause I’m here to help, with some practices I found to be super helpful for writing robust and friendly offline jobs.</p>
+
+
+
+                <h2>Properties of a good scheduled job</h2>
+
+
+
+                <p>First up, let’s have a look at what I think makes for a good job:</p>
+
+
+
+                <ul><li>Good <strong>visibility</strong>: if it fails, you can find out why it failed. If it’s stuck, you can tell where it’s stuck.</li><li>Great <strong>error handling: </strong>does the correct thing with errors – for example, does not fail the entire job because of one timeout against a database.</li><li><strong>Efficient</strong> “enough”: your job can keep up with the data it needs to run on and isn’t overly wasting money/resources.</li><li><strong>Doesn’t strain production resources</strong>: your job should not overload DBs in a way that interferes with your user facing production applications. For instance, our real time system at Forter should not suffer increased latency caused by offline jobs.</li><li><strong>Consistent and reliable: </strong>for the most part, it just works, as opposed to being flaky with many sporadic failures.</li><li><strong>Idempotent: </strong>Wikipedia <a href="https://en.wikipedia.org/wiki/Idempotence#Computer_science_meaning">defines idempotency</a> as “… the system state remains the same after one or several calls”. For an offline job this means you can run it again and again and nothing bad would happen.</li><li><strong>Extendable: </strong>it’s important for any system to be open to changes. It’s very likely you’ll want to add new parameters and features to your job.</li></ul>
+
+
+
+                <p></p>
+
+
+
+                <h2>12 best practices for scheduled jobs</h2>
+
+
+
+                <p>So how do we achieve these nice traits I listed above? Here’s what I consider the best practices, almost every job should consider.</p>
+
+
+
+                <h3>1. Batch it baby</h3>
+
+
+
+                <p>One of the first benefits of moving code from a real time service to a scheduled job, is the potential for efficiency and higher throughput. Data sources tend to prefer batched operations to work more efficiently. For example, in Elasticsearch <a href="https://www.elastic.co/guide/en/elasticsearch/reference/master/tune-for-indexing-speed.html">bulk inserts are much faster</a>, and less resource intensive, than inserting records one by one. Therefore, if your job is the kind which operates on a lot of data, prefer to work in batches of records, and not one by one.&nbsp;</p>
+
+
+
+                <p>However, resist the temptation to process all records at once – this can cause the job to run out of memory, or hit various limits in your data sources. How many records in a batch? It depends, of course – it could be 100, 1000 or 10000, you should try various sizes and choose what works best for your scenario. Sometimes it makes sense to batch things by date: e.g. run on records from Jan 1st, then Jan 2nd, etc. However, be careful there, because some days might contain significantly more data. For instance, on Black Friday, some online merchants have X10 more traffic than regular days. This can cause your job to process X10 more data than you expected, and run out of memory just when you need it most.&nbsp;</p>
+
+
+
+                <h3>2. Log, log, log</h3>
+
+
+
+                <p>Do you know that feeling of looking at the console output of a job that’s been running for hours, and seeing nothing printed in the last hour or so? “<em>WHAT IS IT DOING?!” </em>You scream into the keyboard, but to no avail. Let us avoid this dire situation, and <em>log, log, log.</em></p>
+
+
+
+                <p>Here are some basic log entries we should consider when writing a batch job:</p>
+
+
+
+                <ol><li>As the job starts, log all the job’s parameters and relevant configuration about the environment or data sources you’re going to use. (e.g. <em>ElasticETL is starting. Environment is PROD, scanning the last 2 days of data, connecting to prod-elastic-01 at IP 1.2.3.4)</em></li><li>Log before each batch begins. (e.g. <em>Processing Batch 23/50)</em></li><li>Log after each batch completes. You should make sure log timestamps are enabled, so you can assess how long each batch took. (<em>Batch 23/50 completed)</em></li><li>Log every query to a database. If your job gets stuck later, this can help you find out what’s taking it so long. (<em>Running query against my-db-02: select * from users…)</em></li><li>Log every error or exception with a complete stack trace</li><li>Before anything time consuming (<em>Uploading extremely large results file to S3, this might take a while…)</em></li></ol>
+
+
+
+                <h3>3. Use constant memory</h3>
+
+
+
+                <p>A nice, well behaved job doesn’t fail on out of memory exceptions, right? Beware of leaking memory between batches. Each batch should be self contained, so be wary of this pattern:</p>
+
+
+
+                <pre class="wp-block-preformatted"><code>results = []<br>for batch in batches:<br>    results.extend(process_batch(batch))</code></pre>
+
+
+
+                <p>In this example, the list of results will grow and grow, and your job might fail on OOM. Instead, try to flush the results of each batch to disk or other persistent store. The same holds for collecting errors: beware of making a list of all the errors your job encountered.</p>
+
+
+
+                <h3>4. Error handling is crucial</h3>
+
+
+
+                <p>Scheduled jobs tend to process a lot of data, and query various databases. This means that errors and timeouts are common, and you should carefully think about how you want to handle each error. I like to split errors into two types:</p>
+
+
+
+                <ol><li><strong>Critical failures</strong> – this type of failure should fail the entire job. There’s simply no point in continuing the job after this horrible thing had just happened.</li><li><strong>Non critical failures – </strong>these should be reported, but shouldn’t fail the job.</li></ol>
+
+
+
+                <p>There’s a careful balance here: on the one hand, you don’t want to fail a job that’s successfully processed 10M record over the last hour, just because one record had a problem. On the other hand, simply swallowing all exceptions can hide the fact that the job is getting nothing done.</p>
+
+
+
+                <p>Here’s what I propose:</p>
+
+
+
+                <ol><li>Any operation that can be retried (e.g a DB query that timed out), should be retried.</li><li>In most cases, you don’t want to fail the entire job because of one error. You can keep a count of the amount of errors you allow, and fail the job only if you cross some threshold. For example, if more than 1% of the data failed to process, you can fail the job and notify a human.</li><li>Don’t swallow an error without logging it first.</li><li>In many cases it is reasonable to add retries to the entire job. Most job schedulers will allow you to do this without adding any code to your job.</li><li>Make sure you understand what happens if you swallow an error. Will the record whose processing you skipped be processed the next time your job runs? If it is skipped forever, is that OK in your use case? Consider using a <a href="https://en.wikipedia.org/wiki/Dead_letter_queue">dead letter queue</a>.</li></ol>
+
+
+
+                <h3>5. Make your job idempotent</h3>
+
+
+
+                <p>Since failures tend to be common in scheduled jobs, the likelihood of your job running twice on the same data is very high. Even when nothing fails, you might discover a bug and you’d want to reprocess the last few days of data again. It is important that nothing blows up in this case. It is easy to create duplicates if you’re not thinking thoroughly about reruns.</p>
+
+
+
+                <p>Non-idempotent code usually involves state changes, or stateful side effects. Here’s one example. By default Elasticsearch generates a new random identifier for each inserted document. Running such a job twice would result in two identical documents in Elasticsearch. If you choose the ids yourself by using some identifier from the raw data, you can make sure that your job only updates existing records when it eventually reruns.</p>
+
+
+
+                <h3>6. Long running jobs should be resumable</h3>
+
+
+
+                <p>Let’s say your job usually runs for 10 hours, but it failed after 7 hours. You fix the problem, but now you have to wait the full 10 hours again! Not fun. You should consider allowing your job to pick up where it left off. You can do it in one of two ways:</p>
+
+
+
+                <ol><li>The job itself maintains a resumable state, such as checkpoints that contain partially processed data. This is the preferred way, because then you can just rerun the job and it will do the right thing.</li><li>You can also move the complexity outside the batch job itself. For example, provide an optional parameter to your job which tells it to begin at a later batch number/date. This way the job can be manually made to skip data it already processed.</li></ol>
+
+
+
+                <h3>7. Use a command line parser utility</h3>
+
+
+
+                <p>Do not attempt to parse your job arguments by yourself. In every language there are lovely options for parsing command line arguments. These tools make it easier to add new parameters, give clear errors when a required argument is missing, and allow for a handy ‘help’ command which displays all the possible job args.</p>
+
+
+
+                <p>What tool to use? <a href="https://click.palletsprojects.com/en/7.x/">Click</a> is our favorite for Python. If you require a more complex configuration, consider <a href="https://hydra.cc/">hydra</a>, the new kid on the block.&nbsp;</p>
+
+
+
+                <h3>8. Set timeouts on EVERYTHING</h3>
+
+
+
+                <p>Make sure to configure a proper timeout for each network call. Whether it is a DB query, a REST call or a message to a distributed logging system, you want to make sure that:</p>
+
+
+
+                <ol><li>Your job isn’t stuck infinitely on a network call.</li><li>Your job doesn’t fail because of timeouts which are too short, that were configured for online production code and not batched work. As I mentioned in the beginning, it’s common to move code from real time systems to scheduled jobs, so forgetting to properly change the configuration when doing this is a common mistake.</li></ol>
+
+
+
+                <h3>9. Notify on job failures / jobs not running at all</h3>
+
+
+
+                <p>Usually, when a job fails, you’d want someone to know about it. You can use Slack, email or even tools like PagerDuty for critical jobs. Don’t let your jobs fail silently!&nbsp;</p>
+
+
+
+                <p>The notification should contain, at the very least, a link to view the console output of the job. If possible, include the stack trace of the last relevant exception.</p>
+
+
+
+                <p>In addition to job failures, you’d probably want to know if your job isn’t being triggered at all. If your job is supposed to run each day, but hasn’t even started for the last week, you’d want to have some monitoring tool notify you about this.</p>
+
+
+
+                <h3 id="run-locally">10. Allow running your job locally</h3>
+
+
+
+                <p>Jobs need to be maintained long after they’re written. You’ll want to fix bugs and add new features. Your fellow developers will love you if you include a flag that allows running your job on their laptop. When this flag is on, your job should work against local or develop environment instances of databases. It should not affect any production data. Instead, you can print out comments like <em>INFO: deletion of record X skipped because we are in LOCAL mode</em>, so you’d know that the production job would have deleted something here.</p>
+
+
+
+                <h3>11. Do not strain your DBs: ‘sleep’ is ok for offline jobs</h3>
+
+
+
+                <p>Your job is likely hitting a database that is also being used by other applications. Reading/writing too fast or too much might overload the CPU or other resources of these DBs. You want your job to be a good citizen, so it’d be a good idea to monitor the databases your job uses as it runs, and adjust the code accordingly. While frowned upon in real time code, placing a few <em>sleep </em>calls here and there, to make your job slower, can be a good idea.</p>
+
+
+
+                <p>The tradeoff is that the job would run longer, and in cases of distributed processing (such as huge spark clusters), it could incur extra costs to keep the job running longer. Usually, though, it’s a good tradeoff to make.</p>
+
+
+
+                <h3>12. Test as much as you can</h3>
+
+
+
+                <p>Testing is a tricky issue for scheduled jobs. They might not have a lot of logic, instead they might contain “glue” code that takes data from one DB, manipulates it and sends it to another. Testing code with a lot of DB access is always a hassle.</p>
+
+
+
+                <p>The easy way out is just not to write tests. For some simple jobs that’s okay, as long as you at least allow running your job locally. You can mock out DB access code, but that tends to be where most of the logic is, so you end up not actually testing anything.&nbsp;</p>
+
+
+
+                <p>So what should you do? Write integration tests that allow your code to access real instances of databases. This would require some infrastructure:</p>
+
+
+
+                <ul><li>You can <a href="https://semaphoreci.com/blog/2017/09/13/continuous-integration-with-docker-compose.html">use docker-compose</a> to launch local stubs of your databases in the CI server.</li><li>You can use develop-environment copies of your DBs, if you have them. Just make sure running your tests in parallel by different people/builds won’t break them. For this, your tests should use randomly generated identifiers to avoid conflicts, and clean after themselves when they finish.</li></ul>
+
+
+
+                <h2>Final words</h2>
+
+
+
+                <p>There is a lot more to writing great offline jobs (for instance, I didn’t even get to talking about data pipelines and flow management). However, from my experience, sticking with the best practices above will get you off to a great start.</p>
+
+            </div>
+        </article>
+    </div>
+    <!-- end post -->
+
+
 </main>
 <!-- end content -->
+
 
 <!-- begin footer -->
 <footer class="footer">
@@ -4708,8 +4620,8 @@
 
                                 <li class="social__item">
                                     <a class="social__link"
-                                       href="https://www.youtube.com/channel/UCxAPyPoyVWu0yJbZ0gAvCqA"
-                                       target="_blank" rel="noopener"
+                                       href="https://www.youtube.com/channel/UCxAPyPoyVWu0yJbZ0gAvCqA" target="_blank"
+                                       rel="noopener"
                                        aria-label=" link"><i class="ion ion-logo-youtube"></i></a>
                                 </li>
 
