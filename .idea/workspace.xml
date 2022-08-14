@@ -5,14 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7ab4e46f-88f6-421b-a9f9-542c3ac6cf79" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/apache-beam-from-zero-to-hero-pt-2-streaming-pipelines.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_site/apache-beam-from-zero-to-hero-pt-1-batch-pipelines.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/apache-beam-from-zero-to-hero-pt-1-batch-pipelines.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/cross-region-data-replication.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/cross-region-data-replication.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/_site/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/monitoring-with-riemann-video-slides.html" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/_site/search.json" beforeDir="false" afterPath="$PROJECT_DIR$/_site/search.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apache-beam-from-zero-to-hero-pt-1-batch-pipelines.html" beforeDir="false" afterPath="$PROJECT_DIR$/apache-beam-from-zero-to-hero-pt-1-batch-pipelines.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/storm-in-under-a-second-video-slides.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cross-region-data-replication.html" beforeDir="false" afterPath="$PROJECT_DIR$/cross-region-data-replication.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/monitoring-with-riemann-video-slides.html" beforeDir="false" afterPath="$PROJECT_DIR$/monitoring-with-riemann.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/search.json" beforeDir="false" afterPath="$PROJECT_DIR$/search.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storm-in-under-a-second-video-slides.html" beforeDir="false" afterPath="$PROJECT_DIR$/storm-in-under-a-second.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -71,7 +74,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1660407902256</updated>
-      <workItem from="1660407904808" duration="19421000" />
+      <workItem from="1660407904808" duration="19865000" />
     </task>
     <servers />
   </component>
