@@ -9,6 +9,9 @@
     "article": "<div class='article col col-4 col-d-6 col-t-12 animate'> <div class='article__inner'> <div class='article__head'> <time class='article__date' datetime='2022-04-05T00:00:00+00:00'>5 April 2022</time><a class='article__image' href='/reflecting-on-oktas-breach'> <img src='/images/post-img/okta.jpg' alt='Reflecting on Okta’s Breach'> </a></div><div class='article__content'> <h2 class='article__title'> <a href='//reflecting-on-oktas-breach'>Reflecting on Okta’s Breach</a> </h2></div></div></div>"
   },
   {
+    "article": "<div class='article col col-4 col-d-6 col-t-12 animate'> <div class='article__inner'> <div class='article__head'> <time class='article__date' datetime='2020-12-13T00:00:00+00:00'>13 Dec 2020</time><a class='article__image' href='/apache-beam-from-zero-to-hero-pt-1-batch-pipelines'> <img src='/images/post-img/apache.jpg' alt='Apache Beam — From Zero to Hero Pt. 1: Batch Pipelines'> </a></div><div class='article__content'> <h2 class='article__title'> <a href='//apache-beam-from-zero-to-hero-pt-1-batch-pipelines'>Apache Beam — From Zero to Hero Pt. 1: Batch Pipelines</a> </h2></div></div></div>"
+  },
+  {
     "article": "<div class='article col col-4 col-d-6 col-t-12 animate'> <div class='article__inner'> <div class='article__head'> <time class='article__date' datetime='2020-03-16T00:00:00+00:00'>16 Mar 2020</time><a class='article__image' href='/best-practices-for-production-grade-scheduled-jobs'> <img src='/images/post-img/job.png' alt='Best Practices for Production Grade Scheduled Jobs'> </a></div><div class='article__content'> <h2 class='article__title'> <a href='//best-practices-for-production-grade-scheduled-jobs'>Best Practices for Production Grade Scheduled Jobs</a> </h2></div></div></div>"
   },
   {

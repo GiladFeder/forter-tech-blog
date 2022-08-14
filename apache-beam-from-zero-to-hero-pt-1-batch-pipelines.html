@@ -6,25 +6,25 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Forter Tech Blog</title>
+    <title>Apache Beam — From Zero to Hero Pt. 1: Batch Pipelines</title>
     <meta name='description'
           content="Forter's technical blog, writing on security, performance, engineering culture, and more.">
 
-    <link rel="canonical" href="http://localhost:4000/">
-    <link rel="alternate" type="application/rss+xml" title="Forter Tech Blog" href="/feed.xml">
+    <link rel="canonical" href="http://localhost:4000/apache-beam-from-zero-to-hero-pt-1-batch-pipelines/">
+    <link rel="alternate" type="application/rss+xml" title="TECH.FORTER.COM" href="/feed.xml">
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Forter Tech Blog">
+    <meta name="twitter:title" content="Apache Beam — From Zero to Hero Pt. 1: Batch Pipelines – TECH.FORTER.COM">
     <meta name="twitter:description"
-          content="Forter's technical blog, writing on security, performance, engineering culture, and more.">
-    <meta name="twitter:image:src" content="http://localhost:4000/images/forter.png">
+          content="Join us on a journey from n00b to h4x0r in Kotlin Coroutine programming. We'll use real-life production code examples of coroutine usage in a JAVA based, I/O intensive application, and talk about how to utilize them in the backend and what's there to gain. On the way, you'll be getting a brief intro to the world of stream processing in Apache Storm.">
+    <meta name="twitter:image:src" content="http://localhost:4000/images/post-img/apache.jpg">
 
     <!-- Facebook OpenGraph -->
-    <meta property="og:title" content="Forter Tech Blog">
+    <meta property="og:title" content="Apache Beam — From Zero to Hero Pt. 1: Batch Pipelines – TECH.FORTER.COM">
     <meta property="og:description"
-          content="Forter's technical blog, writing on security, performance, engineering culture, and more.">
-    <meta property="og:image" content="http://localhost:4000/images/forter.png">
+          content="Join us on a journey from n00b to h4x0r in Kotlin Coroutine programming. We'll use real-life production code examples of coroutine usage in a JAVA based, I/O intensive application, and talk about how to utilize them in the backend and what's there to gain. On the way, you'll be getting a brief intro to the world of stream processing in Apache Storm.">
+    <meta property="og:image" content="http://localhost:4000/images/post-img/apache.jpg">
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -4215,7 +4215,6 @@
     gtag('config', 'G-FH2QHQYH2Y');
 </script>
 
-
 <!-- begin header -->
 <header class="header" id="top">
     <div class="container">
@@ -4240,6 +4239,8 @@
                             <li class="nav__item">
                                 <a href="/" class="nav__link">Home</a>
                             </li>
+
+
                             <li class="nav__item nav__item-icon">
                                 <div class="toggle-theme">
                                     <div class="toggle-moon" title="Enable dark mode"><i class="ion ion-ios-moon"></i>
@@ -4252,6 +4253,7 @@
                         </ul>
                     </div>
                 </nav>
+
                 <div class="nav-button">
                     <i class="nav__icon icon__menu ion ion-md-menu"></i>
                     <i class="nav__icon icon__search ion ion-md-search"></i>
@@ -4291,667 +4293,381 @@
 
 <!-- begin content -->
 <main class="content" aria-label="Content">
-    <div class="container">
+    <div class="post-head">
+        <div class="container">
+            <div class="row">
 
-
-        <div class="row animate">
-
-            <div class="article col col-4 col-d-6 col-t-12">
-                <div class="article__inner">
-
-                    <div class="article__head">
-                        <time class="article__date" datetime="2022-04-13T00:00:00+00:00">14 Aug 2022</time>
-
-
-                        <a class="article__image" href="/forter-engineering-on-call-strategy">
-                            <img class="lazy" data-src="/images/post-img/oncall.png"
-                                 alt="Forter Engineering On-Call Strategy￼">
-                        </a>
-
-                    </div>
-                    <div class="article__content">
-
-                        <h2 class="article__title">
-                            <a href="/forter-engineering-on-call-strategy">Forter Engineering On-Call Strategy</a>
-                        </h2>
-
-
+                <div class="col col-6 col-d-12">
+                    <div class="post-image">
+                        <img class="lazy" data-src="/images/post-img/apache.jpg"
+                             alt="Apache Beam — From Zero to Hero Pt. 1: Batch Pipelines">
                     </div>
                 </div>
-            </div>
 
-            <div class="article col col-4 col-d-6 col-t-12">
-                <div class="article__inner">
-
-                    <div class="article__head">
-                        <time class="article__date" datetime="2022-04-13T00:00:00+00:00">13 April 2022</time>
+                <div class="col col-6 col-d-12">
+                    <div class="post__info ">
 
 
-                        <a class="article__image" href="/mindful-vendor-assessment-counteracting-cognitive-bias-when-choosing-third-party-solutions">
-                            <img class="lazy" data-src="/images/post-img/vendor.jpg"
-                                 alt="mindful-vendor-assessment-counteracting-cognitive-bias-when-choosing-third-party-solutions">
-                        </a>
+                        <div class="post__tags">
 
-                    </div>
-                    <div class="article__content">
+                            <a href="/tags#java" class="post__tag">apache</a>
+                            <a href="/tags#python" class="post__tag">python</a>
 
-                        <h2 class="article__title">
-                            <a href="/mindful-vendor-assessment-counteracting-cognitive-bias-when-choosing-third-party-solutions">Mindful Vendor Assessment – Counteracting Cognitive Bias When Choosing Third-Party Solutions</a>
-                        </h2>
+                        </div>
 
 
-                    </div>
-                </div>
-            </div>
+                        <h1 class="post__title">Apache Beam — From Zero to Hero Pt. 1: Batch Pipelines</h1>
 
-            <div class="article col col-4 col-d-6 col-t-12">
-                <div class="article__inner">
+                        <div class="post__meta">
+                            <a href="/about/" class="post__author-image">
+                                <img class="lazy" data-src="/images/authors/ilan.jpg" alt="Ilan Uzan">
+                            </a>
 
-                    <div class="article__head">
-                        <time class="article__date" datetime="2022-04-05T00:00:00+00:00">5 April 2022</time>
-
-
-                        <a class="article__image" href="/reflecting-on-oktas-breach">
-                            <img class="lazy" data-src="/images/post-img/okta.jpg"
-                                 alt="Reflecting on Okta’s Breach">
-                        </a>
-
-                    </div>
-                    <div class="article__content">
-
-                        <h2 class="article__title">
-                            <a href="/reflecting-on-oktas-breach">Reflecting on Okta’s Breach</a>
-                        </h2>
-
-
-                    </div>
-                </div>
-            </div>
-
-            <div class="article col col-4 col-d-6 col-t-12">
-                <div class="article__inner">
-
-                    <div class="article__head">
-                        <time class="article__date" datetime="2020-12-13T00:00:00+00:00">13 Dec 2020</time>
-                        
-                        <a class="article__image" href="/apache-beam-from-zero-to-hero-pt-1-batch-pipelines">
-                            <img class="lazy" data-src="/images/post-img/apache.jpg"
-                                 alt="Apache Beam — From Zero to Hero Pt. 1: Batch Pipelines">
-                        </a>
-
-                    </div>
-                    <div class="article__content">
-
-                        <h2 class="article__title">
-                            <a href="/apache-beam-from-zero-to-hero-pt-1-batch-pipelines">Apache Beam — From Zero to Hero Pt. 1: Batch Pipelines</a>
-                        </h2>
-
-
-                    </div>
-                </div>
-            </div>
-
-            <div class="article col col-4 col-d-6 col-t-12">
-                <div class="article__inner">
-
-                    <div class="article__head">
-                        <time class="article__date" datetime="2020-03-16T00:00:00+00:00">16 Mar 2020</time>
-
-
-                        <a class="article__image" href="/best-practices-for-production-grade-scheduled-jobs">
-                            <img class="lazy" data-src="/images/post-img/job.png"
-                                 alt="Best Practices for Production Grade Scheduled Jobs">
-                        </a>
-
-                    </div>
-                    <div class="article__content">
-
-                        <h2 class="article__title">
-                            <a href="/best-practices-for-production-grade-scheduled-jobs">Best Practices for Production Grade Scheduled Jobs</a>
-                        </h2>
-
-
-                    </div>
-                </div>
-            </div>
-
-            <div class="article col col-4 col-d-6 col-t-12">
-                <div class="article__inner">
-
-                    <div class="article__head">
-                        <time class="article__date" datetime="2019-09-01T00:00:00+00:00">01 Sep 2019</time>
-
-
-                        <a class="article__image" href="/how-we-wrote-a-crash-free-mobile-sdk">
-                            <img class="lazy" data-src="/images/post-img/sdk.png"
-                                 alt="Real Time Streaming using Kotlin Coroutines">
-                        </a>
-
-                        <div class="video-icon">
-                            <div class="circle pulse"></div>
-                            <div class="circle">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
-                                    <polygon points="40,30 65,50 40,70"></polygon>
-                                </svg>
+                            <div class="post__meta-bottom">
+                                <span class="post__author">Ilan Uzan</span>
+                                <time class="post__date" datetime="2020-12-13T00:00:00+00:00">13 Dec 2020</time>
                             </div>
                         </div>
 
                     </div>
-                    <div class="article__content">
-
-                        <h2 class="article__title">
-                            <a href="/how-we-wrote-a-crash-free-mobile-sdk">How we wrote a crash-free mobile SDK</a>
-                        </h2>
-
-
-                    </div>
                 </div>
             </div>
-
-            <div class="article col col-4 col-d-6 col-t-12">
-                <div class="article__inner">
-
-                    <div class="article__head">
-                        <time class="article__date" datetime="2019-06-30T00:00:00+00:00">30 Jun 2019</time>
-
-
-                        <a class="article__image" href="/real-time-streaming-using-kotlin-coroutines">
-                            <img class="lazy" data-src="/images/post-img/kotlin.png"
-                                 alt="Real Time Streaming using Kotlin Coroutines">
-                        </a>
-
-                        <div class="video-icon">
-                            <div class="circle pulse"></div>
-                            <div class="circle">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
-                                    <polygon points="40,30 65,50 40,70"></polygon>
-                                </svg>
-                            </div>
-                        </div>
-
-                    </div>
-                    <div class="article__content">
-
-                        <h2 class="article__title">
-                            <a href="/real-time-streaming-using-kotlin-coroutines">Real Time Streaming using Kotlin Coroutines</a>
-                        </h2>
-
-
-                    </div>
-                </div>
-            </div>
-
-            <div class="article col col-4 col-d-6 col-t-12">
-                <div class="article__inner">
-
-                    <div class="article__head">
-                        <time class="article__date" datetime="2018-12-18T00:00:00+00:00">18 Dec 2018</time>
-
-
-                        <a class="article__image" href="/0flake-reaching-reliable-non-flaky-tests">
-                            <img class="lazy" data-src="/images/post-img/flake.png"
-                                 alt="0FLAKE – Reaching Reliable Non-Flaky Tests">
-                        </a>
-
-                    </div>
-                    <div class="article__content">
-
-                        <h2 class="article__title">
-                            <a href="/0flake-reaching-reliable-non-flaky-tests">0FLAKE – Reaching Reliable Non-Flaky Tests</a>
-                        </h2>
-
-
-                    </div>
-                </div>
-            </div>
-
-            <div class="article col col-4 col-d-6 col-t-12">
-                <div class="article__inner">
-
-                    <div class="article__head">
-                        <time class="article__date" datetime="2018-11-08T00:00:00+00:00">8 Nov 2018</time>
-
-
-                        <a class="article__image" href="/do-you-trust-your-front-end-tests-as-much-as-we-do">
-                            <img class="lazy" data-src="/images/post-img/testim.jpg"
-                                 alt="Do You Trust Your Front-End Tests As Much as We Do?">
-                        </a>
-
-                    </div>
-                    <div class="article__content">
-
-                        <h2 class="article__title">
-                            <a href="/do-you-trust-your-front-end-tests-as-much-as-we-do">Do You Trust Your Front-End Tests As Much as We Do?</a>
-                        </h2>
-
-
-                    </div>
-                </div>
-            </div>
-
-            <div class="article col col-4 col-d-6 col-t-12">
-                <div class="article__inner">
-
-                    <div class="article__head">
-                        <time class="article__date" datetime="2018-03-05T00:00:00+00:00">5 Mar 2018</time>
-
-
-                        <a class="article__image" href="/cross-region-data-replication">
-                            <img class="lazy" data-src="/images/post-img/rep.jpg"
-                                 alt="Cross Region Data Replication">
-                        </a>
-
-                        <div class="video-icon">
-                            <div class="circle pulse"></div>
-                            <div class="circle">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
-                                    <polygon points="40,30 65,50 40,70"></polygon>
-                                </svg>
-                            </div>
-                        </div>
-
-
-
-                    </div>
-                    <div class="article__content">
-
-                        <h2 class="article__title">
-                            <a href="/cross-region-data-replication">Cross Region Data Replication</a>
-                        </h2>
-
-
-                    </div>
-                </div>
-            </div>
-
-            <div class="article col col-4 col-d-6 col-t-12">
-                <div class="article__inner">
-
-                    <div class="article__head">
-                        <time class="article__date" datetime="2018-01-01T00:00:00+00:00">1 Jan 2018</time>
-
-
-                        <a class="article__image" href="/walkthrough-tracking-an-elasticsearch-java-client-sniffer-bug">
-                            <img class="lazy" data-src="/images/post-img/bug.jpg"
-                                 alt="Walkthrough: Tracking an Elasticsearch Java Client Sniffer Bug">
-                        </a>
-
-
-                    </div>
-                    <div class="article__content">
-
-                        <h2 class="article__title">
-                            <a href="/walkthrough-tracking-an-elasticsearch-java-client-sniffer-bug">Walkthrough: Tracking an Elasticsearch Java Client Sniffer Bug</a>
-                        </h2>
-
-
-                    </div>
-                </div>
-            </div>
-
-            <div class="article col col-4 col-d-6 col-t-12">
-                <div class="article__inner">
-
-                    <div class="article__head">
-                        <time class="article__date" datetime="2017-03-06T00:00:00+00:00">6 Mar 2017</time>
-
-
-                        <a class="article__image" href="/security-101-for-saas-startups">
-                            <img class="lazy" data-src="/images/post-img/lock.jpg"
-                                 alt="Security 101 for SaaS Startups">
-                        </a>
-
-
-                    </div>
-                    <div class="article__content">
-
-                        <h2 class="article__title">
-                            <a href="/security-101-for-saas-startups">Security 101 for SaaS Startups</a>
-                        </h2>
-
-
-                    </div>
-                </div>
-            </div>
-
-
-            <div class="article col col-4 col-d-6 col-t-12">
-                <div class="article__inner">
-
-                    <div class="article__head">
-                        <time class="article__date" datetime="2016-05-22T00:00:00+00:00">22 May 2016</time>
-
-
-                        <a class="article__image" href="/can-we-agree-on-dependency-and-version-management">
-                            <img class="lazy" data-src="/images/post-img/dep.jpg"
-                                 alt="Can We Agree on Dependency and Version Management?">
-                        </a>
-
-
-                    </div>
-                    <div class="article__content">
-
-                        <h2 class="article__title">
-                            <a href="/can-we-agree-on-dependency-and-version-management">Can We Agree on Dependency and Version Management?</a>
-                        </h2>
-
-
-                    </div>
-                </div>
-            </div>
-
-            <div class="article col col-4 col-d-6 col-t-12">
-                <div class="article__inner">
-
-                    <div class="article__head">
-                        <time class="article__date" datetime="2016-03-04T00:00:00+00:00">13 Mar 2016</time>
-
-
-                        <a class="article__image" href="/selfconf-empowering-group-learning-for-software-engineers">
-                            <img class="lazy" data-src="/images/post-img/selfconf.jpg"
-                                 alt="Selfconf: Empowering Group Learning for Software Engineers">
-                        </a>
-
-
-                    </div>
-                    <div class="article__content">
-
-                        <h2 class="article__title">
-                            <a href="/selfconf-empowering-group-learning-for-software-engineers">Selfconf: Empowering Group Learning for Software Engineers</a>
-                        </h2>
-
-
-                    </div>
-                </div>
-            </div>
-
-            <div class="article col col-4 col-d-6 col-t-12">
-                <div class="article__inner">
-
-                    <div class="article__head">
-                        <time class="article__date" datetime="2016-02-04T00:00:00+00:00">4 Feb 2016</time>
-
-
-                        <a class="article__image" href="/the-evolution-of-web-data-binding">
-                            <img class="lazy" data-src="/images/post-img/evo.jpg"
-                                 alt="The Evolution of Web Data Binding">
-                        </a>
-
-
-                    </div>
-                    <div class="article__content">
-
-                        <h2 class="article__title">
-                            <a href="/the-evolution-of-web-data-binding">The Evolution of Web Data Binding</a>
-                        </h2>
-
-
-                    </div>
-                </div>
-            </div>
-
-            <div class="article col col-4 col-d-6 col-t-12">
-                <div class="article__inner">
-
-                    <div class="article__head">
-                        <time class="article__date" datetime="2015-10-22T00:00:00+00:00">25 Oct 2015</time>
-
-
-                        <a class="article__image" href="/9-5-low-latency-decision-as-a-service-design-patterns">
-                            <img class="lazy" data-src="/images/post-img/time.png"
-                                 alt="Storm in Under a Second (Video + Slides)">
-                        </a>
-
-
-                    </div>
-                    <div class="article__content">
-
-                        <h2 class="article__title">
-                            <a href="/9-5-low-latency-decision-as-a-service-design-patterns">9.5 Low Latency Decision as a Service Design Patterns</a>
-                        </h2>
-
-
-                    </div>
-                </div>
-            </div>
-
-
-            <div class="article col col-4 col-d-6 col-t-12">
-                <div class="article__inner">
-
-                    <div class="article__head">
-                        <time class="article__date" datetime="2015-10-22T00:00:00+00:00">22 Oct 2015</time>
-
-
-                        <a class="article__image" href="/23percent_are_addicts">
-                            <img class="lazy" data-src="/images/post-img/addict.png"
-                                 alt="23% of Software Developers Are Addicts">
-                        </a>
-
-
-                    </div>
-                    <div class="article__content">
-
-                        <h2 class="article__title">
-                            <a href="/23percent_are_addicts">23% of Software Developers Are Addicts</a>
-                        </h2>
-
-
-                    </div>
-                </div>
-            </div>
-
-            <div class="article col col-4 col-d-6 col-t-12">
-                <div class="article__inner">
-
-                    <div class="article__head">
-                        <time class="article__date" datetime="2015-09-20T00:00:00+00:00">20 Sep 2015</time>
-
-
-                        <a class="article__image" href="/storm-in-under-a-second-video-slides">
-                            <img class="lazy" data-src="/images/post-img/storm.png"
-                                 alt="Storm in Under a Second (Video + Slides)">
-                        </a>
-
-                        <div class="video-icon">
-                            <div class="circle pulse"></div>
-                            <div class="circle">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
-                                    <polygon points="40,30 65,50 40,70"></polygon>
-                                </svg>
-                            </div>
-                        </div>
-
-
-                    </div>
-                    <div class="article__content">
-
-                        <h2 class="article__title">
-                            <a href="/storm-in-under-a-second-video-slides">Storm in Under a Second (Video + Slides)</a>
-                        </h2>
-
-
-                    </div>
-                </div>
-            </div>
-
-            <div class="article col col-4 col-d-6 col-t-12">
-                <div class="article__inner">
-
-                    <div class="article__head">
-                        <time class="article__date" datetime="2015-09-02T00:00:00+00:00">2 Sep 2015</time>
-
-
-                        <a class="article__image" href="/monitoring-with-riemann-video-slides">
-                            <img class="lazy" data-src="/images/post-img/reimann.png"
-                                 alt="Monitoring With Riemann (Video + Slides)">
-                        </a>
-
-                        <div class="video-icon">
-                            <div class="circle pulse"></div>
-                            <div class="circle">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
-                                    <polygon points="40,30 65,50 40,70"></polygon>
-                                </svg>
-                            </div>
-                        </div>
-
-
-                    </div>
-                    <div class="article__content">
-
-                        <h2 class="article__title">
-                            <a href="/monitoring-with-riemann-video-slides">Monitoring With Riemann (Video + Slides)</a>
-                        </h2>
-
-
-                    </div>
-                </div>
-            </div>
-
-            <div class="article col col-4 col-d-6 col-t-12">
-                <div class="article__inner">
-
-                    <div class="article__head">
-                        <time class="article__date" datetime="2015-01-22T00:00:00+00:00">22 Jan 2015</time>
-
-
-                        <a class="article__image" href="/what-happens-when-an-engineer-tries-to-explain-why-you-should-work-with-him">
-                            <img class="lazy" data-src="/images/post-img/itay.png"
-                                 alt="What Happens When an Engineer Tries To Explain Why You Should Work With Him?">
-                        </a>
-
-                        <div class="video-icon">
-                            <div class="circle pulse"></div>
-                            <div class="circle">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
-                                    <polygon points="40,30 65,50 40,70"></polygon>
-                                </svg>
-                            </div>
-                        </div>
-
-
-                    </div>
-                    <div class="article__content">
-
-                        <h2 class="article__title">
-                            <a href="/what-happens-when-an-engineer-tries-to-explain-why-you-should-work-with-him">What Happens When an Engineer Tries To Explain Why You Should Work With Him?</a>
-                        </h2>
-
-
-                    </div>
-                </div>
-            </div>
-
-            <div class="article col col-4 col-d-6 col-t-12">
-                <div class="article__inner">
-
-                    <div class="article__head">
-                        <time class="article__date" datetime="2015-01-19T00:00:00+00:00">19 Jan 2015</time>
-
-
-                        <a class="article__image" href="/hrd-how-to-buy-a-gift-for-a-software-engineer">
-                            <img class="lazy" data-src="/images/post-img/gift.png"
-                                 alt="HR&D - How to Buy A Gift For a Software Engineer">
-                        </a>
-
-
-                    </div>
-                    <div class="article__content">
-
-                        <h2 class="article__title">
-                            <a href="/hrd-how-to-buy-a-gift-for-a-software-engineer">HR&D - How to Buy A Gift For a
-                                Software Engineer</a>
-                        </h2>
-
-
-                    </div>
-                </div>
-            </div>
-
-            <div class="article col col-4 col-d-6 col-t-12">
-                <div class="article__inner">
-
-                    <div class="article__head">
-                        <time class="article__date" datetime="2015-01-04T00:00:00+00:00">4 Jan 2015</time>
-
-
-                        <a class="article__image" href="/comparing-message-queue-architectures-on-aws">
-                            <img class="lazy" data-src="/images/post-img/queue.png"
-                                 alt="COMPARING MESSAGE QUEUE ARCHITECTURES ON AWS">
-                        </a>
-
-                    </div>
-                    <div class="article__content">
-
-                        <h2 class="article__title">
-                            <a href="/comparing-message-queue-architectures-on-aws">Comparing Message Queue Architecture on AWS</a>
-                        </h2>
-
-
-                    </div>
-                </div>
-            </div>
-
-
         </div>
     </div>
 
+    <!-- begin post -->
+    <div class="container animate">
 
-    <!-- begin section-tags -->
-    <section class="section section-tags">
-        <div class="container">
-            <div class="row">
-                <div class="col col-12">
-                    <div class="section__head">
-                        <h3 class="section__title">Tags</h3>
-                        <a href="/tags/" class="section__link">See all</a>
-                    </div>
-
-
-                    <div class="row">
-
-
-                        <div class="col col-3 col-d-6 col-m-12">
-                            <a href="/tags#talks" class="tag-image">
-                                <span class="tag-name">Talks</span>
-                                <img class="lazy" data-src="images/post-img/talk.jpg" alt="post.title">
-                            </a>
-                        </div>
-
-
-                        <div class="col col-3 col-d-6 col-m-12">
-                            <a href="/tags#security" class="tag-image">
-                                <span class="tag-name">Security</span>
-                                <img class="lazy" data-src="images/post-img/security.jpg" alt="post.title">
-                            </a>
-                        </div>
-
-
-                        <div class="col col-3 col-d-6 col-m-12">
-                            <a href="/tags#culture" class="tag-image">
-                                <span class="tag-name">Engineering Culture</span>
-                                <img class="lazy" data-src="images/post-img/culture.jpg" alt="post.title">
-                            </a>
-                        </div>
-
-
-                        <div class="col col-3 col-d-6 col-m-12">
-                            <a href="/tags#production" class="tag-image">
-                                <span class="tag-name">Production</span>
-                                <img class="lazy" data-src="images/post-img/prod.png" alt="post.title">
-                            </a>
-                        </div>
-
-
-                    </div>
-                </div>
+        <article class="post">
+            <div class="post__content">
+                <div class="io ip iq ir is">
+                    <div class=""><h1 id="a226"
+                                      class="pw-post-title ji jj jk bn jl jm jn jo jp jq jr js jt ju jv jw jx jy jz ka kb kc kd ke kf kg fx"
+                                      data-selectable-paragraph="">Apache Beam — From Zero to Hero Pt. 1: Batch
+                        Pipelines</h1></div>
+                    <p id="9d2b"
+                       class="pw-post-body-paragraph kh ki jk kj b kk kl km kn ko kp kq kr ks kt ku kv kw kx ky kz la lb lc ld le io fx"
+                       data-selectable-paragraph="">In the <a class="au jh"
+                                                              href="https://ilanuzan.medium.com/building-a-data-pipeline-with-python-generators-a80a4d19019e"
+                                                              rel="noopener">previous post</a> I talked about how we can
+                        use Python Generators to create simple data pipelines. In this post I am going to introduce the
+                        Apache Beam framework for building production grade data pipelines, and build a batch pipeline
+                        with it while explaining some of its main concepts.</p>
+                    <h1 id="a043"
+                        class="lf lg jk bn lh li lj lk ll lm ln lo lp lq lr ls lt lu lv lw lx ly lz ma mb mc fx"
+                        data-selectable-paragraph="">Introduction</h1>
+                    <blockquote class="md me mf"><p id="4bc0"
+                                                    class="kh ki mg kj b kk kl km kn ko kp kq kr mh kt ku kv mi kx ky kz mj lb lc ld le io fx"
+                                                    data-selectable-paragraph="">Apache Beam is an open source, unified
+                        model for defining both batch and streaming data-parallel processing pipelines.</p></blockquote>
+                    <p id="4093"
+                       class="pw-post-body-paragraph kh ki jk kj b kk kl km kn ko kp kq kr ks kt ku kv kw kx ky kz la lb lc ld le io fx"
+                       data-selectable-paragraph="">With Apache Beam we can implement complex and scalable data
+                        pipelines in a concise, clear manner. Apache Beam has 3 SDKs — Python, Java &amp; Go (we’re
+                        going to use Python here). Pipelines written with the framework can run on different platforms
+                        via different runners — some of the available runners are Spark, Flink and Google Cloud
+                        Dataflow. By default, the runner being used is the DirectRunner, which is used in the
+                        development stages.</p>
+                    <p id="7cc0"
+                       class="pw-post-body-paragraph kh ki jk kj b kk kl km kn ko kp kq kr ks kt ku kv kw kx ky kz la lb lc ld le io fx"
+                       data-selectable-paragraph="">A typical structure of a pipeline looks something like this:</p>
+                    <pre class="mk ml mm mn gu mo bt mp"><span id="1d5b" class="fx mq lg jk mr b dn ms mt l mu"
+                                                               data-selectable-paragraph="">import argparse<br>import apache_beam as beam<br>from apache_beam.options.pipeline_options import PipelineOptions</span><span
+                            id="58e7" class="fx mq lg jk mr b dn mv mw mx my mz mt l mu" data-selectable-paragraph="">def run(argv=None, save_main_session=True):<br>  <strong
+                            class="mr jl"># Defining the pipeline's arguments</strong><br>  parser = argparse.ArgumentParser()<br>  parser.add_argument(<br>    --input',<br>    default='#SOME GCS PATH#,<br>    help='Input file pattern to process.')<br>  ...</span><span
+                            id="fbdb" class="fx mq lg jk mr b dn mv mw mx my mz mt l mu" data-selectable-paragraph="">  known_args, pipeline_args = parser.parse_known_args(argv)<br>  pipeline_options = PipelineOptions(pipeline_args)</span><span
+                            id="8941" class="fx mq lg jk mr b dn mv mw mx my mz mt l mu"
+                            data-selectable-paragraph=""><strong
+                            class="mr jl">  # Defining the pipeline's steps</strong><br>  with beam.Pipeline(options=pipeline_options) as p:<br>    (p<br>      | 'ReadData' &gt;&gt; ReadFromText()<br>      ....</span><span
+                            id="749a" class="fx mq lg jk mr b dn mv mw mx my mz mt l mu" data-selectable-paragraph="">if __name__ == '__main__':<br>  run()</span></pre>
+                    <p id="4de3"
+                       class="pw-post-body-paragraph kh ki jk kj b kk kl km kn ko kp kq kr ks kt ku kv kw kx ky kz la lb lc ld le io fx"
+                       data-selectable-paragraph="">Now that we know what an Apache Beam pipeline is and more or less
+                        how it looks like, let’s get started on writing our pipeline.</p>
+                    <p id="f440"
+                       class="pw-post-body-paragraph kh ki jk kj b kk kl km kn ko kp kq kr ks kt ku kv kw kx ky kz la lb lc ld le io fx"
+                       data-selectable-paragraph="">The pipeline we’re going to implement is a basic wordcount pipeline
+                        with a twist. We’ll use 9 text books from 3 famous authors — Jules Verne, Jane Austen and Lewis
+                        Carroll. The pipeline is required to do the following:</p>
+                    <ol class="">
+                        <li id="75de" class="na nb jk kj b kk kl ko kp ks nc kw nd la ne le nf ng nh ni fx"
+                            data-selectable-paragraph="">Read the books’ text files from Google Cloud Storage (GCS)
+                            while keeping the association from the text to its author — here we’ll learn about <strong
+                                    class="kj jl">Connectors.</strong></li>
+                        <li id="8291" class="na nb jk kj b kk nj ko nk ks nl kw nm la nn le nf ng nh ni fx"
+                            data-selectable-paragraph="">Split the words in each line and filter out conjunctions — here
+                            we’ll learn about <strong class="kj jl">Bounded PCollections &amp; ParDo Transform.</strong>
+                        </li>
+                        <li id="4c67" class="na nb jk kj b kk nj ko nk ks nl kw nm la nn le nf ng nh ni fx"
+                            data-selectable-paragraph="">Count appearances per author and word — here we’ll learn about
+                            some of the builtin transforms — <strong class="kj jl">Map &amp; Aggregation</strong>
+                            <strong class="kj jl">Transforms.</strong></li>
+                        <li id="4a4b" class="na nb jk kj b kk nj ko nk ks nl kw nm la nn le nf ng nh ni fx"
+                            data-selectable-paragraph="">Writing the results to BigQuery — we’ll learn about the <strong
+                                class="kj jl">BigQuery Connector.</strong></li>
+                    </ol>
+                    <p id="1a52"
+                       class="pw-post-body-paragraph kh ki jk kj b kk kl km kn ko kp kq kr ks kt ku kv kw kx ky kz la lb lc ld le io fx"
+                       data-selectable-paragraph="">Our first step is to read the text files from the GCS bucket. We do
+                        that by using a Connector, so let’s first explain what Connectors are and what part they play in
+                        the pipeline.</p>
+                    <h1 id="1927"
+                        class="lf lg jk bn lh li lj lk ll lm ln lo lp lq lr ls lt lu lv lw lx ly lz ma mb mc fx"
+                        data-selectable-paragraph="">Connectors</h1>
+                    <p id="0fc1"
+                       class="pw-post-body-paragraph kh ki jk kj b kk no km kn ko np kq kr ks nq ku kv kw nr ky kz la ns lc ld le io fx"
+                       data-selectable-paragraph="">Connectors are Apache Beam’s components for reading and writing data
+                        from external sources such as GCS, BigQuery, Snowflake, Hadoop and many more — info about all of
+                        the available connectors can be found <a class="au jh"
+                                                                 href="https://beam.apache.org/documentation/io/built-in/"
+                                                                 rel="noopener ugc nofollow" target="_blank">here</a>.
+                    </p>
+                    <p id="0d42"
+                       class="pw-post-body-paragraph kh ki jk kj b kk kl km kn ko kp kq kr ks kt ku kv kw kx ky kz la lb lc ld le io fx"
+                       data-selectable-paragraph="">Typically, the first and last steps in the pipeline would use a
+                        connector — we need to get the initial data to the pipeline from somewhere, and we’d typically
+                        want to save the pipeline’s results somewhere.</p>
+                    <p id="0d1c"
+                       class="pw-post-body-paragraph kh ki jk kj b kk kl km kn ko kp kq kr ks kt ku kv kw kx ky kz la lb lc ld le io fx"
+                       data-selectable-paragraph="">We’ll be using the TextIO connector, that allows us to read data
+                        from local text files or from GCS paths. We need to read text files from GCS with the name of
+                        the file we are reading (so that we’ll know to connect the text to the author). The text files
+                        reside in a separate directory per author so it will be fairly easy to extract the author’s name
+                        later on:</p>
+                    <pre class="mk ml mm mn gu mo bt mp"><span id="bed2" class="fx mq lg jk mr b dn ms mt l mu"
+                                                               data-selectable-paragraph="">gs://blog-data-resources/books_txt_files/<strong
+                            class="mr jl">jane-austen</strong>/<br>gs://blog-data-resources/books_txt_files/<strong
+                            class="mr jl">jules-verne</strong>/<br>gs://blog-data-resources/books_txt_files/<strong
+                            class="mr jl">lewis-carroll</strong>/</span></pre>
+                    <p id="e5e0"
+                       class="pw-post-body-paragraph kh ki jk kj b kk kl km kn ko kp kq kr ks kt ku kv kw kx ky kz la lb lc ld le io fx"
+                       data-selectable-paragraph="">We’ll use the <em class="mg">ReadFromTextWithFilename</em> function
+                        to get the text and the filename together:</p>
+                    <pre class="mk ml mm mn gu mo bt mp"><span id="4693" class="fx mq lg jk mr b dn ms mt l mu"
+                                                               data-selectable-paragraph="">import argparse<br>import apache_beam as beam<br>from apache_beam.options.pipeline_options import PipelineOptions<br>from apache_beam.io.textio import ReadFromTextWithFilename</span><span
+                            id="c0f2" class="fx mq lg jk mr b dn mv mw mx my mz mt l mu" data-selectable-paragraph="">def run(argv=None, save_main_session=True):<br>  parser = argparse.ArgumentParser()<br>  parser.add_argument(<br>    '--input',<br>    default='gs://blog-data-resources/books_txt_files/**',<br>    help='Input file pattern to process.')<br>  known_args, pipeline_args = parser.parse_known_args(argv)</span><span
+                            id="4c94" class="fx mq lg jk mr b dn mv mw mx my mz mt l mu" data-selectable-paragraph="">pipeline_options = PipelineOptions(pipeline_args)<br>with beam.Pipeline(options=pipeline_options) as p:<br>  (p <br>    <strong
+                            class="mr jl">| 'Read files' &gt;&gt; ReadFromTextWithFilename(known_args.input))</strong></span><span
+                            id="7b44" class="fx mq lg jk mr b dn mv mw mx my mz mt l mu" data-selectable-paragraph="">if __name__ == '__main__':<br>    run()</span></pre>
+                    <p id="c06b"
+                       class="pw-post-body-paragraph kh ki jk kj b kk kl km kn ko kp kq kr ks kt ku kv kw kx ky kz la lb lc ld le io fx"
+                       data-selectable-paragraph="">The function returns an object called <em
+                            class="mg">PCollection</em> that is used throughout the framework, and before we’ll move to
+                        implement the pipeline’s next steps we need to know what a <em class="mg">PCollection</em> is.
+                    </p>
+                    <h1 id="c8e2"
+                        class="lf lg jk bn lh li lj lk ll lm ln lo lp lq lr ls lt lu lv lw lx ly lz ma mb mc fx"
+                        data-selectable-paragraph="">Bounded PCollections</h1>
+                    <p id="36cd"
+                       class="pw-post-body-paragraph kh ki jk kj b kk no km kn ko np kq kr ks nq ku kv kw nr ky kz la ns lc ld le io fx"
+                       data-selectable-paragraph="">A PCollection is an object that serves as pipeline data for Apache
+                        Beam operations. This is the object that Connectors (and the rest of the framework’s components)
+                        either receive, return or both. If we compare it to Generators from my previous post, a
+                        PCollection object serves a similar role to that a Generator object in a data pipeline — data is
+                        being streamed into it and out of it.</p>
+                    <p id="3223"
+                       class="pw-post-body-paragraph kh ki jk kj b kk kl km kn ko kp kq kr ks kt ku kv kw kx ky kz la lb lc ld le io fx"
+                       data-selectable-paragraph="">We can create an initial PCollection from a Data Source with one of
+                        the available connectors, or create it manually — like this:</p>
+                    <pre class="mk ml mm mn gu mo bt mp"><span id="b7d0" class="fx mq lg jk mr b dn ms mt l mu"
+                                                               data-selectable-paragraph="">beam<strong
+                            class="mr jl">.</strong>Create([<br>          'To be, or not to be: that is the question: ',<br>          "Whether 'tis nobler in the mind to suffer ",<br>          'The slings and arrows of outrageous fortune, ',<br>          'Or to take arms against a sea of troubles, ',<br>      ])</span></pre>
+                    <p id="2b2c"
+                       class="pw-post-body-paragraph kh ki jk kj b kk kl km kn ko kp kq kr ks kt ku kv kw kx ky kz la lb lc ld le io fx"
+                       data-selectable-paragraph="">A PCollection can either be bounded or unbounded in size. As a rule
+                        of thumb, bounded PCollections are used in Batch Dataflows and unbounded PCollections are used
+                        in Streaming Dataflows.</p>
+                    <p id="4ec3"
+                       class="pw-post-body-paragraph kh ki jk kj b kk kl km kn ko kp kq kr ks kt ku kv kw kx ky kz la lb lc ld le io fx"
+                       data-selectable-paragraph="">Our next step in the pipeline is to split the line into words. In
+                        order to do this, we first need to learn about Transforms — specifically about the ParDo
+                        Transform.</p>
+                    <h1 id="42a1"
+                        class="lf lg jk bn lh li lj lk ll lm ln lo lp lq lr ls lt lu lv lw lx ly lz ma mb mc fx"
+                        data-selectable-paragraph="">ParDo Transform</h1>
+                    <p id="dfe7"
+                       class="pw-post-body-paragraph kh ki jk kj b kk no km kn ko np kq kr ks nq ku kv kw nr ky kz la ns lc ld le io fx"
+                       data-selectable-paragraph="">Transforms are the different operations in the pipeline. If we want
+                        to modify, aggregate or flatten the data in any way, it is done via a transform.</p>
+                    <p id="efff"
+                       class="pw-post-body-paragraph kh ki jk kj b kk kl km kn ko kp kq kr ks kt ku kv kw kx ky kz la lb lc ld le io fx"
+                       data-selectable-paragraph="">There are several transforms that come builtin in the framework (and
+                        we’ll cover 3 of them in the next section), but here we need to implement one ourselves. In
+                        order to build a custom transform you need to create a class that sub-classes DoFN, like
+                        this:</p>
+                    <pre class="mk ml mm mn gu mo bt mp"><span id="ed91" class="fx mq lg jk mr b dn ms mt l mu"
+                                                               data-selectable-paragraph="">class WordExtractingDoFn(beam.DoFn):<br>  def process(self, element):<br>    pass</span></pre>
+                    <p id="dd7d"
+                       class="pw-post-body-paragraph kh ki jk kj b kk kl km kn ko kp kq kr ks kt ku kv kw kx ky kz la lb lc ld le io fx"
+                       data-selectable-paragraph="">Our ParDo transform needs to do 3 things:<br>1. Separate the words
+                        in the line.<br>2. Filter out the words that are conjunctions.<br>3. Extract the author’s name
+                        from the filename.</p>
+                    <p id="c313"
+                       class="pw-post-body-paragraph kh ki jk kj b kk kl km kn ko kp kq kr ks kt ku kv kw kx ky kz la lb lc ld le io fx"
+                       data-selectable-paragraph="">We split the words like this:</p>
+                    <pre class="mk ml mm mn gu mo bt mp"><span id="9652" class="fx mq lg jk mr b dn ms mt l mu"
+                                                               data-selectable-paragraph="">import re</span><span
+                            id="55d9" class="fx mq lg jk mr b dn mv mw mx my mz mt l mu" data-selectable-paragraph="">class WordExtractingDoFn(beam.DoFn):<br>  def process(self, element):<br>    author, line = element<br>    for word in re.findall(r"[\w']+", line, re.UNICODE):<br>      <strong
+                            class="mr jl">yield</strong> word</span></pre>
+                    <p id="8a04"
+                       class="pw-post-body-paragraph kh ki jk kj b kk kl km kn ko kp kq kr ks kt ku kv kw kx ky kz la lb lc ld le io fx"
+                       data-selectable-paragraph="">Pay attention here — we’re using the <em class="mg">yield</em>
+                        keyword we’ve learned in the previous post, so the <em class="mg">process </em>function does not
+                        finish its execution until all of the words in the line are yielded.</p>
+                    <p id="1588"
+                       class="pw-post-body-paragraph kh ki jk kj b kk kl km kn ko kp kq kr ks kt ku kv kw kx ky kz la lb lc ld le io fx"
+                       data-selectable-paragraph="">We filter out conjunctions by using the NLTK module, like this:</p>
+                    <pre class="mk ml mm mn gu mo bt mp"><span id="e18f" class="fx mq lg jk mr b dn ms mt l mu"
+                                                               data-selectable-paragraph="">import re<br>from nltk.corpus import stopwords</span><span
+                            id="cf40" class="fx mq lg jk mr b dn mv mw mx my mz mt l mu" data-selectable-paragraph="">class WordExtractingDoFn(beam.DoFn):<br>  def __init__(self):<br>    <strong
+                            class="mr jl">self.stopwords = set(stopwords.words('english'))</strong></span><span
+                            id="31bd" class="fx mq lg jk mr b dn mv mw mx my mz mt l mu" data-selectable-paragraph="">def process(self, element):<br>    filename, line = element<br>    for word in re.findall(r"[\w']+", line, re.UNICODE):<br>      <strong
+                            class="mr jl">if word not in self.stopwords:</strong><br>        yield word</span></pre>
+                    <p id="298f"
+                       class="pw-post-body-paragraph kh ki jk kj b kk kl km kn ko kp kq kr ks kt ku kv kw kx ky kz la lb lc ld le io fx"
+                       data-selectable-paragraph="">Now all we have to do is to extract the author’s name from the
+                        filename, and yield it with each word as a tuple:</p>
+                    <pre class="mk ml mm mn gu mo bt mp"><span id="bd5e" class="fx mq lg jk mr b dn ms mt l mu"
+                                                               data-selectable-paragraph="">class WordExtractingDoFn(beam.DoFn):<br>  def __init__(self):<br>    self.stopwords = set(stopwords.words('english'))</span><span
+                            id="0601" class="fx mq lg jk mr b dn mv mw mx my mz mt l mu"
+                            data-selectable-paragraph=""><strong class="mr jl">def __extract_author_from_filename(self, filename):<br>    pattern = re.compile(r'.*\/([\w\-]+)\/[\w\-]+\.txt')<br>    match = pattern.match(filename)</strong></span><span
+                            id="8333" class="fx mq lg jk mr b dn mv mw mx my mz mt l mu" data-selectable-paragraph="">if match is not None:<br>      return match.group(1)</span><span
+                            id="fab0" class="fx mq lg jk mr b dn mv mw mx my mz mt l mu" data-selectable-paragraph="">return None</span><span
+                            id="2962" class="fx mq lg jk mr b dn mv mw mx my mz mt l mu" data-selectable-paragraph="">def process(self, element):<br>    filename, line = element<br>    for word in re.findall(r"[\w']+", line, re.UNICODE):<br>      if word not in self.stopwords:<br>        yield (<strong
+                            class="mr jl">self.__extract_author_from_filename(filename)</strong>, word)</span></pre>
+                    <p id="1f95"
+                       class="pw-post-body-paragraph kh ki jk kj b kk kl km kn ko kp kq kr ks kt ku kv kw kx ky kz la lb lc ld le io fx"
+                       data-selectable-paragraph="">This is how we add our transform to the pipeline:</p>
+                    <pre class="mk ml mm mn gu mo bt mp"><span id="51d8" class="fx mq lg jk mr b dn ms mt l mu"
+                                                               data-selectable-paragraph="">with beam.Pipeline(options=pipeline_options) as p:<br>  (p<br>    | 'Read files' &gt;&gt; ReadFromTextWithFilename(known_args.input)<br>    <strong
+                            class="mr jl">| 'Split lines' &gt;&gt; beam.ParDo(WordExtractingDoFn()))</strong></span></pre>
+                    <p id="bcc3"
+                       class="pw-post-body-paragraph kh ki jk kj b kk kl km kn ko kp kq kr ks kt ku kv kw kx ky kz la lb lc ld le io fx"
+                       data-selectable-paragraph="">The next step in the pipeline is to count the occurrences of each
+                        word and author — for that, we’ll learn 3 of the builtin transforms.</p>
+                    <h1 id="5ec1"
+                        class="lf lg jk bn lh li lj lk ll lm ln lo lp lq lr ls lt lu lv lw lx ly lz ma mb mc fx"
+                        data-selectable-paragraph="">Map &amp; Aggregation Transforms</h1>
+                    <p id="9178"
+                       class="pw-post-body-paragraph kh ki jk kj b kk no km kn ko np kq kr ks nq ku kv kw nr ky kz la ns lc ld le io fx"
+                       data-selectable-paragraph="">There are 2 transforms we can use to count our words appearances —
+                        <em class="mg">GroupByKey</em> &amp; <em class="mg">CombinePerKey</em>. We can use both
+                        interchangeably here (the next step will need to be slightly different for each), but as a
+                        general rule we’d prefer using <em class="mg">CombinePerKey</em> as it scales better — a
+                        detailed explanation to why can be found <a class="au jh"
+                                                                    href="https://blog.softwaremill.com/let-mortal-combat-begin-apache-beams-groupbykey-vs-combine-perkey-29e4feb7291"
+                                                                    rel="noopener ugc nofollow" target="_blank">here</a>.
+                    </p>
+                    <p id="990f"
+                       class="pw-post-body-paragraph kh ki jk kj b kk kl km kn ko kp kq kr ks kt ku kv kw kx ky kz la lb lc ld le io fx"
+                       data-selectable-paragraph="">Both functions receive a tuple of 2 values and treat them as
+                        key-value pairs, grouping by the key and performing an aggregate function on the values. In our
+                        case, our key consists of the word and the author, and our aggregate function should be <em
+                                class="mg">sum. </em>We can count each (author, word) tuple appearance by mapping each
+                        tuple to 1, and then summarizing the 1 values for each tuple (this is the standard way to
+                        implement wordcount). It requires us to add a preliminary step that uses the <em
+                                class="mg">Map</em> transform, mapping each tuple to a 1 value.</p>
+                    <p id="0e2f"
+                       class="pw-post-body-paragraph kh ki jk kj b kk kl km kn ko kp kq kr ks kt ku kv kw kx ky kz la lb lc ld le io fx"
+                       data-selectable-paragraph="">A <em class="mg">Map</em> transform maps each of its input elements
+                        to output elements via a lambda function. Our pipeline with the 2 new steps looks like this:</p>
+                    <pre class="mk ml mm mn gu mo bt mp"><span id="81ec" class="fx mq lg jk mr b dn ms mt l mu"
+                                                               data-selectable-paragraph="">(p<br>  | 'Read files' &gt;&gt; ReadFromTextWithFilename(known_args.input)<br>  | 'Split lines' &gt;&gt; beam.ParDo(WordExtractingDoFn())<br><strong
+                            class="mr jl">  | 'Pair with 1' &gt;&gt; beam.Map(lambda x: ((x[0], x[1]), 1))<br>  | 'Sum per author &amp; word' &gt;&gt; beam.CombinePerKey(sum))</strong></span></pre>
+                    <p id="2a21"
+                       class="pw-post-body-paragraph kh ki jk kj b kk kl km kn ko kp kq kr ks kt ku kv kw kx ky kz la lb lc ld le io fx"
+                       data-selectable-paragraph="">We’re almost done — all we have to do now is to write the results to
+                        BigQuery using the BigQuery Connector.</p>
+                    <h1 id="cb8c"
+                        class="lf lg jk bn lh li lj lk ll lm ln lo lp lq lr ls lt lu lv lw lx ly lz ma mb mc fx"
+                        data-selectable-paragraph="">BigQuery Connector</h1>
+                    <p id="85a2"
+                       class="pw-post-body-paragraph kh ki jk kj b kk no km kn ko np kq kr ks nq ku kv kw nr ky kz la ns lc ld le io fx"
+                       data-selectable-paragraph="">First, let’s add a parameter that specifies the destination table
+                        name in BigQuery:</p>
+                    <pre class="mk ml mm mn gu mo bt mp"><span id="371f" class="fx mq lg jk mr b dn ms mt l mu"
+                                                               data-selectable-paragraph="">parser = argparse.ArgumentParser()<br>    parser.add_argument(<br>        '--input',<br>        dest='input',<br>        default='gs://blog-data-resources/books_txt_files/**',<br>        help='Input file pattern to process.')<br><strong
+                            class="mr jl">    parser.add_argument(<br>        '--table_spec ',<br>        dest='table_spec',<br>        default='ilan-uzan-297514:tests.author_wordcount',<br>        help='Destination BigQuery table.')</strong><br>    known_args, pipeline_args = parser.parse_known_args(argv)</span></pre>
+                    <p id="3918"
+                       class="pw-post-body-paragraph kh ki jk kj b kk kl km kn ko kp kq kr ks kt ku kv kw kx ky kz la lb lc ld le io fx"
+                       data-selectable-paragraph="">Now we need to define our schema for the destination table (you can
+                        learn more about how to define schemas in BigQuery and in Apache Beam in general in <a
+                                class="au jh"
+                                href="https://beam.apache.org/documentation/io/built-in/google-bigquery/#schemas"
+                                rel="noopener ugc nofollow" target="_blank">here</a>). Our schema is pretty simple:</p>
+                    <pre class="mk ml mm mn gu mo bt mp"><span id="62e5" class="fx mq lg jk mr b dn ms mt l mu"
+                                                               data-selectable-paragraph="">table_schema = {<br>  'fields': [<br>    {'name':'author','type': 'STRING', 'mode': 'NULLABLE'}, <br>    {'name': 'word', 'type': 'STRING', 'mode': 'NULLABLE'},<br>    {'name': 'cnt', 'type': 'INTEGER', 'mode': 'NULLABLE'}<br>  ]<br>}</span></pre>
+                    <p id="3d04"
+                       class="pw-post-body-paragraph kh ki jk kj b kk kl km kn ko kp kq kr ks kt ku kv kw kx ky kz la lb lc ld le io fx"
+                       data-selectable-paragraph="">The <em class="mg">WriteToBigQuery</em> function accepts
+                        dictionaries as values, so in order to use it we first need to convert our elements from tuples
+                        to dictionaries — the easiest way is to use the <em class="mg">Map </em>transform again:</p>
+                    <pre class="mk ml mm mn gu mo bt mp"><span id="d2a9" class="fx mq lg jk mr b dn ms mt l mu"
+                                                               data-selectable-paragraph=""><strong class="mr jl">def to_json_row(element):<br>  key, cnt = element<br>  author, word = key</strong></span><span
+                            id="9abe" class="fx mq lg jk mr b dn mv mw mx my mz mt l mu"
+                            data-selectable-paragraph=""><strong class="mr jl">return {"author": author, "word": word, "cnt": cnt}</strong></span><span
+                            id="9115" class="fx mq lg jk mr b dn mv mw mx my mz mt l mu" data-selectable-paragraph="">(p<br>  | 'Read files' &gt;&gt; ReadFromTextWithFilename(known_args.input)<br>  | 'Split lines' &gt;&gt; beam.ParDo(WordExtractingDoFn())<br>  | 'Pair with 1' &gt;&gt; beam.Map(lambda x: ((x[0], x[1]), 1))<br>  | 'Sum per author &amp; word' &gt;&gt; beam.CombinePerKey(sum)<br> <strong
+                            class="mr jl"> | 'Format records to JSON' &gt;&gt; beam.Map(to_json_row))</strong></span></pre>
+                    <p id="6055"
+                       class="pw-post-body-paragraph kh ki jk kj b kk kl km kn ko kp kq kr ks kt ku kv kw kx ky kz la lb lc ld le io fx"
+                       data-selectable-paragraph="">Great, now let’s finally write to BigQuery! We choose to create the
+                        table if needed (according to the schema we defined)*** and to empty the data before each load —
+                        that way we can run the pipeline multiple times and the results aren’t duplicated.</p>
+                    <pre class="mk ml mm mn gu mo bt mp"><span id="bf6b" class="fx mq lg jk mr b dn ms mt l mu"
+                                                               data-selectable-paragraph="">(p<br>  | 'Read files' &gt;&gt; ReadFromTextWithFilename(known_args.input)<br>  | 'Split lines' &gt;&gt; beam.ParDo(WordExtractingDoFn())<br>  | 'Pair with 1' &gt;&gt; beam.Map(lambda x: ((x[0], x[1]), 1))<br>  | 'Sum per author &amp; word' &gt;&gt; beam.CombinePerKey(sum)<br>  | 'Format records to JSON' &gt;&gt; beam.Map(to_json_row)<br><strong
+                            class="mr jl">  | 'Write to BigQuery' &gt;&gt; beam.io.WriteToBigQuery(<br>                             known_args.table_spec,<br>                             schema=table_schema,<br>                             write_disposition=..WRITE_TRUNCATE,<br>                             create_disposition=..CREATE_IF_NEEDED))</strong></span></pre>
+                    <p id="8023"
+                       class="pw-post-body-paragraph kh ki jk kj b kk kl km kn ko kp kq kr ks kt ku kv kw kx ky kz la lb lc ld le io fx"
+                       data-selectable-paragraph="">*** We only have to define a schema if we want to use the <em
+                            class="mg">CREATE_IF_NEEDED</em> create disposition — it’s possible to not provide a schema
+                        if the table already exists, like this:</p>
+                    <pre class="mk ml mm mn gu mo bt mp"><span id="3f2f" class="fx mq lg jk mr b dn ms mt l mu"
+                                                               data-selectable-paragraph="">| 'Write to BigQuery' &gt;&gt; beam.io.WriteToBigQuery(<br>                           known_args.table_spec,<br>                           write_disposition=..WRITE_TRUNCATE,<br>                           create_disposition=..CREATE_NEVER))</span></pre>
+                    <p id="0990"
+                       class="pw-post-body-paragraph kh ki jk kj b kk kl km kn ko kp kq kr ks kt ku kv kw kx ky kz la lb lc ld le io fx"
+                       data-selectable-paragraph="">And that’s it — our pipeline is finished. We run the pipeline like
+                        we run any module in python:</p>
+                    <pre class="mk ml mm mn gu mo bt mp"><span id="8c0f" class="fx mq lg jk mr b dn ms mt l mu"
+                                                               data-selectable-paragraph="">$ python -m main --temp_location gs://tests_tmp/tmp</span></pre>
+                    <p id="ac4c"
+                       class="pw-post-body-paragraph kh ki jk kj b kk kl km kn ko kp kq kr ks kt ku kv kw kx ky kz la lb lc ld le io fx"
+                       data-selectable-paragraph="">Because we’re loading data into BigQuery, we also need to specify
+                        the <em class="mg">temp_location</em> parameter — it’s a GCS path that the Apache Beam Runner of
+                        choice will stage the files in before loading them into BigQuery.</p>
+                    <p id="da55"
+                       class="pw-post-body-paragraph kh ki jk kj b kk kl km kn ko kp kq kr ks kt ku kv kw kx ky kz la lb lc ld le io fx"
+                       data-selectable-paragraph="">After running the pipeline, the data will be visible in
+                        BigQuery:</p>
+                    <figure class="mk ml mm mn gu ix gi gj paragraph-image">
+                        <div class="o gv dy cn"><img alt="" class="cf jc jd"
+                                                     src="https://miro.medium.com/proxy/1*7B08Pp-SrOAz5nAYseuhEA.png"
+                                                     loading="lazy" role="presentation"></div>
+                    </figure>
+                    <h1 id="1c20"
+                        class="lf lg jk bn lh li lj lk ll lm ln lo lp lq lr ls lt lu lv lw lx ly lz ma mb mc fx"
+                        data-selectable-paragraph="">Conclusion</h1>
+                    <p id="d342"
+                       class="pw-post-body-paragraph kh ki jk kj b kk no km kn ko np kq kr ks nq ku kv kw nr ky kz la ns lc ld le io fx"
+                       data-selectable-paragraph="">All of the code in the post can be found <a class="au jh"
+                                                                                                href="https://github.com/SockworkOrange/blog-posts/tree/main/apache-beam-batch-pipelines"
+                                                                                                rel="noopener ugc nofollow"
+                                                                                                target="_blank">here</a>.
+                        I hope you enjoyed reading, familiarised yourself with the Apache Beam framework and got a sense
+                        of how to write batch pipelines with it. If something is unclear, you’re of course welcome to
+                        ask in the comments.</p>
+                    <p id="9840"
+                       class="pw-post-body-paragraph kh ki jk kj b kk kl km kn ko kp kq kr ks kt ku kv kw kx ky kz la lb lc ld le io fx"
+                       data-selectable-paragraph="">In the next post we’ll implement a streaming pipeline, and we’ll
+                        learn some new concepts like Unbounded PCollections, Windowing &amp; Triggers.</p></div>
             </div>
-        </div>
-    </section>
-    <!-- end section-tags -->
+        </article>
+    </div>
+    <!-- end post -->
+
+
 </main>
 <!-- end content -->
+
 
 <!-- begin footer -->
 <footer class="footer">
@@ -4996,8 +4712,8 @@
 
                                 <li class="social__item">
                                     <a class="social__link"
-                                       href="https://www.youtube.com/channel/UCxAPyPoyVWu0yJbZ0gAvCqA"
-                                       target="_blank" rel="noopener"
+                                       href="https://www.youtube.com/channel/UCxAPyPoyVWu0yJbZ0gAvCqA" target="_blank"
+                                       rel="noopener"
                                        aria-label=" link"><i class="ion ion-logo-youtube"></i></a>
                                 </li>
 
