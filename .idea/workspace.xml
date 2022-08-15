@@ -6,8 +6,32 @@
   <component name="ChangeListManager">
     <list default="true" id="7ab4e46f-88f6-421b-a9f9-542c3ac6cf79" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/0flake-reaching-reliable-non-flaky-tests.html" beforeDir="false" afterPath="$PROJECT_DIR$/0flake-reaching-reliable-non-flaky-tests.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/23percent_are_addicts.html" beforeDir="false" afterPath="$PROJECT_DIR$/23percent_are_addicts.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/404.html" beforeDir="false" afterPath="$PROJECT_DIR$/404.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/9-5-low-latency-decision-as-a-service-design-patterns.html" beforeDir="false" afterPath="$PROJECT_DIR$/9-5-low-latency-decision-as-a-service-design-patterns.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apache-beam-from-zero-to-hero-pt-1-batch-pipelines.html" beforeDir="false" afterPath="$PROJECT_DIR$/apache-beam-from-zero-to-hero-pt-1-batch-pipelines.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apache-beam-from-zero-to-hero-pt-2-streaming-pipelines.html" beforeDir="false" afterPath="$PROJECT_DIR$/apache-beam-from-zero-to-hero-pt-2-streaming-pipelines.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/best-practices-for-production-grade-scheduled-jobs.html" beforeDir="false" afterPath="$PROJECT_DIR$/best-practices-for-production-grade-scheduled-jobs.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/can-we-agree-on-dependency-and-version-management.html" beforeDir="false" afterPath="$PROJECT_DIR$/can-we-agree-on-dependency-and-version-management.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/comparing-message-queue-architectures-on-aws.html" beforeDir="false" afterPath="$PROJECT_DIR$/comparing-message-queue-architectures-on-aws.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cross-region-data-replication.html" beforeDir="false" afterPath="$PROJECT_DIR$/cross-region-data-replication.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/do-you-trust-your-front-end-tests-as-much-as-we-do.html" beforeDir="false" afterPath="$PROJECT_DIR$/do-you-trust-your-front-end-tests-as-much-as-we-do.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/forter-engineering-on-call-strategy.html" beforeDir="false" afterPath="$PROJECT_DIR$/forter-engineering-on-call-strategy.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/how-we-wrote-a-crash-free-mobile-sdk.html" beforeDir="false" afterPath="$PROJECT_DIR$/how-we-wrote-a-crash-free-mobile-sdk.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hrd-how-to-buy-a-gift-for-a-software-engineer.html" beforeDir="false" afterPath="$PROJECT_DIR$/hrd-how-to-buy-a-gift-for-a-software-engineer.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mindful-vendor-assessment-counteracting-cognitive-bias-when-choosing-third-party-solutions.html" beforeDir="false" afterPath="$PROJECT_DIR$/mindful-vendor-assessment-counteracting-cognitive-bias-when-choosing-third-party-solutions.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/monitoring-with-riemann.html" beforeDir="false" afterPath="$PROJECT_DIR$/monitoring-with-riemann.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/real-time-streaming-using-kotlin-coroutines.html" beforeDir="false" afterPath="$PROJECT_DIR$/real-time-streaming-using-kotlin-coroutines.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/reflecting-on-oktas-breach.html" beforeDir="false" afterPath="$PROJECT_DIR$/reflecting-on-oktas-breach.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/security-101-for-saas-startups.html" beforeDir="false" afterPath="$PROJECT_DIR$/security-101-for-saas-startups.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/selfconf-empowering-group-learning-for-software-engineers.html" beforeDir="false" afterPath="$PROJECT_DIR$/selfconf-empowering-group-learning-for-software-engineers.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storm-in-under-a-second.html" beforeDir="false" afterPath="$PROJECT_DIR$/storm-in-under-a-second.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tags/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/tags/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/the-evolution-of-web-data-binding.html" beforeDir="false" afterPath="$PROJECT_DIR$/the-evolution-of-web-data-binding.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/walkthrough-tracking-an-elasticsearch-java-client-sniffer-bug.html" beforeDir="false" afterPath="$PROJECT_DIR$/walkthrough-tracking-an-elasticsearch-java-client-sniffer-bug.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/what-happens-when-an-engineer-tries-to-explain-why-you-should-work-with-him.html" beforeDir="false" afterPath="$PROJECT_DIR$/what-happens-when-an-engineer-tries-to-explain-why-you-should-work-with-him.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -68,7 +92,8 @@
       <updated>1660407902256</updated>
       <workItem from="1660407904808" duration="24256000" />
       <workItem from="1660553836743" duration="627000" />
-      <workItem from="1660555537856" duration="32000" />
+      <workItem from="1660555537856" duration="643000" />
+      <workItem from="1660570471898" duration="43000" />
     </task>
     <servers />
   </component>
